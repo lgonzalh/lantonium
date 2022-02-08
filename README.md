@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @lantonium
-- 👀 I’m interested in App develops in Flutter
+- 👀 I’m interested in App develop in Flutter
 - 🌱 I’m currently learning Javascript
 - 📫 How to reach me lantonium@gmail.com
 
