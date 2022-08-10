@@ -1,6 +1,6 @@
 - 👋 Hi, I am @lantonium
 - 👀 I’m interested in Android App develop in Flutter
-- 🌱 I’m currently learning Java.
+- 🌱 I’m currently learning Software Development.
 - 📫 How to reach me lantonium@gmail.com
 
 <!---
