@@ -1,6 +1,6 @@
 - 👋 Hi, I am @lantonium
-- 👀 I’m interested in Android App develop
-- 🌱 I’m currently learning Software Development.
+- 👀 I’m Android App developer
+- 🌱 I’m currently learning Software Development
 - 📫 How to reach me lantonium@gmail.com
 
 <!---
