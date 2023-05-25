@@ -2,7 +2,7 @@
 - 👀 I’m Android App developer
 - 🌱 I’m currently learning Software Development
 - 📫 How to reach me lantonium@gmail.com
-- 🥷 I have 5 repositories hide, only this is Public 🤭
+- 🥷 I have many hidden repositories, only few are Public 🤭
 
 <!---
 lantonium/lantonium is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
