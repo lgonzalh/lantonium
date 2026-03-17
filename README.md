@@ -1,7 +1,7 @@
 - 👋 Hi, I am @lantonium
 - 👀 I’m Android App developer
 - 🌱 I’m currently learning Software Development
-- 📫 How to reach me lantonium@gmail.com
+- 📫 How to reach me lgonzalh@outlook.com
 - 🥷 I have many hidden repositories, only few are Public 🤭
 
 <!---
