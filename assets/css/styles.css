@@ -7,17 +7,33 @@
 }
 
 :root {
+  --font-family-global: "Ford Antenna", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans", sans-serif;
+  --bs-body-font-family: var(--font-family-global);
   --color-bg: #ffffff;
   --color-surface: #ffffff;
   --color-text: #0f172a;
-  --color-muted: #475569;
-  --color-primary: #0ea5e9;
-  --color-primary-contrast: #03121a;
-  --color-accent: #f59e0b;
-  --color-android: #A4C639;
+  --color-muted: #646D7E;
+  --color-primary: #4169E1;
+  --color-primary-contrast: #ffffff;
+  --color-accent: #526BAF;
+  --color-android: #646D7E;
   --radius: 12px;
   --space: 16px;
   --max-w: 1100px;
+  --card-border-width: 1px;
+  --subcard-border-width: 1px;
+  --card-radius: var(--radius);
+  --card-bg: linear-gradient(155deg, rgba(255, 255, 255, 0.2) 0%, rgba(213, 223, 244, 0.12) 100%);
+  --card-bg-hover: linear-gradient(155deg, rgba(255, 255, 255, 0.24) 0%, rgba(214, 226, 248, 0.16) 100%);
+  --card-border: rgba(255, 255, 255, 0.34);
+  --card-border-hover: rgba(255, 255, 255, 0.5);
+  --card-shadow: 0 10px 26px rgba(31, 38, 135, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  --card-shadow-hover: 0 22px 40px -14px rgba(15, 23, 42, 0.16), inset 0 0 24px rgba(255, 255, 255, 0.2);
+  --card-bg-selected: #ffffff;
+  --subcard-bg: linear-gradient(155deg, rgba(255, 255, 255, 0.16) 0%, rgba(230, 236, 248, 0.1) 100%);
+  --subcard-border: rgba(255, 255, 255, 0.3);
+  --subcard-border-hover: rgba(255, 255, 255, 0.46);
+  --subcard-bg-selected: #ffffff;
 }
 
 * {
@@ -31,12 +47,18 @@ html {
 
 body {
   margin: 0;
-  font-family: "Ford Antenna", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans", sans-serif;
+  font-family: var(--font-family-global);
   background: var(--color-bg);
   color: var(--color-text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+body * {
+  font-family: var(--font-family-global) !important;
 }
 
 .container {
@@ -83,6 +105,22 @@ body {
   letter-spacing: .6px;
 }
 
+.hero-description {
+  max-width: 960px;
+  margin: 0 auto 8px;
+  color: var(--color-muted);
+  font-size: clamp(15px, 1.9vw, 18px);
+  line-height: 1.65;
+}
+
+.hero-quote {
+  max-width: 860px;
+  margin: 0 auto;
+  color: var(--color-text);
+  font-size: clamp(14px, 1.8vw, 17px);
+  line-height: 1.6;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -110,15 +148,70 @@ body {
   color: var(--color-text);
 }
 
-.stat {
-  background: none !important;
-  background-color: rgba(224, 230, 237, 0.7) !important;
-  backdrop-filter: blur(6px) !important;
-  -webkit-backdrop-filter: blur(6px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.6) !important;
-  border-radius: var(--radius);
+.subcard,
+.stat,
+.profile-job-card {
+  background: var(--subcard-bg) !important;
+  backdrop-filter: blur(2px) saturate(112%) !important;
+  -webkit-backdrop-filter: blur(2px) saturate(112%) !important;
+  border: var(--subcard-border-width) solid var(--subcard-border) !important;
+  border-radius: var(--card-radius);
   padding: 16px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: default;
+}
+
+.stat {
   margin-bottom: 12px;
+}
+
+.subcard:hover,
+.stat:hover,
+.profile-job-card:hover {
+  border-color: var(--subcard-border-hover) !important;
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.08);
+}
+
+.subcard:active,
+.subcard:focus-within,
+.subcard.is-selected,
+.subcard.is-hover-selected,
+.stat:active,
+.stat:focus-within,
+.stat.is-selected,
+.stat.is-hover-selected,
+.profile-job-card:active,
+.profile-job-card:focus-within,
+.profile-job-card.is-selected,
+.profile-job-card.is-hover-selected {
+  background: var(--subcard-bg-selected) !important;
+  border-color: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .subcard:hover,
+  .stat:hover,
+  .profile-job-card:hover {
+    animation: subcard-float-sway 2s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes subcard-float-sway {
+  0% {
+    transform: perspective(1000px) translate3d(0, -2px, -3px) rotateX(1.2deg) rotateY(-0.45deg);
+  }
+  50% {
+    transform: perspective(1000px) translate3d(0, -6px, 10px) rotateX(-1.1deg) rotateY(0.55deg);
+  }
+  100% {
+    transform: perspective(1000px) translate3d(0, -4px, 4px) rotateX(0.8deg) rotateY(-0.3deg);
+  }
 }
 
 .stat-number {
@@ -150,25 +243,59 @@ body {
 
 .card {
   --bs-card-bg: transparent;
-  background: none !important;
-  background-color: rgba(224, 230, 237, 0.7) !important;
-  backdrop-filter: blur(6px) !important;
-  -webkit-backdrop-filter: blur(6px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.6) !important;
-  border-radius: var(--radius) !important;
+  background: var(--card-bg) !important;
+  backdrop-filter: blur(2px) saturate(115%) !important;
+  -webkit-backdrop-filter: blur(2px) saturate(115%) !important;
+  border: var(--card-border-width) solid var(--card-border) !important;
+  border-radius: var(--card-radius) !important;
   padding: 32px !important;
-  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, .03), inset 0 0 20px rgba(255, 255, 255, .2) !important;
-  transition: all .5s cubic-bezier(.16, 1, .3, 1);
+  box-shadow: var(--card-shadow) !important;
+  transform: translate3d(0, 0, 0);
+  transform-style: preserve-3d;
+  transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
   height: 100%;
+  will-change: transform;
 }
 
 .card:hover {
-  background-color: rgba(224, 230, 237, 0.85) !important;
-  transform: translateY(-8px);
-  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, .08), inset 0 0 30px rgba(255, 255, 255, .3) !important;
-  border-color: rgba(255, 255, 255, 0.9) !important;
+  background: var(--card-bg-hover) !important;
+  border-color: var(--card-border-hover) !important;
+  box-shadow: var(--card-shadow-hover) !important;
+  backdrop-filter: blur(1px) saturate(116%) !important;
+  -webkit-backdrop-filter: blur(1px) saturate(116%) !important;
+}
+
+.card:active,
+.card:focus-within,
+.card.is-selected,
+.card.is-hover-selected {
+  background: var(--card-bg-selected) !important;
+  border-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    animation: card-float-sway 2.4s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes card-float-sway {
+  0% {
+    transform: perspective(1100px) translate3d(0, -6px, -6px) rotateX(2.4deg) rotateY(-1deg) rotateZ(-0.25deg);
+  }
+  50% {
+    transform: perspective(1100px) translate3d(0, -11px, 18px) rotateX(-2deg) rotateY(1.1deg) rotateZ(0.2deg);
+  }
+  100% {
+    transform: perspective(1100px) translate3d(0, -8px, 10px) rotateX(1.2deg) rotateY(-0.55deg) rotateZ(-0.12deg);
+  }
 }
 
 .card h2 {
@@ -231,10 +358,9 @@ body {
 
 .site-header,
 .site-footer {
-  background: none !important;
-  background-color: rgba(224, 230, 237, 0.7) !important;
-  backdrop-filter: blur(6px) !important;
-  -webkit-backdrop-filter: blur(6px) !important;
+  background: rgba(220, 225, 235, 0.14) !important;
+  backdrop-filter: blur(2px) saturate(110%) !important;
+  -webkit-backdrop-filter: blur(2px) saturate(110%) !important;
 }
 
 .site-header {
@@ -260,106 +386,6 @@ body {
   font-size: .875rem;
 }
 
-/* Andy / Bugdroid CSS */
-.andy-container {
-  display: flex;
-  justify-content: center;
-  padding: 40px 0;
-}
-
-.andy-bot {
-  width: 140px;
-  height: 180px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.andy-bot:hover {
-    transform: scale(1.05) rotate(2deg);
-}
-
-.andy-head {
-  width: 100px;
-  height: 50px;
-  background: var(--color-android);
-  border-radius: 50px 50px 0 0;
-  position: relative;
-  margin-bottom: 4px;
-}
-
-.andy-antenna {
-  width: 4px;
-  height: 20px;
-  background: var(--color-android);
-  position: absolute;
-  top: -15px;
-  border-radius: 2px;
-}
-
-.andy-antenna-l {
-  left: 20px;
-  transform: rotate(-30deg);
-}
-
-.andy-antenna-r {
-  right: 20px;
-  transform: rotate(30deg);
-}
-
-.andy-eye {
-  width: 8px;
-  height: 8px;
-  background: #fff;
-  border-radius: 50%;
-  position: absolute;
-  top: 25px;
-}
-
-.andy-eye-l {
-  left: 25px;
-}
-
-.andy-eye-r {
-  right: 25px;
-}
-
-.andy-body-container {
-  display: flex;
-  align-items: flex-start;
-  gap: 6px;
-}
-
-.andy-body {
-  width: 100px;
-  height: 85px;
-  background: var(--color-android);
-  border-radius: 0 0 10px 10px;
-}
-
-.andy-arm {
-  width: 22px;
-  height: 70px;
-  background: var(--color-android);
-  border-radius: 11px;
-  margin-top: 2px;
-}
-
-.andy-legs-container {
-  display: flex;
-  gap: 30px;
-  margin-top: -5px;
-}
-
-.andy-leg {
-  width: 22px;
-  height: 45px;
-  background: var(--color-android);
-  border-radius: 0 0 11px 11px;
-}
-
 @media (max-width: 980px) {
   .grid {
     grid-template-columns: 1fr;
@@ -367,13 +393,49 @@ body {
   .hero {
     padding-top: 40px;
   }
+  .card {
+    padding: 24px !important;
+  }
 }
 
 @media (max-width: 560px) {
+  .container {
+    padding: 0 16px;
+  }
+  .section {
+    padding: 32px 16px;
+  }
   .grid {
     gap: 16px;
   }
+  .hero {
+    padding: 40px 16px;
+  }
+  .brand-logo-large {
+    width: 140px;
+  }
+  .lead {
+    font-size: clamp(16px, 5vw, 20px);
+  }
+  .hero-description {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .hero-quote {
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .card {
+    padding: 20px !important;
+  }
+  .subcard,
+  .stat,
+  .profile-job-card {
+    padding: 12px;
+  }
 }
+
+
 
 /* LinkedIn Profile Styles */
 .profile-card {
@@ -403,6 +465,22 @@ body {
 
 .profile-info {
   padding: 85px 24px 24px 24px;
+}
+
+@media (max-width: 560px) {
+  .profile-cover {
+    height: 140px;
+  }
+  .profile-avatar {
+    width: 112px;
+    height: 112px;
+    bottom: -56px;
+    left: 16px;
+    border-width: 3px;
+  }
+  .profile-info {
+    padding: 64px 16px 16px 16px;
+  }
 }
 
 .profile-name {
@@ -506,13 +584,6 @@ body {
 }
 
 .profile-job-card {
-  background: none !important;
-  background-color: rgba(224, 230, 237, 0.7) !important;
-  backdrop-filter: blur(6px) !important;
-  -webkit-backdrop-filter: blur(6px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.6) !important;
-  border-radius: 8px;
-  padding: 16px;
   margin-bottom: 24px;
 }
 
@@ -535,4 +606,104 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-}
+}
+
+.profile-school-logo {
+  border-radius: 4px;
+  object-fit: contain;
+  background: #ffffff;
+}
+
+.profile-summary {
+  font-size: 0.95rem;
+}
+
+.accent-text {
+  color: var(--color-primary) !important;
+}
+
+.policy-full {
+  padding: clamp(20px, 2.5vw, 32px) !important;
+}
+
+.policy-full h2,
+.policy-full h3 {
+  color: var(--color-text);
+  margin-top: 1.4rem;
+}
+
+.policy-full p,
+.policy-full li {
+  color: var(--color-muted);
+  line-height: 1.75;
+}
+
+.gallery-section-title {
+  color: var(--color-primary);
+}
+
+.gallery-img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  object-fit: contain;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.media-card {
+  padding: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.media-thumb-card {
+  padding: 8px;
+}
+
+@media (max-width: 560px) {
+  .media-card {
+    padding: 8px;
+  }
+  .media-thumb-card {
+    padding: 6px;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .gallery-img:hover {
+    transform: translate3d(0, -5px, 0);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+  }
+}
+
+.video-container {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-video {
+  max-height: 55vh;
+  width: auto;
+  max-width: 100%;
+  border-radius: var(--radius);
+  object-fit: contain;
+}
+
+@media (max-width: 560px) {
+  .app-video {
+    max-height: 42vh;
+  }
+}
+
+.modal-close-enhanced {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+.modal-preview-image {
+  max-height: 85vh;
+  object-fit: contain;
+}

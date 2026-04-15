@@ -18,8 +18,9 @@
     }
   },
   "theme": {
-    "color-primary": "#007FFF",
-    "color-accent": "#f59e0b"
+    "color-primary": "#4169E1",
+    "color-muted": "#646D7E",
+    "color-accent": "#526BAF"
   },
   "settings": {
     "andyCount": "50"

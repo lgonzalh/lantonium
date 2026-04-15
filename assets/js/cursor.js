@@ -9,8 +9,8 @@ class Particle {
     this.y = Math.random() * window.innerHeight;
     this.vx = (Math.random() - 0.5) * 0.1;
     this.vy = (Math.random() - 0.5) * 0.1;
-    this.size = 7.0 + Math.random() * 7.0; // Doubled from 3.5
-    this.aspect = 1.3 + Math.random() * 0.7;
+    this.size = 1.0 + Math.random() * 1.0; // 1-2 pixels
+    this.aspect = 1.0; 
     this.color = color;
     this.phase = Math.random() * Math.PI * 2;
     this.pulseSpeed = 0.04 + Math.random() * 0.05;
@@ -31,7 +31,7 @@ class ReactiveSwarm {
     this.dpr = window.devicePixelRatio || 1;
 
     this.numParticles = (window.innerWidth < 768) ? 180 : 420; // Default
-    this.palette = ["rgba(164, 198, 57, 0.85)"]; // Android Green (Andy)
+    this.palette = ["#4169E1", "#526BAF", "#646D7E", "#4B5D8B"]; // Azul Rey a Gris Ratón
     this.isVisible = true;
     
     fetch('/content/site.json?t=' + Date.now())
@@ -58,7 +58,7 @@ class ReactiveSwarm {
        this.createParticles();
     };
 
-    this.radius = 220; // Increased interaction radius
+    this.radius = 110; // Reduced repulsion radius (half of 220)
     this.friction = 0.985;
 
     this.FORCE_A = 1.35;
@@ -148,73 +148,13 @@ class ReactiveSwarm {
       const angle = Math.atan2(p.vy, p.vx);
       const size = p.size * pulse;
 
-      // DIBUJO DE PRECISIÓN: Andy (Bugdroid)
+      // DIBUJO DE PARTÍCULAS: Círculos simples de 1-2px
       this.ctx.save();
       this.ctx.translate(p.x, p.y);
-      this.ctx.rotate(angle + Math.PI / 2); // Orientación frontal dinámica
-
       this.ctx.fillStyle = p.color;
-
-      // 1. CABEZA
       this.ctx.beginPath();
-      this.ctx.arc(0, -size * 0.2, size * 0.48, Math.PI, 0);
+      this.ctx.arc(0, 0, size, 0, Math.PI * 2);
       this.ctx.fill();
-
-      // 2. ANTENAS
-      this.ctx.lineWidth = size * 0.08;
-      this.ctx.strokeStyle = p.color;
-      this.ctx.lineCap = "round";
-
-      this.ctx.beginPath();
-      this.ctx.moveTo(-size * 0.2, -size * 0.5);
-      this.ctx.lineTo(-size * 0.35, -size * 0.75);
-      this.ctx.stroke();
-
-      this.ctx.beginPath();
-      this.ctx.moveTo(size * 0.2, -size * 0.5);
-      this.ctx.lineTo(size * 0.35, -size * 0.75);
-      this.ctx.stroke();
-
-      // 3. CUERPO
-      this.ctx.beginPath();
-      // Dibujamos un rectángulo con las esquinas inferiores redondeadas
-      const bodyW = size * 0.95;
-      const bodyH = size * 0.8;
-      const r_body = size * 0.12;
-      this.ctx.roundRect(-bodyW / 2, -size * 0.15, bodyW, bodyH, [0, 0, r_body, r_body]);
-      this.ctx.fill();
-
-      // 4. EXTREMIDADES
-      const armW = size * 0.2;
-      const armH = size * 0.65;
-      const armR = armW / 2;
-      const armGap = size * 0.05;
-
-      // Brazo Izquierdo
-      this.ctx.beginPath();
-      this.ctx.roundRect(-bodyW / 2 - armW - armGap, -size * 0.1, armW, armH, armR);
-      this.ctx.fill();
-
-      // Brazo Derecho
-      this.ctx.beginPath();
-      this.ctx.roundRect(bodyW / 2 + armGap, -size * 0.1, armW, armH, armR);
-      this.ctx.fill();
-
-      // Piernas
-      const legW = size * 0.2;
-      const legH = size * 0.4;
-      this.ctx.beginPath();
-      this.ctx.roundRect(-size * 0.25, size * 0.6, legW, legH, [0, 0, legW / 2, legW / 2]);
-      this.ctx.roundRect(size * 0.05, size * 0.6, legW, legH, [0, 0, legW / 2, legW / 2]);
-      this.ctx.fill();
-
-      // 5. OJOS
-      this.ctx.fillStyle = "#ffffff";
-      this.ctx.beginPath();
-      this.ctx.arc(-size * 0.18, -size * 0.35, size * 0.08, 0, Math.PI * 2);
-      this.ctx.arc(size * 0.18, -size * 0.35, size * 0.08, 0, Math.PI * 2);
-      this.ctx.fill();
-
       this.ctx.restore();
     }
 
