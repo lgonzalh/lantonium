@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const selector = ".card, .subcard, .stat, .profile-job-card";
+  const interactiveSelector = "a, button, input, textarea, select, option, label, video, iframe, summary, details";
   const cards = Array.from(document.querySelectorAll(selector));
 
   if (!cards.length) return;
@@ -32,9 +33,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const isInteractiveTarget = (target) => {
     if (!(target instanceof Element)) return false;
 
-    return Boolean(
-      target.closest("a, button, input, textarea, select, option, label, video, iframe, summary, details")
-    );
+    return Boolean(target.closest(interactiveSelector));
+  };
+
+  const setMotionPaused = (card, paused) => {
+    card.classList.toggle("motion-paused", paused);
   };
 
   cards.forEach((card) => {
@@ -47,35 +50,57 @@ document.addEventListener("DOMContentLoaded", () => {
       setSelection(card);
     });
 
-    card.addEventListener("mouseenter", () => {
-      card.classList.add("is-hover-selected");
-    });
-
-    card.addEventListener("mouseleave", () => {
-      card.classList.remove("is-hover-selected");
-    });
-
-    card.addEventListener(
-      "touchstart",
-      () => {
-        card.classList.add("is-hover-selected");
-      },
-      { passive: true }
-    );
-
-    const clearTouchHover = () => {
-      card.classList.remove("is-hover-selected");
-    };
-
-    card.addEventListener("touchend", clearTouchHover, { passive: true });
-    card.addEventListener("touchcancel", clearTouchHover, { passive: true });
-
     card.addEventListener("keydown", (event) => {
       const key = event.key;
       if (key !== "Enter" && key !== " ") return;
       event.preventDefault();
       setSelection(card);
     });
+
+    card.addEventListener("pointerover", (event) => {
+      if (!isInteractiveTarget(event.target)) return;
+      setMotionPaused(card, true);
+    });
+
+    card.addEventListener("pointerout", (event) => {
+      if (!isInteractiveTarget(event.target)) return;
+      const next = event.relatedTarget;
+      if (next instanceof Element && card.contains(next) && next.closest(interactiveSelector)) {
+        // Sigue dentro de una zona interactiva de la misma card: no liberar pausa.
+        return;
+      }
+      setMotionPaused(card, false);
+    });
+
+    card.addEventListener("focusin", (event) => {
+      if (!isInteractiveTarget(event.target)) return;
+      setMotionPaused(card, true);
+    });
+
+    card.addEventListener("focusout", (event) => {
+      const next = event.relatedTarget;
+      if (next instanceof Element && card.contains(next) && next.closest(interactiveSelector)) {
+        return;
+      }
+      setMotionPaused(card, false);
+    });
+
+    card.addEventListener(
+      "touchstart",
+      (event) => {
+        if (!isInteractiveTarget(event.target)) return;
+        setMotionPaused(card, true);
+      },
+      { passive: true }
+    );
+
+    const releaseTouchPause = () => {
+      // Pequeño delay para evitar flicker al convertir touch en click.
+      setTimeout(() => setMotionPaused(card, false), 140);
+    };
+
+    card.addEventListener("touchend", releaseTouchPause, { passive: true });
+    card.addEventListener("touchcancel", releaseTouchPause, { passive: true });
   });
 
   document.addEventListener("click", (event) => {

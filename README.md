@@ -23,6 +23,9 @@ The platform is built as a static web application with a decoupled content layer
 #### UX / UI
 - Global typography using `Ford Antenna Regular`
 - Unified card/subcard styling (glass effect, borders, hover/touch interactions)
+- Advanced Glassmorphism UI (translucent fixed navbar and footer)
+- 3D CSS Sway Animations on cards and profile sections
+- Dynamic slide-in text entrance animations
 - Pointer + touch behavior support for consistent desktop/mobile UX
 
 ### Main Site Surface
@@ -59,6 +62,12 @@ Example:
 python -m http.server 8080
 ```
 
+### Deployment (Firebase Hosting)
+The site is configured for Firebase Hosting with clean URLs and UTF-8 encoding.
+```bash
+firebase deploy --only hosting
+```
+
 ### Notes
 - This repository is focused on a static, production-ready portfolio website.
 - Content and visuals are designed for fast iteration while preserving consistent branding and UI behavior.
@@ -70,6 +79,7 @@ python -m http.server 8080
 python scripts/seo_audit.py
 ```
 - Recommendation: run the audit before every deploy and whenever a new page is added.
+- GitHub Actions workflow: `.github/workflows/seo-audit.yml` (runs automatically on every push/PR to `main`).
 
 ---
 
@@ -93,6 +103,9 @@ La plataforma está construida como una aplicación web estática con una capa d
 #### UX / UI
 - Tipografía global con `Ford Antenna Regular`
 - Estilo unificado de cards/subcards (efecto cristal, bordes, interacciones hover/touch)
+- UI Glassmorphism avanzado (navbar y footer fijos y traslúcidos)
+- Animaciones CSS 3D de vaivén en cards y perfil
+- Animaciones dinámicas de entrada de texto (slide-in)
 - Soporte para puntero y táctil para UX consistente en desktop y móvil
 
 ### Superficie Principal del Sitio
@@ -129,6 +142,12 @@ Ejemplo:
 python -m http.server 8080
 ```
 
+### Despliegue (Firebase Hosting)
+El sitio está configurado para Firebase Hosting con URLs limpias y codificación UTF-8.
+```bash
+firebase deploy --only hosting
+```
+
 ### Notas
 - Este repositorio está orientado a un sitio web estático listo para producción.
 - El contenido y la capa visual están preparados para iteraciones rápidas manteniendo consistencia de marca y comportamiento UI.
@@ -140,3 +159,4 @@ python -m http.server 8080
 python scripts/seo_audit.py
 ```
 - Recomendación: ejecutar la auditoría antes de cada despliegue y cada vez que se agregue una nueva página.
+- Workflow en GitHub Actions: `.github/workflows/seo-audit.yml` (se ejecuta automáticamente en cada push/PR a `main`).
