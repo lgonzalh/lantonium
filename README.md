@@ -63,6 +63,14 @@ python -m http.server 8080
 - This repository is focused on a static, production-ready portfolio website.
 - Content and visuals are designed for fast iteration while preserving consistent branding and UI behavior.
 
+### Continuous SEO
+- Operational guide: `docs/SEO_CONTINUO.md`
+- Local audit script:
+```bash
+python scripts/seo_audit.py
+```
+- Recommendation: run the audit before every deploy and whenever a new page is added.
+
 ---
 
 ## Español Latinoamericano
@@ -124,3 +132,11 @@ python -m http.server 8080
 ### Notas
 - Este repositorio está orientado a un sitio web estático listo para producción.
 - El contenido y la capa visual están preparados para iteraciones rápidas manteniendo consistencia de marca y comportamiento UI.
+
+### SEO Continuo
+- Guía operativa: `docs/SEO_CONTINUO.md`
+- Script de auditoría local:
+```bash
+python scripts/seo_audit.py
+```
+- Recomendación: ejecutar la auditoría antes de cada despliegue y cada vez que se agregue una nueva página.
