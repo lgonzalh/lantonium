@@ -35,8 +35,8 @@ The platform is built as a static web application with a decoupled content layer
 | Apps Catalog | `/apps.html` | Consolidated app portfolio overview |
 | About | `/about.html` | Professional profile and contact points |
 | Privacy | `/privacy.html` | Privacy policy and data transparency information |
-| App Details | `/paytollapp-details.html` | Product-specific overview and capabilities |
-| App Details | `/ofusercontrolapp-details.html` | Product-specific overview and capabilities |
+| App Details | `/paytollapp.html` | Product-specific overview and capabilities |
+| App Details | `/ofusercontrolapp.html` | Product-specific overview and capabilities |
 | App Details | `/imbalances.html` | Product-specific overview and capabilities |
 | App Details | `/localtranscriptor.html` | Product-specific overview, videos and gallery |
 | App Details | `/docusheetbot.html` | Product-specific overview and capabilities |
@@ -115,8 +115,8 @@ La plataforma está construida como una aplicación web estática con una capa d
 | Catálogo Apps | `/apps.html` | Vista consolidada del portafolio de aplicaciones |
 | Acerca de | `/about.html` | Perfil profesional y puntos de contacto |
 | Privacidad | `/privacy.html` | Política de privacidad y transparencia de datos |
-| Detalle App | `/paytollapp-details.html` | Reseña y capacidades específicas del producto |
-| Detalle App | `/ofusercontrolapp-details.html` | Reseña y capacidades específicas del producto |
+| Detalle App | `/paytollapp.html` | Reseña y capacidades específicas del producto |
+| Detalle App | `/ofusercontrolapp.html` | Reseña y capacidades específicas del producto |
 | Detalle App | `/imbalances.html` | Reseña y capacidades específicas del producto |
 | Detalle App | `/localtranscriptor.html` | Reseña, videos y galería del producto |
 | Detalle App | `/docusheetbot.html` | Reseña y capacidades específicas del producto |
