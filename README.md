@@ -62,12 +62,6 @@ Example:
 python -m http.server 8080
 ```
 
-### Deployment (Firebase Hosting)
-The site is configured for Firebase Hosting with clean URLs and UTF-8 encoding.
-```bash
-firebase deploy --only hosting
-```
-
 ### Notes
 - This repository is focused on a static, production-ready portfolio website.
 - Content and visuals are designed for fast iteration while preserving consistent branding and UI behavior.
@@ -140,12 +134,6 @@ La plataforma está construida como una aplicación web estática con una capa d
 Ejemplo:
 ```bash
 python -m http.server 8080
-```
-
-### Despliegue (Firebase Hosting)
-El sitio está configurado para Firebase Hosting con URLs limpias y codificación UTF-8.
-```bash
-firebase deploy --only hosting
 ```
 
 ### Notas
