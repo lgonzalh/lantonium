@@ -36,7 +36,7 @@ The platform is built as a static web application with a decoupled content layer
 | About | `/about.html` | Professional profile and contact points |
 | Privacy | `/privacy.html` | Privacy policy and data transparency information |
 | App Details | `/paytollapp.html` | Product-specific overview and capabilities |
-| App Details | `/ofusercontrolapp.html` | Product-specific overview and capabilities |
+| App Details | `/ofusercontrolapp.html` | Product-specific overview, videos and gallery |
 | App Details | `/imbalances.html` | Product-specific overview and capabilities |
 | App Details | `/localtranscriptor.html` | Product-specific overview, videos and gallery |
 | App Details | `/docusheetbot.html` | Product-specific overview and capabilities |
