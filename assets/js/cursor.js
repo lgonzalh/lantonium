@@ -30,7 +30,7 @@ class ReactiveSwarm {
     this.ctx = this.canvas.getContext('2d', { alpha: true });
     this.dpr = window.devicePixelRatio || 1;
 
-    this.numParticles = (window.innerWidth < 768) ? 180 : 420; // Default
+    this.numParticles = (window.innerWidth < 768) ? 90 : 210; // Default
     this.palette = ["#4169E1", "#526BAF", "#646D7E", "#4B5D8B"]; // Azul Rey a Gris Ratón
     this.isVisible = true;
     

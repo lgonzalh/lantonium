@@ -83,7 +83,62 @@ async function applyContent(data) {
   }
 }
 
+function getInitialTheme() {
+  const stored = localStorage.getItem('theme');
+  if (stored === 'light' || stored === 'dark') return stored;
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  return prefersDark ? 'dark' : 'light';
+}
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+}
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme') || 'light';
+  const next = current === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('theme', next);
+  applyTheme(next);
+}
+
+function ensureThemeToggle() {
+  const navList = document.querySelector('.site-header .navbar-nav');
+  if (!navList) return;
+  if (navList.querySelector('.theme-toggle')) return;
+
+  const li = document.createElement('li');
+  li.className = 'nav-item d-flex align-items-center me-2';
+  li.innerHTML = `
+    <button type="button" class="theme-toggle" aria-label="Cambiar tema" title="Cambiar tema">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
+      </svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2"></path>
+        <path d="M12 20v2"></path>
+        <path d="M4.93 4.93l1.41 1.41"></path>
+        <path d="M17.66 17.66l1.41 1.41"></path>
+        <path d="M2 12h2"></path>
+        <path d="M20 12h2"></path>
+        <path d="M4.93 19.07l1.41-1.41"></path>
+        <path d="M17.66 6.34l1.41-1.41"></path>
+      </svg>
+    </button>
+  `.trim();
+
+  navList.insertBefore(li, navList.firstChild);
+  li.querySelector('.theme-toggle').addEventListener('click', toggleTheme);
+}
+
 async function loadContent() {
+  applyTheme(getInitialTheme());
+  if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    ensureThemeToggle();
+  } else {
+    document.addEventListener('DOMContentLoaded', ensureThemeToggle, { once: true });
+  }
+
   const fetchOptions = { cache: 'no-cache' };
   
   const safeFetch = async (url) => {

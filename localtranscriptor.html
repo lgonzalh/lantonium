@@ -242,8 +242,35 @@
                 }
             });
             </script>
+
+            <div class="mt-5 text-center">
+                <button type="button" class="btn btn-outline-dark btn-lg mb-3" data-bs-toggle="modal" data-bs-target="#stackModal">
+                    Ver en GitHub
+                </button>
+            </div>
         </div>
     </main>
+
+    <div class="modal fade" id="stackModal" tabindex="-1" aria-labelledby="stackModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content card border-0" style="background: rgba(255, 255, 255, 0.45) !important; backdrop-filter: blur(20px) saturate(180%) !important; border: 1px solid rgba(255, 255, 255, 0.5) !important; box-shadow: 0 20px 40px rgba(0,0,0,0.08) !important;">
+                <div class="modal-header border-bottom border-light">
+                    <h5 class="modal-title fw-bold" id="stackModalLabel">Technology Stack</h5>
+                    <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-start">
+                    <ul class="features">
+                        <li><strong>Plataforma:</strong> Android</li>
+                        <li><strong>Enfoque:</strong> Transcripción local/offline (privacidad por diseño)</li>
+                        <li><strong>Entrada:</strong> Audio en tiempo real y archivos locales</li>
+                        <li><strong>Salida:</strong> Texto con registro e historial</li>
+                        <li><strong>Persistencia:</strong> Almacenamiento local para consulta diferida</li>
+                    </ul>
+                    <p class="mt-3 small text-muted">Nota: Por razones de seguridad y al ser un desarrollo privado, el repositorio de este proyecto no está disponible públicamente.</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer class="site-footer">
         <div class="container footer-content">
             <div class="footer-copy">
