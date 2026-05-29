@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -108,6 +108,119 @@
           </ul>
         </article>
       </div>
+
+      <h2 class="mt-5 mb-4 border-bottom pb-2">Galería de la Aplicación</h2>
+      <p class="section-lead mb-4">Capturas de pantalla del flujo operativo de captura y sincronización de datos.</p>
+      
+      <h3 class="h4 mb-3 gallery-section-title">Capturas de Pantalla</h3>
+      <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 mb-5" data-html="ds-images">
+          <div class="col">
+              <div class="subcard media-card media-thumb-card">
+                  <img src="/assets/img/docusheetbot/docusheetbot%2001.png" class="gallery-img rounded shadow-sm" alt="DocuSheetBot 01" loading="lazy">
+              </div>
+          </div>
+          <div class="col">
+              <div class="subcard media-card media-thumb-card">
+                  <img src="/assets/img/docusheetbot/docusheetbot%2002.png" class="gallery-img rounded shadow-sm" alt="DocuSheetBot 02" loading="lazy">
+              </div>
+          </div>
+          <div class="col">
+              <div class="subcard media-card media-thumb-card">
+                  <img src="/assets/img/docusheetbot/docusheetbot%2003.png" class="gallery-img rounded shadow-sm" alt="DocuSheetBot 03" loading="lazy">
+              </div>
+          </div>
+          <div class="col">
+              <div class="subcard media-card media-thumb-card">
+                  <img src="/assets/img/docusheetbot/docusheetbot%2004.png" class="gallery-img rounded shadow-sm" alt="DocuSheetBot 04" loading="lazy">
+              </div>
+          </div>
+          <div class="col">
+              <div class="subcard media-card media-thumb-card">
+                  <img src="/assets/img/docusheetbot/docusheetbot%2005.png" class="gallery-img rounded shadow-sm" alt="DocuSheetBot 05" loading="lazy">
+              </div>
+          </div>
+          <div class="col">
+              <div class="subcard media-card media-thumb-card">
+                  <img src="/assets/img/docusheetbot/docusheetbot%2006.png" class="gallery-img rounded shadow-sm" alt="DocuSheetBot 06" loading="lazy">
+              </div>
+          </div>
+      </div>
+
+      <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+          <div class="modal-content bg-transparent border-0">
+            <div class="modal-header border-0 pb-0">
+              <button type="button" class="btn-close btn-close-white ms-auto shadow-none modal-close-enhanced" data-bs-dismiss="modal" aria-label="Cerrar" style="z-index: 1060; position: relative;"></button>
+            </div>
+            <div class="modal-body text-center p-0 position-relative">
+              <button id="prevImageBtn" class="btn position-absolute top-50 start-0 translate-middle-y border-0 shadow-none modal-nav-enhanced" style="z-index: 1055; opacity: 0.5; transition: opacity 0.2s;">
+                  <span class="carousel-control-prev-icon" aria-hidden="true" style="width: 3rem; height: 3rem; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));"></span>
+              </button>
+              <img src="" id="modalImage" class="img-fluid rounded shadow-lg bg-light modal-preview-image" alt="Vista ampliada">
+              <button id="nextImageBtn" class="btn position-absolute top-50 end-0 translate-middle-y border-0 shadow-none modal-nav-enhanced" style="z-index: 1055; opacity: 0.5; transition: opacity 0.2s;">
+                  <span class="carousel-control-next-icon" aria-hidden="true" style="width: 3rem; height: 3rem; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          const modalImage = document.getElementById("modalImage");
+          const imageModalElement = document.getElementById("imageModal");
+          if(imageModalElement) {
+              const imageModal = new bootstrap.Modal(imageModalElement);
+              const galleryImages = Array.from(document.querySelectorAll(".gallery-img"));
+              let currentIndex = 0;
+
+              function updateModalImage(index) {
+                  if (index < 0) index = galleryImages.length - 1;
+                  if (index >= galleryImages.length) index = 0;
+                  currentIndex = index;
+                  modalImage.src = galleryImages[currentIndex].src;
+              }
+
+              galleryImages.forEach((img, index) => {
+                  img.addEventListener("click", function() {
+                      updateModalImage(index);
+                      imageModal.show();
+                  });
+              });
+
+              document.getElementById("prevImageBtn").addEventListener("click", function(e) {
+                  e.stopPropagation();
+                  updateModalImage(currentIndex - 1);
+              });
+
+              document.getElementById("nextImageBtn").addEventListener("click", function(e) {
+                  e.stopPropagation();
+                  updateModalImage(currentIndex + 1);
+              });
+
+              document.querySelectorAll(".modal-nav-enhanced").forEach(btn => {
+                  btn.addEventListener("mouseenter", () => btn.style.opacity = "1");
+                  btn.addEventListener("mouseleave", () => btn.style.opacity = "0.5");
+              });
+
+              imageModalElement.addEventListener('shown.bs.modal', function () {
+                  document.addEventListener('keydown', handleKeyDown);
+              });
+
+              imageModalElement.addEventListener('hidden.bs.modal', function () {
+                  document.removeEventListener('keydown', handleKeyDown);
+              });
+
+              function handleKeyDown(e) {
+                  if (e.key === 'ArrowLeft') {
+                      updateModalImage(currentIndex - 1);
+                  } else if (e.key === 'ArrowRight') {
+                      updateModalImage(currentIndex + 1);
+                  }
+              }
+          }
+      });
+      </script>
 
       <div class="mt-5 text-center">
         <button type="button" class="btn btn-outline-dark btn-lg mb-3" data-bs-toggle="modal" data-bs-target="#stackModal">

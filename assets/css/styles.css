@@ -49,13 +49,13 @@
   --chrome-text-strong: #ffffff;
   --card-bg: rgba(255, 255, 255, 0.12);
   --card-bg-hover: rgba(255, 255, 255, 0.14);
-  --card-border: #ffffff;
-  --card-border-hover: #ffffff;
+  --card-border: rgba(255, 255, 255, 0.15);
+  --card-border-hover: rgba(255, 255, 255, 0.3);
   --card-bg-selected: rgba(255, 255, 255, 0.14);
-  --subcard-bg: #ffffff;
-  --subcard-border: #ffffff;
-  --subcard-border-hover: #ffffff;
-  --subcard-bg-selected: #ffffff;
+  --subcard-bg: rgba(255, 255, 255, 0.06);
+  --subcard-border: rgba(255, 255, 255, 0.15);
+  --subcard-border-hover: rgba(255, 255, 255, 0.3);
+  --subcard-bg-selected: rgba(255, 255, 255, 0.1);
 }
 
 * {
