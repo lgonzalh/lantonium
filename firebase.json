@@ -16,6 +16,7 @@
     ],
     "ignore": [
       "firebase.json",
+      "fix.js",
       "update_portfolio_cards.py",
       "**/.*",
       "**/node_modules/**"
