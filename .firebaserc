@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "docusheetbot"
-  }
+    "default": "lantonium"
+  },
+  "targets": {},
+  "etags": {}
 }

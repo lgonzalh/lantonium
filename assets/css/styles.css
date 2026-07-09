@@ -1,4 +1,4 @@
-@font-face {
+﻿@font-face {
   font-family: "Ford Antenna";
   src: url("/assets/fonts/Ford Antenna Regular.ttf") format("truetype");
   font-weight: normal;
@@ -817,17 +817,19 @@ main {
 .gallery-img {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: top left;
   width: 100%;
-  border-radius: 10px;
+  aspect-ratio: 4 / 3;
+  display: block;
 }
 
 .media-card {
   padding: 10px;
   overflow: hidden;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .media-thumb-card {
@@ -848,6 +850,19 @@ main {
     transform: translate3d(0, -5px, 0);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
   }
+}
+
+.card-image {
+  flex: 1;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  display: block;
 }
 
 .video-container {

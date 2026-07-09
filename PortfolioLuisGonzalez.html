@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 
   <head>
@@ -124,6 +124,7 @@
 
     /* ——— Card hover: simple lift, no 3D ——— */
     .project-card {
+      height: 100%;
       transition: transform 280ms ease, box-shadow 280ms ease, border-color 280ms ease;
       cursor: pointer;
       border-radius: 14px;
@@ -484,6 +485,27 @@
     .modal-box::-webkit-scrollbar-track { background: transparent; }
     .modal-box::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
     .dark .modal-box::-webkit-scrollbar-thumb { background: #334155; }
+    .projects-grid{
+        display:grid;
+        grid-template-columns:repeat(6,minmax(0,1fr));
+        gap:16px;
+    }
+
+    @media (max-width:1200px){
+        .projects-grid{
+            grid-template-columns:repeat(3,minmax(0,1fr));
+        }
+    }
+
+    @media (max-width:768px){
+        .projects-grid{
+            grid-template-columns:1fr;
+        }
+    }
+
+    .project-card{
+        height:520px;
+    }
   </style>
 
     <script async
@@ -503,7 +525,7 @@
     <header
       class="sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md transition-colors duration-300">
       <div
-        class="max-w-6xl mx-auto px-5 py-3 flex flex-wrap items-center justify-between gap-3">
+        class="max-w-6xl mx-auto px-5 py-3 flex flex-wrap items-center justify-start gap-3">
         <div>
           <h1 class="text-base font-bold tracking-tight leading-tight">Luis
             Gonzalez</h1>
@@ -548,27 +570,26 @@
       <!-- ========== PROJECTS GRID ========== -->
       <section class="max-w-6xl mx-auto px-5 pb-20">
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-1.5"
-          style="grid-auto-rows: 260px;">
+        <div class="projects-grid">
 
           <!-- ====== 1. Imbalances (col-span-2, row-span-2 — tarjeta destacada) ====== -->
           <article
-            class="project-card project-card-featured md:col-span-2 md:row-span-2"
+            class="project-card"
             onclick="openModal('modalImbalances')">
             <div class="card-inner">
               <div class="card-preview"
-                style="background-image: url('/assets/img/imbalances/fotograma-00009.jpg');"></div>
+                style="background-image: url('/assets/img/imbalances/ib00.jpg');"></div>
               <div class="card-overlay"></div>
               <div class="card-content">
-                <h2 class="card-title-lg">Imbalances</h2>
-                <p class="card-desc-lg">Optimizacion estrategica de la
+                <h2 class="card-title">Imbalances</h2>
+                <p class="card-desc">Optimizacion estrategica de la
                   conciliacion intercompany mediante
                   procesamiento masivo de Excel y auditoria de reciprocidad CxC
                   / CxP en holdings
                   corporativos. Integracion directa con OneDrive sin
                   infraestructura de base de datos.</p>
                 <div
-                  class="flex items-center justify-between w-full flex-wrap gap-2">
+                  class="flex items-center justify-start w-full flex-wrap gap-2">
                   <div class="flex items-center gap-2 flex-wrap">
                     <span class="badge-circle">IB</span>
                     <span class="badge-meta">.Net</span>
@@ -589,14 +610,14 @@
             onclick="openModal('modalOFUserControl')">
             <div class="card-inner">
               <div class="card-preview"
-                style="background-image: url('/assets/img/ofusercontrolapp/Captura%20de%20pantalla%202026-04-27%20154712.jpeg');"></div>
+                style="background-image: url('/assets/img/ofusercontrolapp/of01.jpeg');"></div>
               <div class="card-overlay"></div>
               <div class="card-content">
                 <h2 class="card-title">OFUserControlApp</h2>
                 <p class="card-desc">Auditoria y sincronizacion de identidades
                   contra Directorio Activo corporativo.</p>
                 <div
-                  class="flex items-center justify-between w-full flex-wrap gap-2">
+                  class="flex items-center justify-start w-full flex-wrap gap-2">
                   <div class="flex items-center gap-2 flex-wrap">
                     <span class="badge-circle">OF</span>
                     <span class="badge-meta">.Net</span>
@@ -616,14 +637,14 @@
           <article class="project-card" onclick="openModal('modalPayToll')">
             <div class="card-inner">
               <div class="card-preview"
-                style="background-image: url('/assets/img/paytollcard/Captura%20de%20pantalla%202026-05-26%20091917.png'); background-color: #0c1a4a;"></div>
+                style="background-image: url('/assets/img/paytollapp/pt01.png'); background-color: #0c1a4a;"></div>
               <div class="card-overlay"></div>
               <div class="card-content">
                 <h2 class="card-title">PayTollApp</h2>
                 <p class="card-desc">Plataforma cloud para la gestion
                   automatizada de pagos de peaje y recargas electronicas.</p>
                 <div
-                  class="flex items-center justify-between w-full flex-wrap gap-2">
+                  class="flex items-center justify-start w-full flex-wrap gap-2">
                   <div class="flex items-center gap-2 flex-wrap">
                     <span class="badge-circle">PT</span>
                     <span class="badge-meta">.Net</span>
@@ -643,14 +664,14 @@
           <article class="project-card" onclick="openModal('modalYTClipper')">
             <div class="card-inner">
               <div class="card-preview"
-                style="background-image: url('/assets/img/ytclipper/01.png');"></div>
+                style="background-image: url('/assets/img/ytclipper/yt01.png');"></div>
               <div class="card-overlay"></div>
               <div class="card-content">
                 <h2 class="card-title">YT Downloader — Clipper</h2>
                 <p class="card-desc">Descarga y extraccion precisa de segmentos
                   de video y audio de YouTube.</p>
                 <div
-                  class="flex items-center justify-between w-full flex-wrap gap-2">
+                  class="flex items-center justify-start w-full flex-wrap gap-2">
                   <div class="flex items-center gap-2 flex-wrap">
                     <span class="badge-circle">YT</span>
                     <span class="badge-meta">Python</span>
@@ -671,7 +692,7 @@
             onclick="openModal('modalDocuSheetBot')">
             <div class="card-inner">
               <div class="card-preview"
-                style="background-image: url('/assets/img/docusheetbot/docusheetbot%2001.png');"></div>
+                style="background-image: url('/assets/img/docusheetbot/ds01.png');"></div>
               <div class="card-overlay"></div>
               <div class="card-content">
                 <h2 class="card-title">DocuSheetBot</h2>
@@ -679,7 +700,7 @@
                   sincronizacion con hojas de calculo en la nube mediante
                   IA.</p>
                 <div
-                  class="flex items-center justify-between w-full flex-wrap gap-2">
+                  class="flex items-center justify-start w-full flex-wrap gap-2">
                   <div class="flex items-center gap-2 flex-wrap">
                     <span class="badge-circle">DS</span>
                     <span class="badge-meta">Kotlin</span>
@@ -700,14 +721,14 @@
             onclick="openModal('modalLocalTranscriptor')">
             <div class="card-inner">
               <div class="card-preview"
-                style="background-image: url('/assets/img/localtranscriptor/Captura%20de%20pantalla%202026-03-13%20193545.png');"></div>
+                style="background-image: url('/assets/img/localtranscriptor/lt01.png');"></div>
               <div class="card-overlay"></div>
               <div class="card-content">
                 <h2 class="card-title">LocalTranscriptor</h2>
                 <p class="card-desc">Transcripcion autonoma y privada de audio a
                   texto en Android, sin conexion a internet.</p>
                 <div
-                  class="flex items-center justify-between w-full flex-wrap gap-2">
+                  class="flex items-center justify-start w-full flex-wrap gap-2">
                   <div class="flex items-center gap-2 flex-wrap">
                     <span class="badge-circle">LT</span>
                     <span class="badge-meta">Kotlin</span>
