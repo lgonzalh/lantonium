@@ -225,8 +225,19 @@
     <script src="/assets/js/content.js" defer></script>
     <script src="/assets/js/card-selection.js?v=5" defer></script>
     <script src="/assets/js/cursor.js" defer></script>
-    <script data-goatcounter="https://lantonium.goatcounter.com/count" async
-      src="//gc.zgo.at/count.js"></script>
+    <div class="visit-counter">Visitante <span
+        id="visit-count">—</span></div>
+
+    <script>
+  fetch('https://lantonium.goatcounter.com/counter/TOTAL.json')
+    .then(r => r.json())
+    .then(data => {
+      document.getElementById('visit-count').textContent = data.count;
+    })
+    .catch(() => {
+      document.getElementById('visit-count').textContent = '—';
+    });
+</script>
   </body>
 
 </html>
