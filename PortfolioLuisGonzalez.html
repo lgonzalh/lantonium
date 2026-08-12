@@ -572,33 +572,31 @@
 
         <div class="projects-grid">
 
-          <!-- ====== 1. Imbalances (col-span-2, row-span-2 — tarjeta destacada) ====== -->
+          <!-- ====== 1. Condor (col-span-2, row-span-2 — tarjeta destacada) ====== -->
           <article
             class="project-card"
-            onclick="openModal('modalImbalances')">
+            onclick="openModal('modalCondor')">
             <div class="card-inner">
               <div class="card-preview"
-                style="background-image: url('/assets/img/imbalances/ib00.jpg');"></div>
+                style="background-image: url('/assets/img/condor/condor.jpg');"></div>
               <div class="card-overlay"></div>
               <div class="card-content">
-                <h2 class="card-title">Imbalances</h2>
-                <p class="card-desc">Optimizacion estrategica de la
-                  conciliacion intercompany mediante
-                  procesamiento masivo de Excel y auditoria de reciprocidad CxC
-                  / CxP en holdings
-                  corporativos. Integracion directa con OneDrive sin
-                  infraestructura de base de datos.</p>
+                <h2 class="card-title">Condor</h2>
+                <p class="card-desc">Plataforma local-first de ingenieria de
+                  software asistida por IA que preserva el contexto, la
+                  arquitectura y el conocimiento del proyecto, con la
+                  documentacion como fuente oficial de verdad.</p>
                 <div
                   class="flex items-center justify-start w-full flex-wrap gap-2">
                   <div class="flex items-center gap-2 flex-wrap">
-                    <span class="badge-circle">IB</span>
+                    <span class="badge-circle">CN</span>
                     <span class="badge-meta">.Net</span>
                     <span class="badge-meta">C#</span>
-                    <span class="badge-meta">2026</span>
-                    <span class="badge-pro">PRO</span>
+                    <span class="badge-meta">Ollama</span>
+                    <span class="badge-pre">PRE</span>
                   </div>
                   <button class="btn-details"
-                    onclick="event.stopPropagation(); openModal('modalImbalances')">Ver
+                    onclick="event.stopPropagation(); openModal('modalCondor')">Ver
                     detalles</button>
                 </div>
               </div>
@@ -796,6 +794,57 @@
           <a href="https://imbalances-e5914.web.app/"
             target="_blank" rel="noopener" class="btn-primary">Abrir
             Aplicacion</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Condor -->
+    <div id="modalCondor" class="modal-backdrop hidden" data-modal>
+      <div class="modal-box">
+        <div class="modal-header">
+          <span class="modal-title">Condor</span>
+        </div>
+        <div class="modal-body">
+          <p class="modal-section-label">Resena</p>
+          <p class="modal-text" style="margin-bottom:18px;">Condor es una
+            plataforma local-first de ingenieria de software asistida por IA
+            que preserva el contexto, la arquitectura y el conocimiento del
+            proyecto. Su filosofia parte de un principio claro: la conversacion
+            es temporal, pero la documentacion es la fuente oficial de verdad.
+            Cualquier desarrollador puede continuar un proyecto sin depender de
+            conversaciones previas con IA, convirtiendo cada decision tecnica en
+            documentacion permanente y trazable.</p>
+
+          <p class="modal-section-label">Funcionalidades</p>
+          <div style="margin-bottom:18px;">
+            <p class="modal-li modal-li-blue">Desarrollo architecture-first:
+              las decisiones se documentan antes de escribir codigo.</p>
+            <p class="modal-li modal-li-blue">Ingenieria de contexto para
+              agentes IA, preservando el conocimiento entre sesiones y
+              proveedores LLM.</p>
+            <p class="modal-li modal-li-blue">Documentacion viva como estado
+              canonico del proyecto, con jerarquia de 10 niveles
+              (fundamentos, arquitectura, memoria, planeacion, ejecucion,
+              herramientas, UI, calidad y evolucion).</p>
+            <p class="modal-li modal-li-blue">Decisiones tecnicas trazables y
+              continuidad a traves de herramientas, modelos y sesiones.</p>
+            <p class="modal-li modal-li-blue">Arquitectura limpia en .NET con
+              separacion CLI / Core / Infrastructure y suites de pruebas Unit,
+              Integration y Architecture.</p>
+            <p class="modal-li modal-li-blue">Ejecucion local de LLM mediante
+              Ollama, sin dependencia de servicios cloud externos.</p>
+          </div>
+
+          <p class="modal-section-label">Pila Tecnologica</p>
+          <p class="modal-text">.NET (plataforma) &mdash; C# (lenguaje)
+            &mdash; Ollama (LLM local) &mdash; Clean Architecture (CLI / Core /
+            Infrastructure) &mdash; Markdown (documentacion jerarquica).</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-close"
+            onclick="closeModal('modalCondor')">Cerrar</button>
+          <a href="https://github.com/lgonzalh/condor" target="_blank"
+            rel="noopener" class="btn-secondary">Ver en GitHub</a>
         </div>
       </div>
     </div>
