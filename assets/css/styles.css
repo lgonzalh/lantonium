@@ -514,8 +514,8 @@ body * {
   width: 34px;
   height: 34px;
   border-radius: 12px;
-  border: 1px solid var(--chrome-border);
-  background: var(--chrome-bg);
+  border: none;
+  background: transparent;
   color: var(--color-text);
   display: inline-flex;
   align-items: center;
@@ -523,13 +523,11 @@ body * {
   padding: 0;
   box-shadow: none;
   cursor: pointer;
-  backdrop-filter: blur(10px) saturate(140%);
-  -webkit-backdrop-filter: blur(10px) saturate(140%);
 }
 
 .theme-toggle:hover,
 .theme-toggle:focus-visible {
-  border-color: var(--card-border-hover);
+  color: var(--color-primary);
 }
 
 .theme-toggle svg {
