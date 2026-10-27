@@ -1,6 +1,8 @@
 (function () {
   "use strict";
 
+  document.documentElement.classList.add("has-js");
+
   var WHATSAPP_BASE_URL = "https://wa.me/573246864991";
   var DEMO_MESSAGE = "Hola Lantonium, quiero solicitar una demo de procesamiento.";
   var DEMO_URL = WHATSAPP_BASE_URL + "?text=" + encodeURIComponent(DEMO_MESSAGE);

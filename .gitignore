@@ -71,3 +71,6 @@ node_modules/
 # Local portfolio update helper
 update_portfolio_cards.py
 fix.js
+
+# graft's local graph cache — regenerable, not committed (run `graft build`).
+/graft/

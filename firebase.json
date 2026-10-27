@@ -18,6 +18,12 @@
       "firebase.json",
       "fix.js",
       "update_portfolio_cards.py",
+      "AGENTS.md",
+      "README.md",
+      "docs/**",
+      "graft/**",
+      "scripts/**",
+      "tests/**",
       "**/.*",
       "**/node_modules/**"
     ]

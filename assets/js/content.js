@@ -101,7 +101,28 @@ function toggleTheme() {
   applyTheme(next);
 }
 
+function ensureNavigationFallback() {
+  const toggler = document.querySelector('.site-header .navbar-toggler');
+  const menu = document.querySelector('.site-header .navbar-collapse');
+  if (!toggler || !menu || window.bootstrap?.Collapse || toggler.dataset.fallbackReady) return;
+
+  toggler.dataset.fallbackReady = 'true';
+  toggler.addEventListener('click', () => {
+    const expanded = toggler.getAttribute('aria-expanded') === 'true';
+    menu.classList.toggle('show', !expanded);
+    toggler.setAttribute('aria-expanded', String(!expanded));
+  });
+
+  menu.querySelectorAll('a.nav-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('show');
+      toggler.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
 function ensureThemeToggle() {
+  ensureNavigationFallback();
   const navList = document.querySelector('.site-header .navbar-nav');
   if (!navList) return;
   if (navList.querySelector('.theme-toggle')) return;
