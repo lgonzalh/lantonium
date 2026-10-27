@@ -177,6 +177,16 @@ test('the index keeps the original typeface, theme control, and real portfolio i
   assert.ok(fs.existsSync(path.join(root, decodeURIComponent(image.replace(/^\//, '')))));
 });
 
+test('every page requests the refreshed shared stylesheet cache key', () => {
+  const pagesWithSharedStyles = htmlPages.filter((file) => readPage(file).includes('/assets/css/styles.css'));
+  assert.ok(pagesWithSharedStyles.length > 0);
+  for (const file of pagesWithSharedStyles) {
+    const versions = [...readPage(file).matchAll(/href="\/assets\/css\/styles\.css\?v=(\d+)"/g)]
+      .map(([, version]) => version);
+    assert.deepEqual(versions, ['18'], `${file} requests the current shared CSS version`);
+  }
+});
+
 test('dark theme keeps muted copy and profile stat cards readable', () => {
   const css = fs.readFileSync(path.join(root, 'assets/css/styles.css'), 'utf8');
   const about = readPage('about.html');
