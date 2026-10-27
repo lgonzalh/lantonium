@@ -167,6 +167,39 @@ test('the index keeps the original typeface, theme control, and real portfolio i
   assert.ok(fs.existsSync(path.join(root, decodeURIComponent(image.replace(/^\//, '')))));
 });
 
+test('dark theme keeps muted copy and profile stat cards readable', () => {
+  const css = fs.readFileSync(path.join(root, 'assets/css/styles.css'), 'utf8');
+  const about = readPage('about.html');
+  const darkTokens = css.match(/:root\[data-theme="dark"\]\s*\{([^}]+)\}/)?.[1] || '';
+  const darkCardTokens = css.match(/:root\[data-theme="dark"\]\s*\.card\s*\{([^}]+)\}/)?.[1] || '';
+  const darkSmallCardTokens = css.match(/:root\[data-theme="dark"\]\s*:is\(\.subcard,\s*\.stat,\s*\.profile-job-card\)\s*\{([^}]+)\}/)?.[1] || '';
+
+  assert.match(css, /:root\[data-theme="dark"\]\s*\.text-muted\s*\{[^}]*color:\s*var\(--color-muted\)\s*!important/s);
+  assert.match(darkSmallCardTokens, /--color-text:\s*#edf3ff/i);
+  assert.match(darkSmallCardTokens, /--color-muted:\s*#cbd5e1/i);
+  assert.match(darkTokens, /--color-bg:\s*#111214/i);
+  assert.match(darkTokens, /--color-text:\s*#e5e7eb/i);
+  assert.match(darkCardTokens, /--color-text:\s*#edf3ff/i);
+  assert.match(darkCardTokens, /--color-muted:\s*#b4bfd2/i);
+  assert.match(about, /class="[^"]*text-muted[^"]*profile-summary/);
+
+  const luminance = (hex) => {
+    const channels = hex.match(/[\da-f]{2}/gi).map((value) => parseInt(value, 16) / 255);
+    const linear = channels.map((channel) => channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4);
+    return 0.2126 * linear[0] + 0.7152 * linear[1] + 0.0722 * linear[2];
+  };
+  const contrast = (foreground, background) => {
+    const values = [luminance(foreground), luminance(background)].sort((a, b) => b - a);
+    return (values[0] + 0.05) / (values[1] + 0.05);
+  };
+
+  assert.ok(contrast('#cbd5e1', '#111214') >= 4.5, 'muted text remains readable on the dark page');
+  assert.ok(contrast('#e5e7eb', '#111214') >= 4.5, 'primary text remains readable on the dark page');
+  assert.ok(contrast('#edf3ff', '#202632') >= 4.5, 'profile headings remain readable on dark glass cards');
+  assert.ok(contrast('#cbd5e1', '#202632') >= 4.5, 'profile stat labels remain readable on dark glass cards');
+  assert.ok(contrast('#b4bfd2', '#121824') >= 4.5, 'profile summary remains readable on its translucent card');
+});
+
 test('the homepage product of the day rotates through all apps without immediate repeats', () => {
   const html = readPage('index.html');
   const script = readPage('assets/js/featured-product.js');

@@ -221,6 +221,16 @@ body * {
   cursor: default;
 }
 
+:root[data-theme="dark"] :is(.subcard, .stat, .profile-job-card) {
+  --color-text: #edf3ff;
+  --color-muted: #cbd5e1;
+  color: var(--color-text) !important;
+}
+
+:root[data-theme="dark"] .text-muted {
+  color: var(--color-muted) !important;
+}
+
 .stat {
   margin-bottom: 12px;
 }
