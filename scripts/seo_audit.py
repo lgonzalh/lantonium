@@ -12,8 +12,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SITEMAP = ROOT / "sitemap.xml"
+OFFICIAL_ORIGIN = "https://lantonium.com"
 
-NOINDEX_ALLOWED = {"404.html", "lntcnfg.html"}
+NOINDEX_ALLOWED = {"404.html", "lntcnfg.html", "acerca.html", "PortfolioLuisGonzalez.html"}
 
 REQUIRED_COMMON = [
     r"<title>.*?</title>",
@@ -64,9 +65,10 @@ def sitemap_paths() -> set[str]:
     xml = read_text(SITEMAP)
     urls = re.findall(r"<loc>(.*?)</loc>", xml, re.IGNORECASE)
     paths: set[str] = set()
+    origin_prefix = f"{OFFICIAL_ORIGIN}/"
     for url in urls:
-        if "lantonium.web.app/" in url:
-            path = url.split("lantonium.web.app/", 1)[1]
+        if url.startswith(origin_prefix):
+            path = url[len(origin_prefix):]
             paths.add(path if path else "")
     return paths
 
@@ -110,7 +112,7 @@ def main() -> int:
                 file_errors.append("Pagina indexable marcada como noindex.")
 
         canonical = canonical_url(text)
-        if canonical and "https://lantonium.web.app/" not in canonical:
+        if canonical and not canonical.startswith(f"{OFFICIAL_ORIGIN}/"):
             file_errors.append("Canonical no usa dominio oficial esperado.")
 
         # Verifica presencia en sitemap para paginas indexables.

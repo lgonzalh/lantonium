@@ -81,6 +81,16 @@ test('Firebase Hosting excludes local instructions and development-only files', 
   }
 });
 
+test('the SEO audit uses the public domain and excludes legacy redirects from indexing', () => {
+  const audit = readPage('scripts/seo_audit.py');
+  assert.match(audit, /OFFICIAL_ORIGIN\s*=\s*"https:\/\/lantonium\.com"/);
+  for (const [file, target] of [['acerca.html', 'about.html'], ['PortfolioLuisGonzalez.html', 'index.html']]) {
+    const html = readPage(file);
+    assert.match(html, /<meta name="robots" content="noindex,nofollow">/);
+    assert.match(html, new RegExp(`url=${target}`));
+  }
+});
+
 test('the catalog contains all 12 products and only Condor is in development', () => {
   const html = readPage('apps.html');
   const cards = [...html.matchAll(/<article class="project-card card[^\"]*"[^>]*data-project-card[^>]*>([\s\S]*?)<\/article>/g)]
