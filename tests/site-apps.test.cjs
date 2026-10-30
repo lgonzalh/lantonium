@@ -122,7 +122,7 @@ test('legacy About URL redirects while the AI Engineer portfolio remains an inde
   assert.match(aboutAlias, /window\.location\.replace\("about\.html/);
   assert.doesNotMatch(portfolio, /<nav\b[^>]*site-header|site-footer|href="\/assets\/css\/styles\.css/);
   assert.match(portfolio, /href="\/assets\/css\/portfolio-ai\.css\?v=10"/);
-  assert.match(portfolio, /src="\/assets\/js\/portfolio-ai\.js\?v=8"/);
+  assert.match(portfolio, /src="\/assets\/js\/portfolio-ai\.js\?v=9"/);
   assert.match(portfolio, /rel="canonical" href="https:\/\/lantonium\.com\/PortfolioLuisGonzalez\.html"/);
   assert.match(readPage('sitemap.xml'), /https:\/\/lantonium\.com\/PortfolioLuisGonzalez\.html/);
   assert.deepEqual(readMenu(readPage('about.html'), 'about.html').links, expectedMenu);
@@ -152,8 +152,8 @@ test('the standalone AI portfolio includes every app, profile details, and worki
   const pixeladosDetail = script.match(/\n\s*pixelados:\s*\{([\s\S]*?)\n\s*\},/);
   assert.ok(pixeladosDetail, 'Pixelados has a project detail record');
   assert.match(pixeladosDetail[1], /year:\s*'2026'/);
-  assert.match(pixeladosDetail[1], /downloadUrl:\s*'https:\/\/github\.com\/lgonzalh\/pixelados\/releases\/tag\/v1\.0-chi'/);
-  assert.match(readPage('pixelados.html'), /href="https:\/\/github\.com\/lgonzalh\/pixelados\/releases\/tag\/v1\.0-chi"/);
+  assert.match(pixeladosDetail[1], /downloadUrl:\s*'https:\/\/github\.com\/lgonzalh\/pixelados\/releases\/download\/v1\.0-chi\/pixelados-1\.0-22-chi\.apk'/);
+  assert.match(readPage('pixelados.html'), /href="https:\/\/github\.com\/lgonzalh\/pixelados\/releases\/download\/v1\.0-chi\/pixelados-1\.0-22-chi\.apk"/);
   const expectedYears = {
     condor: '2026', docusheetbot: '2025–2026', localtranscriptor: '2026', sevetco: '2026',
     paytollapp: '2023–2024', pixelados: '2026', pdfmas: '2025–2026', imbalances: '2026',

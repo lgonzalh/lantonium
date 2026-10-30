@@ -107,7 +107,7 @@
       description: 'Aplicación Android para crear pixel art con herramientas de dibujo, paletas de color y exportación de imágenes PNG.',
       stack: 'Android · Kotlin · Jetpack Compose · exportación PNG',
       github: 'https://github.com/lgonzalh/pixelados',
-      downloadUrl: 'https://github.com/lgonzalh/pixelados/releases/tag/v1.0-chi',
+      downloadUrl: 'https://github.com/lgonzalh/pixelados/releases/download/v1.0-chi/pixelados-1.0-22-chi.apk',
     },
     pdfmas: {
       year: '2025–2026', status: 'Desarrollado',
