@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SITEMAP = ROOT / "sitemap.xml"
 OFFICIAL_ORIGIN = "https://lantonium.com"
 
-NOINDEX_ALLOWED = {"404.html", "lntcnfg.html", "acerca.html", "PortfolioLuisGonzalez.html"}
+NOINDEX_ALLOWED = {"404.html", "lntcnfg.html", "acerca.html"}
 
 REQUIRED_COMMON = [
     r"<title>.*?</title>",

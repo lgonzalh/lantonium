@@ -1,15 +1,184 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex,nofollow">
-  <meta http-equiv="refresh" content="0; url=index.html">
-  <link rel="canonical" href="https://lantonium.com/">
-  <title>Portafolio de Luis Gonzalez | Lantonium</title>
-  <script>window.location.replace("index.html" + window.location.search + window.location.hash);</script>
+  <meta name="description" content="Luis Gonzalez, AI Engineer en Bogotá. Diseño sistemas de inteligencia artificial para documentos, voz y herramientas de desarrollo, con foco en privacidad y uso real.">
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+  <meta name="author" content="Luis Gonzalez">
+  <meta name="theme-color" content="#050505">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="canonical" href="https://lantonium.com/PortfolioLuisGonzalez.html">
+  <title>Luis Gonzalez — AI Engineer</title>
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Luis Gonzalez — AI Engineer">
+  <meta property="og:description" content="Ingeniería de IA para documentos, voz y herramientas de desarrollo. Sistemas útiles, privados y mantenibles.">
+  <meta property="og:url" content="https://lantonium.com/PortfolioLuisGonzalez.html">
+  <meta property="og:site_name" content="Luis Gonzalez · AI Engineer">
+  <meta property="og:locale" content="es_CO">
+  <meta property="og:image" content="https://lantonium.com/assets/img/condor/condor.jpg">
+  <meta property="og:image:alt" content="Interfaz de Condor, herramienta local-first de ingeniería asistida por IA">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Luis Gonzalez — AI Engineer">
+  <meta name="twitter:description" content="Ingeniería de IA para documentos, voz y herramientas de desarrollo.">
+  <meta name="twitter:image" content="https://lantonium.com/assets/img/condor/condor.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/portfolio-ai.css?v=2">
+  <link rel="icon" href="/assets/img/luis.ico" sizes="any">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Luis Gonzalez",
+      "jobTitle": "AI Engineer",
+      "description": "Ingeniero de software enfocado en inteligencia artificial aplicada, sistemas local-first y automatización de procesos.",
+      "url": "https://lantonium.com/PortfolioLuisGonzalez.html",
+      "image": "https://lantonium.com/assets/img/LUIS%20GONZALEZ.jpg",
+      "email": "lgonzalh@outlook.com",
+      "address": {"@type": "PostalAddress", "addressLocality": "Bogotá", "addressCountry": "CO"},
+      "sameAs": ["https://www.linkedin.com/in/lantonium/", "https://github.com/lgonzalh"]
+    }
+  </script>
 </head>
-<body>
-  <p>El portafolio cambió de dirección. <a href="index.html">Ir al inicio</a>.</p>
+<body class="ai-portfolio">
+  <a class="skip-link" href="#main-content">Saltar al contenido</a>
+  <canvas class="signal-canvas" id="signal-canvas" aria-hidden="true"></canvas>
+  <div class="grain-layer" aria-hidden="true"></div>
+  <div class="page-curtain" aria-hidden="true"></div>
+
+  <header class="portfolio-header" id="top">
+    <a class="wordmark" href="#top" aria-label="Luis Gonzalez, inicio del portfolio">
+      <span class="wordmark-symbol" aria-hidden="true">LG</span>
+      <span class="wordmark-copy"><strong>LUIS GONZALEZ</strong><small>AI ENGINEER · BOGOTÁ</small></span>
+    </a>
+    <p class="header-edition">INDEPENDENT PORTFOLIO <span>·</span> 2026</p>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="portfolio-menu">
+      <span>MENU</span><i aria-hidden="true">+</i>
+    </button>
+    <nav class="menu-panel" id="portfolio-menu" aria-label="Navegación del portfolio" hidden>
+      <div class="menu-panel-top"><span>INDEX · 01—03</span><button class="menu-close" type="button" aria-label="Cerrar menú">CERRAR <span aria-hidden="true">×</span></button></div>
+      <a href="#work"><span>01</span>Proyectos<span class="menu-arrow" aria-hidden="true">↗</span></a>
+      <a href="#approach"><span>02</span>Enfoque<span class="menu-arrow" aria-hidden="true">↗</span></a>
+      <a href="#contact"><span>03</span>Contacto<span class="menu-arrow" aria-hidden="true">↗</span></a>
+      <p>IA aplicada a documentos, voz y herramientas de desarrollo.</p>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero section-shell" id="intro" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-light" aria-hidden="true"></span> INGENIERÍA DE IA <span class="eyebrow-divider">/</span> BOGOTÁ, COLOMBIA</p>
+        <h1 id="hero-title">Inteligencia artificial <span class="metal-text">hecha ingeniería.</span></h1>
+        <p class="hero-lead">Diseño sistemas de IA para documentos, voz y herramientas de desarrollo, conectando modelos con flujos de trabajo reales.</p>
+        <div class="hero-actions">
+          <a class="action-link action-link-primary" href="#work">Explorar proyectos <span aria-hidden="true">↓</span></a>
+          <a class="action-link" href="mailto:lgonzalh@outlook.com">Hablemos <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-signature"><span>MODELOS LOCALES</span><i aria-hidden="true"></i><span>PROCESAMIENTO EN DISPOSITIVO</span><i aria-hidden="true"></i><span>AUTOMATIZACIÓN DOCUMENTAL</span></div>
+      </div>
+
+      <figure class="hero-art reveal-item" aria-label="Vista de Condor, un sistema local-first asistido por modelos de lenguaje">
+        <div class="art-toolbar"><span class="toolbar-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>SYSTEM STUDY · 001</span><span class="art-live"><i aria-hidden="true"></i> LOCAL-FIRST</span></div>
+        <div class="art-image-wrap">
+          <img src="/assets/img/condor/condor.jpg" alt="Pantalla de Condor con un flujo de ingeniería asistida por IA" width="1480" height="760" fetchpriority="high">
+          <svg class="art-orbit" viewBox="0 0 360 360" aria-hidden="true">
+            <circle class="orbit orbit-one" cx="180" cy="180" r="132"></circle>
+            <circle class="orbit orbit-two" cx="180" cy="180" r="96"></circle>
+            <path class="orbit-path" d="M50 180h260M180 50v260M88 88l184 184M272 88 88 272"></path>
+            <circle class="orbit-node orbit-node-one" cx="180" cy="48" r="4"></circle>
+            <circle class="orbit-node orbit-node-two" cx="311" cy="180" r="4"></circle>
+            <circle class="orbit-node orbit-node-three" cx="88" cy="88" r="4"></circle>
+            <circle class="orbit-center" cx="180" cy="180" r="9"></circle>
+          </svg>
+          <div class="art-index"><span>AI / 01</span><b>CONTEXT</b></div>
+        </div>
+        <figcaption><span>CONDOR</span><span>LOCAL LLM WORKFLOW <b aria-hidden="true">↗</b></span></figcaption>
+      </figure>
+      <a class="hero-scroll" href="#work"><span>SCROLL TO EXPLORE</span><i aria-hidden="true"></i><span>01—03</span></a>
+    </section>
+
+    <div class="signal-strip" aria-label="Áreas de trabajo">
+      <div class="signal-track" aria-hidden="true">
+        <span>DOCUMENT INTELLIGENCE</span><b>✳</b><span>LOCAL LLM SYSTEMS</span><b>✳</b><span>ON-DEVICE SPEECH</span><b>✳</b><span>DOCUMENT INTELLIGENCE</span><b>✳</b><span>LOCAL LLM SYSTEMS</span><b>✳</b><span>ON-DEVICE SPEECH</span><b>✳</b>
+      </div>
+    </div>
+
+    <section class="work-section section-shell" id="work" aria-labelledby="work-title">
+      <div class="section-kicker"><span>01 / SELECTED SYSTEMS</span><span>BOGOTÁ · AVAILABLE WORLDWIDE</span></div>
+      <div class="section-heading">
+        <h2 id="work-title">IA con un trabajo concreto.</h2>
+        <p>Proyectos donde la inteligencia artificial se integra a una herramienta, protege el contexto y resuelve una tarea específica.</p>
+      </div>
+
+      <div class="work-layout">
+        <aside class="work-preview" aria-label="Vista previa del proyecto seleccionado">
+          <div class="preview-window">
+            <div class="preview-toolbar"><span>PROJECT / <b id="preview-index">01</b></span><span class="preview-lights" aria-hidden="true"><i></i><i></i><i></i></span></div>
+            <div class="preview-screen"><img id="project-preview-image" src="/assets/img/condor/condor.jpg" alt="Interfaz de Condor" width="1480" height="760" loading="lazy"></div>
+            <div class="preview-caption"><div><span id="preview-type">LOCAL-FIRST AI</span><strong id="preview-title">Condor</strong></div><span class="preview-arrow" aria-hidden="true">↗</span></div>
+          </div>
+          <p class="preview-note"><span>FIG. 01</span> Sistemas construidos alrededor del contexto y los datos.</p>
+        </aside>
+
+        <div class="project-list" aria-label="Proyectos de ingeniería de inteligencia artificial">
+          <a class="project-row is-active" href="/condor.html" data-project-row data-preview-src="/assets/img/condor/condor.jpg" data-preview-alt="Interfaz de Condor, sistema local-first para ingeniería asistida por IA" data-project-index="01" data-project-type="LOCAL-FIRST AI">
+            <span class="row-number">01</span>
+            <span class="row-meta"><span>LOCAL LLM · EN DESARROLLO</span><span>↗</span></span>
+            <h3>Condor</h3>
+            <p>Ingeniería de software asistida por modelos locales, con documentación viva como fuente de verdad.</p>
+            <span class="row-action" aria-hidden="true">VER PROYECTO ↗</span>
+          </a>
+          <a class="project-row" href="/docusheetbot.html" data-project-row data-preview-src="/assets/img/docusheetbot/ds01.png" data-preview-alt="DocuSheetBot extrae datos de una factura en Android" data-project-index="02" data-project-type="DOCUMENT INTELLIGENCE">
+            <span class="row-number">02</span>
+            <span class="row-meta"><span>DOCUMENT AI · ANDROID</span><span>↗</span></span>
+            <h3>DocuSheetBot</h3>
+            <p>Procesamiento inteligente de documentos, extracción de datos y sincronización con hojas de cálculo.</p>
+            <span class="row-action" aria-hidden="true">VER PROYECTO ↗</span>
+          </a>
+          <a class="project-row" href="/localtranscriptor.html" data-project-row data-preview-src="/assets/img/localtranscriptor/lt01.png" data-preview-alt="LocalTranscriptor procesa audio localmente en Android" data-project-index="03" data-project-type="ON-DEVICE SPEECH">
+            <span class="row-number">03</span>
+            <span class="row-meta"><span>SPEECH · PROCESAMIENTO LOCAL</span><span>↗</span></span>
+            <h3>LocalTranscriptor</h3>
+            <p>Transcripción autónoma de audio a texto en Android, con procesamiento privado en el dispositivo.</p>
+            <span class="row-action" aria-hidden="true">VER PROYECTO ↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="approach-section section-shell" id="approach" aria-labelledby="approach-title">
+      <div class="section-kicker"><span>02 / ENGINEERING APPROACH</span><span>LESS HYPE · MORE SYSTEMS</span></div>
+      <div class="approach-heading">
+        <p class="eyebrow">IA APLICADA</p>
+        <h2 id="approach-title">Un modelo es solo una pieza del sistema.</h2>
+        <p>El valor aparece cuando la IA entiende el contexto, entrega datos utilizables y encaja en el flujo de trabajo que ya existe.</p>
+      </div>
+      <div class="approach-grid">
+        <article class="approach-item reveal-item"><span>01</span><h3>Contexto persistente</h3><p>Documentación y trazabilidad para conservar decisiones y estructura en herramientas asistidas por LLM.</p><b>CONDOR / LOCAL LLM</b></article>
+        <article class="approach-item reveal-item"><span>02</span><h3>Datos estructurados</h3><p>Captura documentos, extrae campos y organiza la información para que pueda analizarse y sincronizarse.</p><b>DOCUSHEETBOT / DOCUMENT AI</b></article>
+        <article class="approach-item reveal-item"><span>03</span><h3>Procesamiento privado</h3><p>Experiencias de transcripción que mantienen el procesamiento de audio en el dispositivo Android.</p><b>LOCALTRANSCRIPTOR / SPEECH</b></article>
+      </div>
+    </section>
+
+    <section class="contact-section section-shell" id="contact" aria-labelledby="contact-title">
+      <div class="section-kicker"><span>03 / CONTACT</span><span>BOGOTÁ, COLOMBIA</span></div>
+      <div class="contact-panel">
+        <div>
+          <p class="eyebrow">¿UN PROCESO QUE PODEMOS MEJORAR?</p>
+          <h2 id="contact-title">Construyamos algo útil.</h2>
+        </div>
+        <a class="contact-cta" href="mailto:lgonzalh@outlook.com">lgonzalh@outlook.com <span aria-hidden="true">↗</span></a>
+      </div>
+      <footer class="portfolio-footer">
+        <a class="footer-name" href="#top">LUIS GONZALEZ <span>AI ENGINEER</span></a>
+        <div class="footer-links"><a href="https://www.linkedin.com/in/lantonium/" target="_blank" rel="noopener noreferrer">LINKEDIN ↗</a><a href="https://github.com/lgonzalh/condor" target="_blank" rel="noopener noreferrer">GITHUB ↗</a></div>
+        <span class="footer-year">© <span id="current-year">2026</span></span>
+      </footer>
+    </section>
+  </main>
+
+  <script src="/assets/js/portfolio-ai.js?v=1" defer></script>
 </body>
 </html>

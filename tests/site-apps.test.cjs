@@ -84,11 +84,13 @@ test('Firebase Hosting excludes local instructions and development-only files', 
 test('the SEO audit uses the public domain and excludes legacy redirects from indexing', () => {
   const audit = readPage('scripts/seo_audit.py');
   assert.match(audit, /OFFICIAL_ORIGIN\s*=\s*"https:\/\/lantonium\.com"/);
-  for (const [file, target] of [['acerca.html', 'about.html'], ['PortfolioLuisGonzalez.html', 'index.html']]) {
-    const html = readPage(file);
-    assert.match(html, /<meta name="robots" content="noindex,nofollow">/);
-    assert.match(html, new RegExp(`url=${target}`));
-  }
+  const aboutAlias = readPage('acerca.html');
+  const independentPortfolio = readPage('PortfolioLuisGonzalez.html');
+  assert.match(aboutAlias, /<meta name="robots" content="noindex,nofollow">/);
+  assert.match(aboutAlias, /url=about\.html/);
+  assert.match(independentPortfolio, /<title>Luis Gonzalez — AI Engineer<\/title>/);
+  assert.doesNotMatch(independentPortfolio, /name="robots" content="noindex|window\.location\.replace/);
+  assert.match(independentPortfolio, /<h3>Condor<\/h3>[\s\S]*<h3>DocuSheetBot<\/h3>[\s\S]*<h3>LocalTranscriptor<\/h3>/);
 });
 
 test('the catalog contains all 12 products and only Condor is in development', () => {
@@ -113,13 +115,15 @@ test('the removed PDFr page is not linked, listed, or present in the sitemap', (
   assert.doesNotMatch(readPage('sitemap.xml'), /pdfr\.html/);
 });
 
-test('legacy profile URLs send visitors to the current pages with the shared menu', () => {
+test('legacy About URL redirects while the AI Engineer portfolio remains an independent page', () => {
   const aboutAlias = readPage('acerca.html');
-  const portfolioAlias = readPage('PortfolioLuisGonzalez.html');
+  const portfolio = readPage('PortfolioLuisGonzalez.html');
   assert.match(aboutAlias, /url=about\.html/);
   assert.match(aboutAlias, /window\.location\.replace\("about\.html/);
-  assert.match(portfolioAlias, /url=index\.html/);
-  assert.match(portfolioAlias, /window\.location\.replace\("index\.html/);
+  assert.doesNotMatch(portfolio, /<nav\b[^>]*site-header|site-footer|href="\/assets\/css\/styles\.css/);
+  assert.match(portfolio, /href="\/assets\/css\/portfolio-ai\.css\?v=2"/);
+  assert.match(portfolio, /rel="canonical" href="https:\/\/lantonium\.com\/PortfolioLuisGonzalez\.html"/);
+  assert.match(readPage('sitemap.xml'), /https:\/\/lantonium\.com\/PortfolioLuisGonzalez\.html/);
   assert.deepEqual(readMenu(readPage('about.html'), 'about.html').links, expectedMenu);
   assert.deepEqual(readMenu(readPage('index.html'), 'index.html').links, expectedMenu);
 });
