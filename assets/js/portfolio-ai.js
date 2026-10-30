@@ -103,11 +103,11 @@
       liveUrl: 'https://paytollapp-be391.web.app', github: 'https://github.com/lgonzalh/PayTollApp',
     },
     pixelados: {
-      year: 'No publicado', status: 'Desarrollado',
+      year: '2026', status: 'Desarrollado',
       description: 'Aplicación Android para crear pixel art con herramientas de dibujo, paletas de color y exportación de imágenes PNG.',
       stack: 'Android · Kotlin · Jetpack Compose · exportación PNG',
       github: 'https://github.com/lgonzalh/pixelados',
-      downloadUrl: 'https://github.com/lgonzalh/pixelados/releases',
+      downloadUrl: 'https://github.com/lgonzalh/pixelados/releases/tag/v1.0-chi',
     },
     pdfmas: {
       year: 'No publicado', status: 'Desarrollado',
