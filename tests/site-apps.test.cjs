@@ -121,11 +121,49 @@ test('legacy About URL redirects while the AI Engineer portfolio remains an inde
   assert.match(aboutAlias, /url=about\.html/);
   assert.match(aboutAlias, /window\.location\.replace\("about\.html/);
   assert.doesNotMatch(portfolio, /<nav\b[^>]*site-header|site-footer|href="\/assets\/css\/styles\.css/);
-  assert.match(portfolio, /href="\/assets\/css\/portfolio-ai\.css\?v=2"/);
+  assert.match(portfolio, /href="\/assets\/css\/portfolio-ai\.css\?v=5"/);
+  assert.match(portfolio, /src="\/assets\/js\/portfolio-ai\.js\?v=3"/);
   assert.match(portfolio, /rel="canonical" href="https:\/\/lantonium\.com\/PortfolioLuisGonzalez\.html"/);
   assert.match(readPage('sitemap.xml'), /https:\/\/lantonium\.com\/PortfolioLuisGonzalez\.html/);
   assert.deepEqual(readMenu(readPage('about.html'), 'about.html').links, expectedMenu);
   assert.deepEqual(readMenu(readPage('index.html'), 'index.html').links, expectedMenu);
+});
+
+test('the standalone AI portfolio includes every app, profile details, and working contact destinations', () => {
+  const portfolio = readPage('PortfolioLuisGonzalez.html');
+  const appRoutes = [...readPage('apps.html').matchAll(/<a class="project-card-link" href="([^"]+)"/g)]
+    .map(([, href]) => href).sort();
+  const rows = [...portfolio.matchAll(/<a class="project-row[^"]*" href="([^"]+)" data-project-row data-project-categories="([^"]*)" data-preview-src="([^"]+)"/g)]
+    .map(([, href, , preview]) => ({ href, preview }));
+
+  assert.equal(rows.length, 12);
+  assert.deepEqual(rows.map(({ href }) => href).sort(), appRoutes);
+  for (const { preview } of rows) {
+    assert.ok(fs.existsSync(path.join(root, decodeURIComponent(preview.replace(/^\//, '')))), preview);
+  }
+  assert.match(portfolio, /La IA formó parte de su desarrollo/);
+  assert.match(portfolio, /Ingeniero de Software enfocado en el desarrollo fullstack de plataformas web B2B/);
+  assert.match(portfolio, /Politécnico Grancolombiano/i);
+  assert.match(portfolio, /https:\/\/wa\.me\/573246864991/);
+  assert.match(portfolio, /mailto:lgonzalh@outlook\.com/);
+  assert.match(portfolio, /href="https:\/\/github\.com\/lgonzalh"/);
+  assert.doesNotMatch(portfolio, /github\.com\/lgonzalh\/condor/);
+});
+
+test('the standalone portfolio theme switch and motion effects honor accessibility preferences', () => {
+  const portfolio = readPage('PortfolioLuisGonzalez.html');
+  const styles = readPage('assets/css/portfolio-ai.css');
+  const script = readPage('assets/js/portfolio-ai.js');
+  assert.match(portfolio, /id="theme-toggle"/);
+  assert.match(portfolio, /id="cursor-orbit"/);
+  assert.match(portfolio, /class="text-reveal"/);
+  assert.match(portfolio, /data-project-filter="android"/);
+  assert.match(styles, /:root\[data-theme="light"\]/);
+  assert.match(styles, /\.cursor-orbit\.is-active/);
+  assert.match(styles, /prefers-reduced-motion:\s*reduce/);
+  assert.match(script, /localStorage\.setItem\('theme', nextTheme\)/);
+  assert.match(script, /prefers-reduced-motion/);
+  assert.match(script, /pointermove/);
 });
 
 test('all catalog previews and detail routes resolve to real local files', () => {

@@ -6,6 +6,22 @@
     requestAnimationFrame(() => window.setTimeout(() => root.classList.add('is-ready'), 80));
   }
 
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeColor = document.querySelector('meta[name="theme-color"]');
+  const updateThemeControl = () => {
+    const isLight = root.dataset.theme === 'light';
+    themeToggle?.setAttribute('aria-pressed', String(isLight));
+    themeToggle?.setAttribute('title', `Cambiar a modo ${isLight ? 'oscuro' : 'claro'}`);
+    themeColor?.setAttribute('content', isLight ? '#f2f1ed' : '#050505');
+  };
+  updateThemeControl();
+  themeToggle?.addEventListener('click', () => {
+    const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = nextTheme;
+    try { localStorage.setItem('theme', nextTheme); } catch {}
+    updateThemeControl();
+  });
+
   const menuToggle = document.getElementById('menu-toggle');
   const menu = document.getElementById('portfolio-menu');
   const menuClose = menu?.querySelector('.menu-close');
@@ -60,6 +76,9 @@
   const previewType = document.getElementById('preview-type');
   const previewTitle = document.getElementById('preview-title');
   const projectRows = [...document.querySelectorAll('[data-project-row]')];
+  const projectFilters = [...document.querySelectorAll('[data-project-filter]')];
+  const projectSearch = document.getElementById('portfolio-project-search');
+  const projectCount = document.getElementById('portfolio-project-count');
 
   const setActiveProject = (row) => {
     if (!row || !previewImage) return;
@@ -82,6 +101,46 @@
     nextImage.src = source;
   };
 
+  const normalizeText = (value) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const updateProjectList = () => {
+    const query = normalizeText(projectSearch?.value.trim() || '');
+    const activeFilter = projectFilters.find((button) => button.getAttribute('aria-pressed') === 'true')?.dataset.projectFilter || 'all';
+    let visibleCount = 0;
+
+    projectRows.forEach((row) => {
+      const categories = (row.dataset.projectCategories || '').split(/\s+/);
+      const categoryMatch = activeFilter === 'all' || categories.includes(activeFilter);
+      const queryMatch = !query || normalizeText(row.textContent).includes(query);
+      row.hidden = !categoryMatch || !queryMatch;
+      if (!row.hidden) visibleCount += 1;
+    });
+
+    if (projectCount) projectCount.textContent = `${visibleCount} ${visibleCount === 1 ? 'proyecto' : 'proyectos'}`;
+    const current = projectRows.find((row) => row.classList.contains('is-active') && !row.hidden);
+    const next = current || projectRows.find((row) => !row.hidden);
+    if (next) setActiveProject(next);
+  };
+
+  projectFilters.forEach((button) => button.addEventListener('click', () => {
+    projectFilters.forEach((filter) => {
+      const selected = filter === button;
+      filter.classList.toggle('is-active', selected);
+      filter.setAttribute('aria-pressed', String(selected));
+    });
+    updateProjectList();
+  }));
+  projectSearch?.addEventListener('input', updateProjectList);
+  updateProjectList();
+
+  document.addEventListener('keydown', (event) => {
+    const target = event.target;
+    const isEditing = target instanceof HTMLElement && (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName));
+    if (event.key === '/' && !isEditing && projectSearch) {
+      event.preventDefault();
+      projectSearch.focus();
+    }
+  });
+
   projectRows.forEach((row) => {
     row.addEventListener('pointerenter', () => setActiveProject(row));
     row.addEventListener('focus', () => setActiveProject(row));
@@ -95,16 +154,51 @@
         activeObserver.unobserve(entry.target);
       });
     }, { threshold: 0.14, rootMargin: '0px 0px -5% 0px' });
-    document.querySelectorAll('.reveal-item, .approach-item').forEach((item, index) => {
+    document.querySelectorAll('.reveal-item, .approach-item, .text-reveal').forEach((item, index) => {
       item.style.transitionDelay = `${Math.min(index % 3, 2) * 70}ms`;
       observer.observe(item);
     });
   } else {
-    document.querySelectorAll('.reveal-item, .approach-item').forEach((item) => item.classList.add('is-visible'));
+    document.querySelectorAll('.reveal-item, .approach-item, .text-reveal').forEach((item) => item.classList.add('is-visible'));
   }
 
   const year = document.getElementById('current-year');
   if (year) year.textContent = String(new Date().getFullYear());
+
+  const cursorOrbit = document.getElementById('cursor-orbit');
+  const hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (cursorOrbit && hasFinePointer && !reduceMotion) {
+    let cursorFrame = 0;
+    let cursorX = 0;
+    let cursorY = 0;
+    const paintCursor = () => {
+      cursorOrbit.style.setProperty('--cursor-x', `${cursorX}px`);
+      cursorOrbit.style.setProperty('--cursor-y', `${cursorY}px`);
+      cursorFrame = 0;
+    };
+    document.addEventListener('pointermove', (event) => {
+      if (event.pointerType !== 'mouse') return;
+      cursorX = event.clientX;
+      cursorY = event.clientY;
+      cursorOrbit.classList.add('is-visible');
+      if (!cursorFrame) cursorFrame = requestAnimationFrame(paintCursor);
+    }, { passive: true });
+    document.addEventListener('pointerover', (event) => {
+      cursorOrbit.classList.toggle('is-active', Boolean(event.target.closest?.('a, button')));
+    });
+    document.addEventListener('pointerout', (event) => {
+      if (event.target.closest?.('a, button') && !event.relatedTarget?.closest?.('a, button')) {
+        cursorOrbit.classList.remove('is-active');
+      }
+    });
+    document.addEventListener('pointerleave', () => cursorOrbit.classList.remove('is-visible', 'is-active'));
+    document.addEventListener('focusin', (event) => {
+      cursorOrbit.classList.toggle('is-active', Boolean(event.target.closest?.('a, button')));
+    });
+    document.addEventListener('focusout', (event) => {
+      if (!event.relatedTarget?.closest?.('a, button')) cursorOrbit.classList.remove('is-active');
+    });
+  }
 
   const canvas = document.getElementById('signal-canvas');
   const context = canvas?.getContext('2d', { alpha: true });
@@ -162,7 +256,8 @@
         const other = points[next];
         const distance = Math.hypot(point.x - other.x, point.y - other.y);
         if (distance < 126) {
-          context.strokeStyle = `rgba(215, 213, 206, ${0.13 * (1 - distance / 126)})`;
+          const lineColor = root.dataset.theme === 'light' ? '46, 52, 61' : '215, 213, 206';
+          context.strokeStyle = `rgba(${lineColor}, ${0.13 * (1 - distance / 126)})`;
           context.beginPath();
           context.moveTo(point.x, point.y);
           context.lineTo(other.x, other.y);
@@ -172,14 +267,15 @@
 
       const pointerDistance = Math.hypot(point.x - pointer.x, point.y - pointer.y);
       if (pointerDistance < 150) {
-        context.strokeStyle = `rgba(238, 237, 232, ${0.24 * (1 - pointerDistance / 150)})`;
+        const pointerColor = root.dataset.theme === 'light' ? '36, 104, 197' : '238, 237, 232';
+        context.strokeStyle = `rgba(${pointerColor}, ${0.24 * (1 - pointerDistance / 150)})`;
         context.beginPath();
         context.moveTo(point.x, point.y);
         context.lineTo(pointer.x, pointer.y);
         context.stroke();
       }
 
-      context.fillStyle = 'rgba(226, 224, 217, 0.64)';
+      context.fillStyle = root.dataset.theme === 'light' ? 'rgba(50, 58, 68, 0.5)' : 'rgba(226, 224, 217, 0.64)';
       context.beginPath();
       context.arc(point.x, point.y, point.radius, 0, Math.PI * 2);
       context.fill();

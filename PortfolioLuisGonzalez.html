@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Luis Gonzalez, AI Engineer en Bogotá. Diseño sistemas de inteligencia artificial para documentos, voz y herramientas de desarrollo, con foco en privacidad y uso real.">
+  <meta name="description" content="Luis Gonzalez, AI Engineer y desarrollador Full Stack en Bogotá. Plataformas B2B, Micro-SaaS .NET/C#, automatización e inteligencia artificial aplicada.">
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
   <meta name="author" content="Luis Gonzalez">
   <meta name="theme-color" content="#050505">
@@ -25,7 +25,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/portfolio-ai.css?v=2">
+  <script>
+    try {
+      const storedTheme = localStorage.getItem('theme');
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : systemTheme;
+    } catch {
+      document.documentElement.dataset.theme = 'dark';
+    }
+  </script>
+  <link rel="stylesheet" href="/assets/css/portfolio-ai.css?v=5">
   <link rel="icon" href="/assets/img/luis.ico" sizes="any">
   <script type="application/ld+json">
     {
@@ -33,7 +42,7 @@
       "@type": "Person",
       "name": "Luis Gonzalez",
       "jobTitle": "AI Engineer",
-      "description": "Ingeniero de software enfocado en inteligencia artificial aplicada, sistemas local-first y automatización de procesos.",
+      "description": "Ingeniero de Software enfocado en plataformas web B2B, Micro-SaaS .NET/C#, arquitecturas serverless, automatización corporativa e integración de Inteligencia Artificial.",
       "url": "https://lantonium.com/PortfolioLuisGonzalez.html",
       "image": "https://lantonium.com/assets/img/LUIS%20GONZALEZ.jpg",
       "email": "lgonzalh@outlook.com",
@@ -46,6 +55,7 @@
   <a class="skip-link" href="#main-content">Saltar al contenido</a>
   <canvas class="signal-canvas" id="signal-canvas" aria-hidden="true"></canvas>
   <div class="grain-layer" aria-hidden="true"></div>
+  <span class="cursor-orbit" id="cursor-orbit" aria-hidden="true"></span>
   <div class="page-curtain" aria-hidden="true"></div>
 
   <header class="portfolio-header" id="top">
@@ -54,27 +64,34 @@
       <span class="wordmark-copy"><strong>LUIS GONZALEZ</strong><small>AI ENGINEER · BOGOTÁ</small></span>
     </a>
     <p class="header-edition">INDEPENDENT PORTFOLIO <span>·</span> 2026</p>
-    <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="portfolio-menu">
-      <span>MENU</span><i aria-hidden="true">+</i>
-    </button>
-    <nav class="menu-panel" id="portfolio-menu" aria-label="Navegación del portfolio" hidden>
-      <div class="menu-panel-top"><span>INDEX · 01—03</span><button class="menu-close" type="button" aria-label="Cerrar menú">CERRAR <span aria-hidden="true">×</span></button></div>
-      <a href="#work"><span>01</span>Proyectos<span class="menu-arrow" aria-hidden="true">↗</span></a>
-      <a href="#approach"><span>02</span>Enfoque<span class="menu-arrow" aria-hidden="true">↗</span></a>
-      <a href="#contact"><span>03</span>Contacto<span class="menu-arrow" aria-hidden="true">↗</span></a>
-      <p>IA aplicada a documentos, voz y herramientas de desarrollo.</p>
-    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar entre modo claro y oscuro" aria-pressed="false" title="Cambiar tema">
+        <svg class="theme-symbol theme-symbol--light" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg>
+        <svg class="theme-symbol theme-symbol--dark" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5 8.5 8.5 0 1 0 20.5 15.5Z"></path></svg>
+      </button>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="portfolio-menu">
+        <span>MENU</span><i aria-hidden="true">+</i>
+      </button>
+    </div>
   </header>
+  <nav class="menu-panel" id="portfolio-menu" aria-label="Navegación del portfolio" hidden>
+      <div class="menu-panel-top"><span>INDEX · 01—04</span><button class="menu-close" type="button" aria-label="Cerrar menú">CERRAR <span aria-hidden="true">×</span></button></div>
+      <a href="#work"><span>01</span>Proyectos<span class="menu-arrow" aria-hidden="true">↗</span></a>
+      <a href="#about"><span>02</span>Acerca de<span class="menu-arrow" aria-hidden="true">↗</span></a>
+      <a href="#approach"><span>03</span>Enfoque<span class="menu-arrow" aria-hidden="true">↗</span></a>
+      <a href="#contact"><span>04</span>Contacto<span class="menu-arrow" aria-hidden="true">↗</span></a>
+      <p>IA aplicada a documentos, voz y herramientas de desarrollo.</p>
+  </nav>
 
   <main id="main-content">
     <section class="hero section-shell" id="intro" aria-labelledby="hero-title">
       <div class="hero-copy">
         <p class="eyebrow"><span class="status-light" aria-hidden="true"></span> INGENIERÍA DE IA <span class="eyebrow-divider">/</span> BOGOTÁ, COLOMBIA</p>
-        <h1 id="hero-title">Inteligencia artificial <span class="metal-text">hecha ingeniería.</span></h1>
+        <h1 id="hero-title" class="text-reveal"><span class="text-reveal-line"><span>Inteligencia artificial</span></span><span class="text-reveal-line"><span class="metal-text">hecha ingeniería.</span></span></h1>
         <p class="hero-lead">Diseño sistemas de IA para documentos, voz y herramientas de desarrollo, conectando modelos con flujos de trabajo reales.</p>
         <div class="hero-actions">
           <a class="action-link action-link-primary" href="#work">Explorar proyectos <span aria-hidden="true">↓</span></a>
-          <a class="action-link" href="mailto:lgonzalh@outlook.com">Hablemos <span aria-hidden="true">↗</span></a>
+          <a class="action-link" href="https://wa.me/573246864991?text=Hola%20Luis%2C%20quiero%20hablar%20sobre%20un%20proyecto." target="_blank" rel="noopener noreferrer">WhatsApp <span aria-hidden="true">↗</span></a>
         </div>
         <div class="hero-signature"><span>MODELOS LOCALES</span><i aria-hidden="true"></i><span>PROCESAMIENTO EN DISPOSITIVO</span><i aria-hidden="true"></i><span>AUTOMATIZACIÓN DOCUMENTAL</span></div>
       </div>
@@ -96,7 +113,7 @@
         </div>
         <figcaption><span>CONDOR</span><span>LOCAL LLM WORKFLOW <b aria-hidden="true">↗</b></span></figcaption>
       </figure>
-      <a class="hero-scroll" href="#work"><span>SCROLL TO EXPLORE</span><i aria-hidden="true"></i><span>01—03</span></a>
+      <a class="hero-scroll" href="#work"><span>SCROLL TO EXPLORE</span><i aria-hidden="true"></i><span>12 PROJECTS</span></a>
     </section>
 
     <div class="signal-strip" aria-label="Áreas de trabajo">
@@ -106,10 +123,10 @@
     </div>
 
     <section class="work-section section-shell" id="work" aria-labelledby="work-title">
-      <div class="section-kicker"><span>01 / SELECTED SYSTEMS</span><span>BOGOTÁ · AVAILABLE WORLDWIDE</span></div>
+      <div class="section-kicker"><span>01 / PROJECT INDEX · 12 PROJECTS</span><span>BOGOTÁ · AVAILABLE WORLDWIDE</span></div>
       <div class="section-heading">
-        <h2 id="work-title">IA con un trabajo concreto.</h2>
-        <p>Proyectos donde la inteligencia artificial se integra a una herramienta, protege el contexto y resuelve una tarea específica.</p>
+        <h2 id="work-title" class="text-reveal">Software construido con IA.</h2>
+        <p>Los doce proyectos están aquí. La IA formó parte de su desarrollo; en algunos también es parte central del producto y en otros, la integración es menor.</p>
       </div>
 
       <div class="work-layout">
@@ -123,36 +140,83 @@
         </aside>
 
         <div class="project-list" aria-label="Proyectos de ingeniería de inteligencia artificial">
-          <a class="project-row is-active" href="/condor.html" data-project-row data-preview-src="/assets/img/condor/condor.jpg" data-preview-alt="Interfaz de Condor, sistema local-first para ingeniería asistida por IA" data-project-index="01" data-project-type="LOCAL-FIRST AI">
-            <span class="row-number">01</span>
-            <span class="row-meta"><span>LOCAL LLM · EN DESARROLLO</span><span>↗</span></span>
-            <h3>Condor</h3>
-            <p>Ingeniería de software asistida por modelos locales, con documentación viva como fuente de verdad.</p>
-            <span class="row-action" aria-hidden="true">VER PROYECTO ↗</span>
+          <div class="project-index-controls">
+            <div class="project-filters" role="group" aria-label="Filtrar proyectos por plataforma">
+              <button class="project-filter is-active" type="button" data-project-filter="all" aria-pressed="true">Todos <span>12</span></button>
+              <button class="project-filter" type="button" data-project-filter="web" aria-pressed="false">Web <span>3</span></button>
+              <button class="project-filter" type="button" data-project-filter="escritorio" aria-pressed="false">Escritorio <span>5</span></button>
+              <button class="project-filter" type="button" data-project-filter="android" aria-pressed="false">Android <span>5</span></button>
+            </div>
+            <label class="project-search"><span class="visually-hidden">Buscar entre los proyectos</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 4 4"></path></svg><input id="portfolio-project-search" type="search" placeholder="Buscar proyecto" autocomplete="off"></label>
+          </div>
+          <p class="project-count" id="portfolio-project-count" aria-live="polite">12 proyectos</p>
+          <a class="project-row is-active reveal-item" href="/condor.html" data-project-row data-project-categories="escritorio" data-preview-src="/assets/img/condor/condor.jpg" data-preview-alt="Vista actual de Condor" data-project-index="01" data-project-type="PRODUCTO · .NET / IA">
+            <span class="row-number">01</span><span class="row-meta"><span>PRODUCTO · .NET / IA</span><span class="row-status">EN DESARROLLO</span><span aria-hidden="true">↗</span></span><h3>Condor</h3><p>Ingeniería de software local-first que preserva el contexto y el conocimiento de cada proyecto.</p><span class="row-action" aria-hidden="true">VER PROYECTO ↗</span>
           </a>
-          <a class="project-row" href="/docusheetbot.html" data-project-row data-preview-src="/assets/img/docusheetbot/ds01.png" data-preview-alt="DocuSheetBot extrae datos de una factura en Android" data-project-index="02" data-project-type="DOCUMENT INTELLIGENCE">
-            <span class="row-number">02</span>
-            <span class="row-meta"><span>DOCUMENT AI · ANDROID</span><span>↗</span></span>
-            <h3>DocuSheetBot</h3>
-            <p>Procesamiento inteligente de documentos, extracción de datos y sincronización con hojas de cálculo.</p>
-            <span class="row-action" aria-hidden="true">VER PROYECTO ↗</span>
+          <a class="project-row reveal-item" href="/docusheetbot.html" data-project-row data-project-categories="android" data-preview-src="/assets/img/docusheetbot/ds01.png" data-preview-alt="Pantalla principal de DocuSheetBot" data-project-index="02" data-project-type="APP · AUTOMATIZACIÓN">
+            <span class="row-number">02</span><span class="row-meta"><span>APP · AUTOMATIZACIÓN</span><span class="row-status">DESARROLLADO</span><span aria-hidden="true">↗</span></span><h3>DocuSheetBot</h3><p>Automatiza documentos y sincroniza datos con IA desde Android.</p><span class="row-action" aria-hidden="true">VER PROYECTO ↗</span>
           </a>
-          <a class="project-row" href="/localtranscriptor.html" data-project-row data-preview-src="/assets/img/localtranscriptor/lt01.png" data-preview-alt="LocalTranscriptor procesa audio localmente en Android" data-project-index="03" data-project-type="ON-DEVICE SPEECH">
-            <span class="row-number">03</span>
-            <span class="row-meta"><span>SPEECH · PROCESAMIENTO LOCAL</span><span>↗</span></span>
-            <h3>LocalTranscriptor</h3>
-            <p>Transcripción autónoma de audio a texto en Android, con procesamiento privado en el dispositivo.</p>
-            <span class="row-action" aria-hidden="true">VER PROYECTO ↗</span>
+          <a class="project-row reveal-item" href="/localtranscriptor.html" data-project-row data-project-categories="android" data-preview-src="/assets/img/localtranscriptor/lt01.png" data-preview-alt="Pantalla de transcripción de LocalTranscriptor" data-project-index="03" data-project-type="APP · TRANSCRIPCIÓN LOCAL">
+            <span class="row-number">03</span><span class="row-meta"><span>APP · TRANSCRIPCIÓN LOCAL</span><span class="row-status">DESARROLLADO</span><span aria-hidden="true">↗</span></span><h3>LocalTranscriptor</h3><p>Transcribe audio a texto en el dispositivo y mantiene el procesamiento local.</p><span class="row-action" aria-hidden="true">VER PROYECTO ↗</span>
+          </a>
+          <a class="project-row reveal-item" href="/sevetco.html" data-project-row data-project-categories="web android" data-preview-src="/assets/img/sevetco/web/02-panel.png" data-preview-alt="Panel de gestión de SEVETCO" data-project-index="04" data-project-type="PLATAFORMA · WEB + MÓVIL">
+            <span class="row-number">04</span><span class="row-meta"><span>PLATAFORMA · WEB + MÓVIL</span><span class="row-status">DESARROLLADO</span><span aria-hidden="true">↗</span></span><h3>SEVETCO</h3><p>Gestión operativa, servicios y proveedores desde una plataforma web y móvil.</p><span class="row-action" aria-hidden="true">VER PROYECTO ↗</span>
+          </a>
+          <a class="project-row reveal-item" href="/paytollapp.html" data-project-row data-project-categories="web" data-preview-src="/assets/img/paytollapp/pt01.png" data-preview-alt="Interfaz de PayTollApp" data-project-index="05" data-project-type="PLATAFORMA · WEB / CLOUD">
+            <span class="row-number">05</span><span class="row-meta"><span>PLATAFORMA · WEB / CLOUD</span><span class="row-status">DESARROLLADO</span><span aria-hidden="true">↗</span></span><h3>PayTollApp</h3><p>Gestión automatizada de pagos de peaje y recargas electrónicas.</p><span class="row-action" aria-hidden="true">VER PROYECTO ↗</span>
+          </a>
+          <a class="project-row reveal-item" href="/pixelados.html" data-project-row data-project-categories="android" data-preview-src="/assets/img/pixelados/03-editor.png" data-preview-alt="Editor de pixel art de Pixelados" data-project-index="06" data-project-type="APP · PIXEL ART">
+            <span class="row-number">06</span><span class="row-meta"><span>APP · PIXEL ART</span><span class="row-status">DESARROLLADO</span><span aria-hidden="true">↗</span></span><h3>Pixelados</h3><p>Un lienzo táctil de pixel art con herramientas de dibujo y exportación PNG.</p><span class="row-action" aria-hidden="true">VER PROYECTO ↗</span>
+          </a>
+          <a class="project-row reveal-item" href="/pdfmas.html" data-project-row data-project-categories="escritorio" data-preview-src="/assets/img/pdfmas/fotograma-00001.png" data-preview-alt="Interfaz de PDF+" data-project-index="07" data-project-type="APLICACIÓN · DOCUMENTOS">
+            <span class="row-number">07</span><span class="row-meta"><span>APLICACIÓN · DOCUMENTOS</span><span class="row-status">DESARROLLADO</span><span aria-hidden="true">↗</span></span><h3>PDF+</h3><p>Herramientas de escritorio para editar, organizar y convertir documentos PDF.</p><span class="row-action" aria-hidden="true">VER PROYECTO ↗</span>
+          </a>
+          <a class="project-row reveal-item" href="/vtf.html" data-project-row data-project-categories="web" data-preview-src="/assets/img/vtf/fotograma-00016.png" data-preview-alt="Interfaz de Video to Frames" data-project-index="08" data-project-type="HERRAMIENTA · VIDEO">
+            <span class="row-number">08</span><span class="row-meta"><span>HERRAMIENTA · VIDEO</span><span class="row-status">DESARROLLADO</span><span aria-hidden="true">↗</span></span><h3>Video to Frames</h3><p>Extrae fotogramas de videos MP4 y los guarda como imágenes JPG.</p><span class="row-action" aria-hidden="true">VER PROYECTO ↗</span>
+          </a>
+          <a class="project-row reveal-item" href="/imbalances.html" data-project-row data-project-categories="escritorio" data-preview-src="/assets/img/imbalances/ib00.jpg" data-preview-alt="Panel de auditoría de Imbalances" data-project-index="09" data-project-type="SOFTWARE · FINANZAS">
+            <span class="row-number">09</span><span class="row-meta"><span>SOFTWARE · FINANZAS</span><span class="row-status">DESARROLLADO</span><span aria-hidden="true">↗</span></span><h3>Imbalances</h3><p>Auditoría financiera intercompany y conciliación de balances desde Excel.</p><span class="row-action" aria-hidden="true">VER PROYECTO ↗</span>
+          </a>
+          <a class="project-row reveal-item" href="/pdf-a-png-movil.html" data-project-row data-project-categories="android" data-preview-src="/assets/img/pdf2png/Captura%20de%20pantalla%202026-09-07%20195538.png" data-preview-alt="Conversión de PDF a imagen en la aplicación móvil" data-project-index="10" data-project-type="APP · DOCUMENTOS">
+            <span class="row-number">10</span><span class="row-meta"><span>APP · DOCUMENTOS</span><span class="row-status">DESARROLLADO</span><span aria-hidden="true">↗</span></span><h3>PDF a PNG Móvil</h3><p>Convierte documentos PDF a imágenes PNG directamente desde el móvil.</p><span class="row-action" aria-hidden="true">VER PROYECTO ↗</span>
+          </a>
+          <a class="project-row reveal-item" href="/ofusercontrolapp.html" data-project-row data-project-categories="escritorio" data-preview-src="/assets/img/ofusercontrolapp/of01.jpeg" data-preview-alt="Panel de OFUserControlApp" data-project-index="11" data-project-type="SOFTWARE · IDENTIDADES">
+            <span class="row-number">11</span><span class="row-meta"><span>SOFTWARE · IDENTIDADES</span><span class="row-status">DESARROLLADO</span><span aria-hidden="true">↗</span></span><h3>OFUserControlApp</h3><p>Auditoría y sincronización de identidades entre sistemas externos y Directorio Activo.</p><span class="row-action" aria-hidden="true">VER PROYECTO ↗</span>
+          </a>
+          <a class="project-row reveal-item" href="/ytclipper.html" data-project-row data-project-categories="escritorio" data-preview-src="/assets/img/ytclipper/yt01.png" data-preview-alt="Interfaz de YT Downloader - Clipper" data-project-index="12" data-project-type="HERRAMIENTA · MULTIMEDIA">
+            <span class="row-number">12</span><span class="row-meta"><span>HERRAMIENTA · MULTIMEDIA</span><span class="row-status">DESARROLLADO</span><span aria-hidden="true">↗</span></span><h3>YT Downloader - Clipper</h3><p>Descarga videos y extrae segmentos precisos de audio y video.</p><span class="row-action" aria-hidden="true">VER PROYECTO ↗</span>
           </a>
         </div>
       </div>
     </section>
 
+    <section class="about-section section-shell" id="about" aria-labelledby="about-title">
+      <div class="section-kicker"><span>02 / ACERCA DE · LUIS GONZALEZ</span><span>AI ENGINEER · FULL STACK DEVELOPER</span></div>
+      <div class="about-layout">
+        <figure class="about-portrait reveal-item">
+          <div class="portrait-frame"><img src="/assets/img/LUIS%20GONZALEZ.jpg" alt="Luis Gonzalez, ingeniero de software en Bogotá" width="355" height="355" loading="lazy"></div>
+          <figcaption><span>LUIS GONZALEZ</span><span>BOGOTÁ · COLOMBIA</span></figcaption>
+        </figure>
+        <div class="about-copy">
+          <div class="education-mark"><img src="/assets/img/poli.jpg" alt="" width="42" height="42" loading="lazy"><span>POLITÉCNICO GRANCOLOMBIANO</span></div>
+          <p class="eyebrow">INGENIERO DE SOFTWARE</p>
+          <h2 class="text-reveal" id="about-title">Tecnología útil, desde el software hasta la IA.</h2>
+          <p class="about-role">Full Stack Developer · AI Engineer</p>
+          <p class="about-summary">Ingeniero de Software enfocado en el desarrollo fullstack de plataformas web B2B. Especialista en la creación de soluciones Micro-SaaS (.NET/C#), arquitecturas escalables en la nube (Serverless), automatización de procesos corporativos masivos e integración de Inteligencia Artificial para la optimización de flujos de trabajo.</p>
+        </div>
+      </div>
+      <div class="about-capabilities">
+        <article class="about-capability reveal-item"><span>01</span><h3>Arquitectura Web &amp; Micro-SaaS</h3><p>Plataformas B2B en la nube de alto rendimiento.</p></article>
+        <article class="about-capability reveal-item"><span>02</span><h3>Procesamiento de Datos Masivos</h3><p>Automatización de flujos financieros y corporativos.</p></article>
+        <article class="about-capability reveal-item"><span>03</span><h3>Integración de IA &amp; LLMs</h3><p>Extracción inteligente y estructuración de documentos.</p></article>
+      </div>
+    </section>
+
     <section class="approach-section section-shell" id="approach" aria-labelledby="approach-title">
-      <div class="section-kicker"><span>02 / ENGINEERING APPROACH</span><span>LESS HYPE · MORE SYSTEMS</span></div>
+      <div class="section-kicker"><span>03 / ENGINEERING APPROACH</span><span>LESS HYPE · MORE SYSTEMS</span></div>
       <div class="approach-heading">
         <p class="eyebrow">IA APLICADA</p>
-        <h2 id="approach-title">Un modelo es solo una pieza del sistema.</h2>
+        <h2 class="text-reveal" id="approach-title">Un modelo es solo una pieza del sistema.</h2>
         <p>El valor aparece cuando la IA entiende el contexto, entrega datos utilizables y encaja en el flujo de trabajo que ya existe.</p>
       </div>
       <div class="approach-grid">
@@ -163,22 +227,29 @@
     </section>
 
     <section class="contact-section section-shell" id="contact" aria-labelledby="contact-title">
-      <div class="section-kicker"><span>03 / CONTACT</span><span>BOGOTÁ, COLOMBIA</span></div>
+      <div class="section-kicker"><span>04 / CONTACTO</span><span>BOGOTÁ, COLOMBIA</span></div>
       <div class="contact-panel">
         <div>
           <p class="eyebrow">¿UN PROCESO QUE PODEMOS MEJORAR?</p>
-          <h2 id="contact-title">Construyamos algo útil.</h2>
+          <h2 class="text-reveal" id="contact-title">Construyamos algo útil.</h2>
         </div>
-        <a class="contact-cta" href="mailto:lgonzalh@outlook.com">lgonzalh@outlook.com <span aria-hidden="true">↗</span></a>
+        <div class="contact-actions">
+          <a class="contact-cta" href="https://wa.me/573246864991?text=Hola%20Luis%2C%20quiero%20hablar%20sobre%20un%20proyecto." target="_blank" rel="noopener noreferrer">Hablemos por WhatsApp <span aria-hidden="true">↗</span></a>
+          <div class="contact-links" aria-label="Otros enlaces de contacto">
+            <a href="mailto:lgonzalh@outlook.com">CORREO · LGONZALH@OUTLOOK.COM ↗</a>
+            <a href="https://github.com/lgonzalh" target="_blank" rel="noopener noreferrer">GITHUB · PERFIL GLOBAL ↗</a>
+            <a href="https://www.linkedin.com/in/lantonium/" target="_blank" rel="noopener noreferrer">LINKEDIN ↗</a>
+          </div>
+        </div>
       </div>
       <footer class="portfolio-footer">
         <a class="footer-name" href="#top">LUIS GONZALEZ <span>AI ENGINEER</span></a>
-        <div class="footer-links"><a href="https://www.linkedin.com/in/lantonium/" target="_blank" rel="noopener noreferrer">LINKEDIN ↗</a><a href="https://github.com/lgonzalh/condor" target="_blank" rel="noopener noreferrer">GITHUB ↗</a></div>
+        <div class="footer-links"><a href="mailto:lgonzalh@outlook.com">EMAIL ↗</a><a href="https://github.com/lgonzalh" target="_blank" rel="noopener noreferrer">GITHUB ↗</a><a href="https://www.linkedin.com/in/lantonium/" target="_blank" rel="noopener noreferrer">LINKEDIN ↗</a></div>
         <span class="footer-year">© <span id="current-year">2026</span></span>
       </footer>
     </section>
   </main>
 
-  <script src="/assets/js/portfolio-ai.js?v=1" defer></script>
+  <script src="/assets/js/portfolio-ai.js?v=3" defer></script>
 </body>
 </html>
