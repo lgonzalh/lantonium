@@ -79,7 +79,7 @@
       github: 'https://github.com/lgonzalh/condor',
     },
     docusheetbot: {
-      year: '2026', status: 'Desarrollado',
+      year: '2025–2026', status: 'Desarrollado',
       description: 'Automatiza la captura y lectura de documentos en Android, valida los datos extraídos y los sincroniza con hojas de cálculo.',
       stack: 'Kotlin · Android SDK · OCR e IA en el dispositivo · Google Sheets API',
       repoNote: 'Repositorio privado; el código fuente no está disponible públicamente.',
@@ -91,7 +91,7 @@
       repoNote: 'Repositorio privado; el código fuente no está disponible públicamente.',
     },
     sevetco: {
-      year: 'No publicado', status: 'Desarrollado',
+      year: '2026', status: 'Desarrollado',
       description: 'Plataforma de gestión operativa con panel web para administración y una aplicación Android para el trabajo desde dispositivos móviles.',
       stack: 'Web: HTML · CSS · JavaScript · Firebase · Firebase Authentication · Cloud Firestore. Android: Kotlin · Jetpack Compose.',
       liveUrl: 'https://sevetco-dd27e.web.app', github: 'https://github.com/lgonzalh/sevetco',
@@ -110,7 +110,7 @@
       downloadUrl: 'https://github.com/lgonzalh/pixelados/releases/tag/v1.0-chi',
     },
     pdfmas: {
-      year: 'No publicado', status: 'Desarrollado',
+      year: '2025–2026', status: 'Desarrollado',
       description: 'Aplicación de escritorio para editar, organizar y convertir documentos PDF.',
       stack: '.NET 8 · Windows Forms · PDFiumViewer · PdfPig · PDFsharp',
       repoNote: 'Repositorio privado; el código fuente no está disponible públicamente.',
@@ -122,26 +122,27 @@
       repoNote: 'Repositorio privado; el código fuente no está disponible públicamente.',
     },
     imbalances: {
-      year: 'No publicado', status: 'Desarrollado',
+      year: '2026', status: 'Desarrollado',
       description: 'Aplicación de escritorio para analizar balances y apoyar la conciliación financiera intercompany desde Excel.',
       stack: 'Aplicación de escritorio · Excel · conciliación intercompany y validación de balances',
       repoNote: 'Repositorio privado; el código fuente no está disponible públicamente.',
     },
     'pdf-a-png-movil': {
-      year: 'No publicado', status: 'Desarrollado',
+      year: '2026', status: 'Desarrollado',
       description: 'Convierte páginas de documentos PDF a imágenes PNG directamente en un dispositivo Android.',
       stack: 'Android 12+ · Kotlin · Jetpack Compose · conversión local de páginas PDF a PNG',
       github: 'https://github.com/lgonzalh/pdf-a-png-movil',
+      downloadUrl: 'https://github.com/lgonzalh/pdf-a-png-movil/releases/download/v1.0/pdf-a-png-movil-1.0.apk',
     },
     ofusercontrolapp: {
-      year: '2025', status: 'Desarrollado',
+      year: '2026', status: 'Desarrollado',
       description: 'Audita identidades mediante archivos Excel, contrasta usuarios con Active Directory y sincroniza los resultados.',
       stack: '.NET 10 · ASP.NET Core · C# · Clean Architecture · PostgreSQL · Supabase · SignalR',
       liveUrl: 'https://ofusercontrolapp-411030722061.northamerica-south1.run.app',
       github: 'https://github.com/lgonzalh/OFUserControlApp',
     },
     ytclipper: {
-      year: '2024', status: 'Desarrollado',
+      year: '2026', status: 'Desarrollado',
       description: 'Herramienta de escritorio para descargar videos y extraer segmentos específicos de audio y video.',
       stack: 'Python 3 · Tkinter · yt-dlp · FFmpeg · Pillow · SQLite',
       repoNote: 'Repositorio privado; el código fuente no está disponible públicamente.',
