@@ -150,6 +150,32 @@
   };
 
   const projectDialog = document.getElementById('project-detail-dialog');
+  const signalTrack = document.querySelector('.signal-track');
+  const signalGroup = signalTrack?.querySelector('.signal-group');
+  if (signalTrack && signalGroup) {
+    let signalResizeTimer;
+    const fillSignalStrip = () => {
+      signalTrack.replaceChildren(signalGroup);
+      const groupWidth = signalGroup.getBoundingClientRect().width;
+      const stripWidth = signalTrack.parentElement?.getBoundingClientRect().width || window.innerWidth;
+      if (!groupWidth || !stripWidth) return;
+
+      const groupCount = Math.max(3, Math.ceil(stripWidth / groupWidth) + 1);
+      for (let index = 1; index < groupCount; index += 1) {
+        signalTrack.append(signalGroup.cloneNode(true));
+      }
+      signalTrack.style.setProperty('--ticker-shift', `-${100 / groupCount}%`);
+      signalTrack.classList.add('is-ready');
+    };
+
+    fillSignalStrip();
+    document.fonts?.ready.then(fillSignalStrip);
+    window.addEventListener('resize', () => {
+      window.clearTimeout(signalResizeTimer);
+      signalResizeTimer = window.setTimeout(fillSignalStrip, 120);
+    }, { passive: true });
+  }
+
   const dialogClose = projectDialog?.querySelector('[data-project-dialog-close]');
   const detailFields = {
     index: document.getElementById('project-detail-index'),
