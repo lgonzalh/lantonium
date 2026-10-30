@@ -121,7 +121,7 @@ test('legacy About URL redirects while the AI Engineer portfolio remains an inde
   assert.match(aboutAlias, /url=about\.html/);
   assert.match(aboutAlias, /window\.location\.replace\("about\.html/);
   assert.doesNotMatch(portfolio, /<nav\b[^>]*site-header|site-footer|href="\/assets\/css\/styles\.css/);
-  assert.match(portfolio, /href="\/assets\/css\/portfolio-ai\.css\?v=5"/);
+  assert.match(portfolio, /href="\/assets\/css\/portfolio-ai\.css\?v=6"/);
   assert.match(portfolio, /src="\/assets\/js\/portfolio-ai\.js\?v=3"/);
   assert.match(portfolio, /rel="canonical" href="https:\/\/lantonium\.com\/PortfolioLuisGonzalez\.html"/);
   assert.match(readPage('sitemap.xml'), /https:\/\/lantonium\.com\/PortfolioLuisGonzalez\.html/);
@@ -141,7 +141,7 @@ test('the standalone AI portfolio includes every app, profile details, and worki
   for (const { preview } of rows) {
     assert.ok(fs.existsSync(path.join(root, decodeURIComponent(preview.replace(/^\//, '')))), preview);
   }
-  assert.match(portfolio, /La IA formó parte de su desarrollo/);
+  assert.match(portfolio, /Doce proyectos web, móviles y de escritorio, desde plataformas empresariales hasta herramientas de uso diario/);
   assert.match(portfolio, /Ingeniero de Software enfocado en el desarrollo fullstack de plataformas web B2B/);
   assert.match(portfolio, /Politécnico Grancolombiano/i);
   assert.match(portfolio, /https:\/\/wa\.me\/573246864991/);
@@ -159,6 +159,8 @@ test('the standalone portfolio theme switch and motion effects honor accessibili
   assert.match(portfolio, /class="text-reveal"/);
   assert.match(portfolio, /data-project-filter="android"/);
   assert.match(styles, /:root\[data-theme="light"\]/);
+  assert.match(styles, /body\.ai-portfolio \.theme-symbol--dark\s*\{\s*display: none/);
+  assert.match(styles, /:root\[data-theme="light"\] body\.ai-portfolio \.theme-symbol--dark\s*\{\s*display: block/);
   assert.match(styles, /\.cursor-orbit\.is-active/);
   assert.match(styles, /prefers-reduced-motion:\s*reduce/);
   assert.match(script, /localStorage\.setItem\('theme', nextTheme\)/);
