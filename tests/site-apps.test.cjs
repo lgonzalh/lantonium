@@ -121,7 +121,7 @@ test('legacy About URL redirects while the AI Engineer portfolio remains an inde
   assert.match(aboutAlias, /url=about\.html/);
   assert.match(aboutAlias, /window\.location\.replace\("about\.html/);
   assert.doesNotMatch(portfolio, /<nav\b[^>]*site-header|site-footer|href="\/assets\/css\/styles\.css/);
-  assert.match(portfolio, /href="\/assets\/css\/portfolio-ai\.css\?v=7"/);
+  assert.match(portfolio, /href="\/assets\/css\/portfolio-ai\.css\?v=8"/);
   assert.match(portfolio, /src="\/assets\/js\/portfolio-ai\.js\?v=4"/);
   assert.match(portfolio, /rel="canonical" href="https:\/\/lantonium\.com\/PortfolioLuisGonzalez\.html"/);
   assert.match(readPage('sitemap.xml'), /https:\/\/lantonium\.com\/PortfolioLuisGonzalez\.html/);
