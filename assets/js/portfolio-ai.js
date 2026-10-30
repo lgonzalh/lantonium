@@ -99,7 +99,7 @@
     paytollapp: {
       year: '2023–2024', status: 'Desarrollado',
       description: 'Plataforma cloud para administrar vehículos, tarjetas de peaje, pagos, recargas y extractos.',
-      stack: '.NET 8 · ASP.NET Core · Entity Framework Core · PostgreSQL en Supabase · HTML · CSS · Bootstrap 5 · JavaScript · Google Cloud Run · Firebase Hosting',
+      stack: '.NET 8 · ASP.NET Core · Entity Framework Core · PostgreSQL en Supabase · HTML · CSS · Bootstrap 5 · JavaScript · Google Cloud Run',
       liveUrl: 'https://paytollapp-be391.web.app', github: 'https://github.com/lgonzalh/PayTollApp',
     },
     pixelados: {

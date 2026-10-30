@@ -73,7 +73,7 @@ test('all local asset references resolve and every image declares alt text', () 
   }
 });
 
-test('Firebase Hosting excludes local instructions and development-only files', () => {
+test('Firebase config excludes local instructions and development-only files', () => {
   const config = JSON.parse(readPage('firebase.json'));
   const ignoredPaths = config.hosting.ignore;
   for (const path of ['AGENTS.md', 'README.md', 'opencode.json', 'docs/**', 'graft/**', 'scripts/**', 'tests/**']) {
@@ -122,7 +122,7 @@ test('legacy About URL redirects while the AI Engineer portfolio remains an inde
   assert.match(aboutAlias, /window\.location\.replace\("about\.html/);
   assert.doesNotMatch(portfolio, /<nav\b[^>]*site-header|site-footer|href="\/assets\/css\/styles\.css/);
   assert.match(portfolio, /href="\/assets\/css\/portfolio-ai\.css\?v=9"/);
-  assert.match(portfolio, /src="\/assets\/js\/portfolio-ai\.js\?v=4"/);
+  assert.match(portfolio, /src="\/assets\/js\/portfolio-ai\.js\?v=5"/);
   assert.match(portfolio, /rel="canonical" href="https:\/\/lantonium\.com\/PortfolioLuisGonzalez\.html"/);
   assert.match(readPage('sitemap.xml'), /https:\/\/lantonium\.com\/PortfolioLuisGonzalez\.html/);
   assert.deepEqual(readMenu(readPage('about.html'), 'about.html').links, expectedMenu);
@@ -189,6 +189,13 @@ test('the AI portfolio keeps compact fixed bars and the requested contact labels
   assert.match(styles, /\.portfolio-footer\s*\{\s*position: fixed/);
   assert.match(styles, /--ai-footer-height: 32px/);
   assert.match(styles, /\.portfolio-header\s*\{[^}]*min-height: 46px/);
+});
+
+test('project copy omits hosting provider details', () => {
+  const publicPages = htmlPages.map(readPage).join('\n');
+  const portfolioData = readPage('assets/js/portfolio-ai.js');
+  const forbiddenProvider = ['Firebase', 'Hosting'].join(' ');
+  assert.doesNotMatch(`${publicPages}\n${portfolioData}`, new RegExp(forbiddenProvider, 'i'));
 });
 
 test('all catalog previews and detail routes resolve to real local files', () => {
