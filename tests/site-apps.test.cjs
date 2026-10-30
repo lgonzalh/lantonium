@@ -76,7 +76,7 @@ test('all local asset references resolve and every image declares alt text', () 
 test('Firebase Hosting excludes local instructions and development-only files', () => {
   const config = JSON.parse(readPage('firebase.json'));
   const ignoredPaths = config.hosting.ignore;
-  for (const path of ['AGENTS.md', 'README.md', 'docs/**', 'graft/**', 'scripts/**', 'tests/**']) {
+  for (const path of ['AGENTS.md', 'README.md', 'opencode.json', 'docs/**', 'graft/**', 'scripts/**', 'tests/**']) {
     assert.ok(ignoredPaths.includes(path), `${path} is excluded from the public Hosting bundle`);
   }
 });
@@ -121,8 +121,8 @@ test('legacy About URL redirects while the AI Engineer portfolio remains an inde
   assert.match(aboutAlias, /url=about\.html/);
   assert.match(aboutAlias, /window\.location\.replace\("about\.html/);
   assert.doesNotMatch(portfolio, /<nav\b[^>]*site-header|site-footer|href="\/assets\/css\/styles\.css/);
-  assert.match(portfolio, /href="\/assets\/css\/portfolio-ai\.css\?v=6"/);
-  assert.match(portfolio, /src="\/assets\/js\/portfolio-ai\.js\?v=3"/);
+  assert.match(portfolio, /href="\/assets\/css\/portfolio-ai\.css\?v=7"/);
+  assert.match(portfolio, /src="\/assets\/js\/portfolio-ai\.js\?v=4"/);
   assert.match(portfolio, /rel="canonical" href="https:\/\/lantonium\.com\/PortfolioLuisGonzalez\.html"/);
   assert.match(readPage('sitemap.xml'), /https:\/\/lantonium\.com\/PortfolioLuisGonzalez\.html/);
   assert.deepEqual(readMenu(readPage('about.html'), 'about.html').links, expectedMenu);
@@ -131,16 +131,24 @@ test('legacy About URL redirects while the AI Engineer portfolio remains an inde
 
 test('the standalone AI portfolio includes every app, profile details, and working contact destinations', () => {
   const portfolio = readPage('PortfolioLuisGonzalez.html');
-  const appRoutes = [...readPage('apps.html').matchAll(/<a class="project-card-link" href="([^"]+)"/g)]
-    .map(([, href]) => href).sort();
-  const rows = [...portfolio.matchAll(/<a class="project-row[^"]*" href="([^"]+)" data-project-row data-project-categories="([^"]*)" data-preview-src="([^"]+)"/g)]
-    .map(([, href, , preview]) => ({ href, preview }));
+  const rows = [...portfolio.matchAll(/<a class="project-row[^"]*" href="([^"]+)" data-project-row data-project-key="([^"]+)" data-project-categories="([^"]*)" data-preview-src="([^"]+)"/g)]
+    .map(([, href, key, , preview]) => ({ href, key, preview }));
 
   assert.equal(rows.length, 12);
-  assert.deepEqual(rows.map(({ href }) => href).sort(), appRoutes);
-  for (const { preview } of rows) {
+  assert.ok(rows.every(({ href }) => href === '#work'), 'project rows stay in the portfolio instead of navigating to detail pages');
+  assert.equal(new Set(rows.map(({ key }) => key)).size, 12, 'each project has a unique detail key');
+  const script = readPage('assets/js/portfolio-ai.js');
+  for (const { key, preview } of rows) {
     assert.ok(fs.existsSync(path.join(root, decodeURIComponent(preview.replace(/^\//, '')))), preview);
+    const detail = script.match(new RegExp(`(?:^|\\n)\\s*(?:'${key}'|${key})\\s*:\\s*\\{([\\s\\S]*?)\\n\\s*\\},`));
+    assert.ok(detail, `${key} has in-page project information`);
+    assert.match(detail[1], /year:\s*'/, `${key} includes development year`);
+    assert.match(detail[1], /status:\s*'/, `${key} includes development status`);
+    assert.match(detail[1], /stack:\s*'/, `${key} includes technology stack`);
   }
+  assert.match(portfolio, /<dialog class="project-dialog" id="project-detail-dialog"/);
+  assert.match(script, /projectDialog\.showModal\(\)/);
+  assert.match(script, /event\.preventDefault\(\);\s*openProjectDetails\(row\)/);
   assert.match(portfolio, /Doce proyectos web, móviles y de escritorio, desde plataformas empresariales hasta herramientas de uso diario/);
   assert.match(portfolio, /Ingeniero de Software enfocado en el desarrollo fullstack de plataformas web B2B/);
   assert.match(portfolio, /Politécnico Grancolombiano/i);
