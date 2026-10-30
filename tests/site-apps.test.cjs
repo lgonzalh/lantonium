@@ -121,7 +121,7 @@ test('legacy About URL redirects while the AI Engineer portfolio remains an inde
   assert.match(aboutAlias, /url=about\.html/);
   assert.match(aboutAlias, /window\.location\.replace\("about\.html/);
   assert.doesNotMatch(portfolio, /<nav\b[^>]*site-header|site-footer|href="\/assets\/css\/styles\.css/);
-  assert.match(portfolio, /href="\/assets\/css\/portfolio-ai\.css\?v=8"/);
+  assert.match(portfolio, /href="\/assets\/css\/portfolio-ai\.css\?v=9"/);
   assert.match(portfolio, /src="\/assets\/js\/portfolio-ai\.js\?v=4"/);
   assert.match(portfolio, /rel="canonical" href="https:\/\/lantonium\.com\/PortfolioLuisGonzalez\.html"/);
   assert.match(readPage('sitemap.xml'), /https:\/\/lantonium\.com\/PortfolioLuisGonzalez\.html/);
@@ -174,6 +174,21 @@ test('the standalone portfolio theme switch and motion effects honor accessibili
   assert.match(script, /localStorage\.setItem\('theme', nextTheme\)/);
   assert.match(script, /prefers-reduced-motion/);
   assert.match(script, /pointermove/);
+});
+
+test('the AI portfolio keeps compact fixed bars and the requested contact labels', () => {
+  const portfolio = readPage('PortfolioLuisGonzalez.html');
+  const styles = readPage('assets/css/portfolio-ai.css');
+  assert.match(portfolio, />Hablemos\.\.\s*<span aria-hidden="true">↗<\/span><\/a>/);
+  assert.doesNotMatch(portfolio, /Hablemos por WhatsApp/);
+  assert.match(portfolio, /href="mailto:lgonzalh@outlook\.com">CORREO · LGONZALH@OUTLOOK\.COM ↗/);
+  assert.match(portfolio, /href="https:\/\/github\.com\/lgonzalh"[^>]*>GITHUB · PERFIL GLOBAL ↗/);
+  assert.match(portfolio, /href="https:\/\/www\.linkedin\.com\/in\/lantonium\/"[^>]*>LINKEDIN ↗/);
+  assert.match(portfolio, /<div class="footer-links"><a href="mailto:lgonzalh@outlook\.com">Correo ↗<\/a><a href="https:\/\/github\.com\/lgonzalh"[^>]*>Github ↗<\/a><a href="https:\/\/www\.linkedin\.com\/in\/lantonium\/"[^>]*>LinkedIn ↗/);
+  assert.match(styles, /\.portfolio-header\s*\{\s*position: fixed/);
+  assert.match(styles, /\.portfolio-footer\s*\{\s*position: fixed/);
+  assert.match(styles, /--ai-footer-height: 32px/);
+  assert.match(styles, /\.portfolio-header\s*\{[^}]*min-height: 46px/);
 });
 
 test('all catalog previews and detail routes resolve to real local files', () => {
