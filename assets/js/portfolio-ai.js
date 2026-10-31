@@ -92,13 +92,13 @@
     },
     sevetco: {
       year: '2026', status: 'Desarrollado',
-      description: 'Plataforma de gestión operativa con panel web para administración y una aplicación Android para el trabajo desde dispositivos móviles.',
+      description: 'Plataforma de gestión operativa con panel web para administración y una aplicación Android para el trabajo desde dispositivos móviles. Proyecto de pregrado: Ingeniería de Desarrollo de Software, Politécnico Grancolombiano.',
       stack: 'Web: HTML · CSS · JavaScript · Firebase · Firebase Authentication · Cloud Firestore. Android: Kotlin · Jetpack Compose.',
       liveUrl: 'https://sevetco-dd27e.web.app', github: 'https://github.com/lgonzalh/sevetco',
     },
     paytollapp: {
       year: '2023–2024', status: 'Desarrollado',
-      description: 'Plataforma cloud para administrar vehículos, tarjetas de peaje, pagos, recargas y extractos.',
+      description: 'Plataforma cloud para administrar vehículos, tarjetas de peaje, pagos, recargas y extractos. Proyecto de grado: Tecnólogo en Desarrollo de Software, SENA.',
       stack: '.NET 8 · ASP.NET Core · Entity Framework Core · PostgreSQL en Supabase · HTML · CSS · Bootstrap 5 · JavaScript · Google Cloud Run',
       liveUrl: 'https://paytollapp-be391.web.app', github: 'https://github.com/lgonzalh/PayTollApp',
     },
