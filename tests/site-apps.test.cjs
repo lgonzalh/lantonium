@@ -122,7 +122,7 @@ test('legacy About URL redirects while the AI Engineer portfolio remains an inde
   assert.match(aboutAlias, /window\.location\.replace\("about\.html/);
   assert.doesNotMatch(portfolio, /<nav\b[^>]*site-header|site-footer|href="\/assets\/css\/styles\.css/);
   assert.match(portfolio, /href="\/assets\/css\/portfolio-ai\.css\?v=10"/);
-  assert.match(portfolio, /src="\/assets\/js\/portfolio-ai\.js\?v=9"/);
+  assert.match(portfolio, /src="\/assets\/js\/portfolio-ai\.js\?v=10"/);
   assert.match(portfolio, /rel="canonical" href="https:\/\/lantonium\.com\/PortfolioLuisGonzalez\.html"/);
   assert.match(readPage('sitemap.xml'), /https:\/\/lantonium\.com\/PortfolioLuisGonzalez\.html/);
   assert.deepEqual(readMenu(readPage('about.html'), 'about.html').links, expectedMenu);
@@ -157,7 +157,7 @@ test('the standalone AI portfolio includes every app, profile details, and worki
   const expectedYears = {
     condor: '2026', docusheetbot: '2025–2026', localtranscriptor: '2026', sevetco: '2026',
     paytollapp: '2023–2024', pixelados: '2026', pdfmas: '2025–2026', imbalances: '2026',
-    'pdf-a-png-movil': '2026', ofusercontrolapp: '2026', ytclipper: '2026',
+    'pdf-a-png-movil': '2026', ofusercontrolapp: '2026', ytclipper: '2026', vtf: '2026',
   };
   for (const [key, year] of Object.entries(expectedYears)) {
     const detail = script.match(new RegExp(`(?:^|\\n)\\s*(?:'${key}'|${key})\\s*:\\s*\\{([\\s\\S]*?)\\n\\s*\\},`));

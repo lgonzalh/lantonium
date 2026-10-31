@@ -116,7 +116,7 @@
       repoNote: 'Repositorio privado; el código fuente no está disponible públicamente.',
     },
     vtf: {
-      year: 'No publicado', status: 'Desarrollado',
+      year: '2026', status: 'Desarrollado',
       description: 'Herramienta web que extrae fotogramas de archivos MP4 y los guarda como imágenes JPG.',
       stack: 'Next.js 15 · React 18 · TypeScript',
       repoNote: 'Repositorio privado; el código fuente no está disponible públicamente.',
