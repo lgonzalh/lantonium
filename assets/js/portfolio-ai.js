@@ -10,6 +10,8 @@
   const themeColor = document.querySelector('meta[name="theme-color"]');
   const updateThemeControl = () => {
     const isLight = root.dataset.theme === 'light';
+    const label = document.getElementById('theme-label');
+    if (label) label.textContent = isLight ? 'Claro' : 'Oscuro';
     themeToggle?.setAttribute('aria-pressed', String(isLight));
     themeToggle?.setAttribute('title', `Cambiar a modo ${isLight ? 'oscuro' : 'claro'}`);
     themeColor?.setAttribute('content', isLight ? '#f2f1ed' : '#050505');
@@ -71,83 +73,8 @@
     }
   });
 
-  const projectDetails = {
-    condor: {
-      year: '2026', status: 'En desarrollo',
-      description: 'Herramienta local-first de ingeniería de software asistida por IA que conserva el contexto, la arquitectura y las decisiones de cada proyecto.',
-      stack: '.NET · C# · Ollama para modelos locales · Clean Architecture (CLI / Core / Infrastructure) · Markdown',
-      github: 'https://github.com/lgonzalh/condor',
-    },
-    docusheetbot: {
-      year: '2025–2026', status: 'Desarrollado',
-      description: 'Automatiza la captura y lectura de documentos en Android, valida los datos extraídos y los sincroniza con hojas de cálculo.',
-      stack: 'Kotlin · Android SDK · OCR e IA en el dispositivo · Google Sheets API',
-      repoNote: 'Repositorio privado; el código fuente no está disponible públicamente.',
-    },
-    localtranscriptor: {
-      year: '2026', status: 'Desarrollado',
-      description: 'Transcribe voz en tiempo real y archivos de audio desde Android, manteniendo el procesamiento y el historial en el dispositivo.',
-      stack: 'Kotlin · Android SDK · modelos locales de IA · SQLite',
-      repoNote: 'Repositorio privado; el código fuente no está disponible públicamente.',
-    },
-    sevetco: {
-      year: '2026', status: 'Desarrollado',
-      description: 'Plataforma de gestión operativa con panel web para administración y una aplicación Android para el trabajo desde dispositivos móviles. Proyecto de pregrado: Ingeniería de Desarrollo de Software, Politécnico Grancolombiano.',
-      stack: 'Web: HTML · CSS · JavaScript · Firebase · Firebase Authentication · Cloud Firestore. Android: Kotlin · Jetpack Compose.',
-      liveUrl: 'https://sevetco-dd27e.web.app', github: 'https://github.com/lgonzalh/sevetco',
-    },
-    paytollapp: {
-      year: '2023–2024', status: 'Desarrollado',
-      description: 'Plataforma cloud para administrar vehículos, tarjetas de peaje, pagos, recargas y extractos. Proyecto de grado: Tecnólogo en Desarrollo de Software, SENA.',
-      stack: '.NET 8 · ASP.NET Core · Entity Framework Core · PostgreSQL en Supabase · HTML · CSS · Bootstrap 5 · JavaScript · Google Cloud Run',
-      liveUrl: 'https://paytollapp-be391.web.app', github: 'https://github.com/lgonzalh/PayTollApp',
-    },
-    pixelados: {
-      year: '2026', status: 'Desarrollado',
-      description: 'Aplicación Android para crear pixel art con herramientas de dibujo, paletas de color y exportación de imágenes PNG.',
-      stack: 'Android · Kotlin · Jetpack Compose · exportación PNG',
-      github: 'https://github.com/lgonzalh/pixelados',
-      downloadUrl: 'https://github.com/lgonzalh/pixelados/releases/download/v1.0-chi/pixelados-1.0-22-chi.apk',
-    },
-    pdfmas: {
-      year: '2025–2026', status: 'Desarrollado',
-      description: 'Aplicación de escritorio para editar, organizar y convertir documentos PDF.',
-      stack: '.NET 8 · Windows Forms · PDFiumViewer · PdfPig · PDFsharp',
-      repoNote: 'Repositorio privado; el código fuente no está disponible públicamente.',
-    },
-    vtf: {
-      year: '2026', status: 'Desarrollado',
-      description: 'Herramienta web que extrae fotogramas de archivos MP4 y los guarda como imágenes JPG.',
-      stack: 'Next.js 15 · React 18 · TypeScript',
-      repoNote: 'Repositorio privado; el código fuente no está disponible públicamente.',
-    },
-    imbalances: {
-      year: '2026', status: 'Desarrollado',
-      description: 'Aplicación de escritorio para analizar balances y apoyar la conciliación financiera intercompany desde Excel.',
-      stack: 'Aplicación de escritorio · Excel · conciliación intercompany y validación de balances',
-      repoNote: 'Repositorio privado; el código fuente no está disponible públicamente.',
-    },
-    'pdf-a-png-movil': {
-      year: '2026', status: 'Desarrollado',
-      description: 'Convierte páginas de documentos PDF a imágenes PNG directamente en un dispositivo Android.',
-      stack: 'Android 12+ · Kotlin · Jetpack Compose · conversión local de páginas PDF a PNG',
-      github: 'https://github.com/lgonzalh/pdf-a-png-movil',
-      downloadUrl: 'https://github.com/lgonzalh/pdf-a-png-movil/releases/download/v1.0/pdf-a-png-movil-1.0.apk',
-    },
-    ofusercontrolapp: {
-      year: '2026', status: 'Desarrollado',
-      description: 'Audita identidades mediante archivos Excel, contrasta usuarios con Active Directory y sincroniza los resultados.',
-      stack: '.NET 10 · ASP.NET Core · C# · Clean Architecture · PostgreSQL · Supabase · SignalR',
-      liveUrl: 'https://ofusercontrolapp-411030722061.northamerica-south1.run.app',
-      github: 'https://github.com/lgonzalh/OFUserControlApp',
-    },
-    ytclipper: {
-      year: '2026', status: 'Desarrollado',
-      description: 'Herramienta de escritorio para descargar videos y extraer segmentos específicos de audio y video.',
-      stack: 'Python 3 · Tkinter · yt-dlp · FFmpeg · Pillow · SQLite',
-      repoNote: 'Repositorio privado; el código fuente no está disponible públicamente.',
-    },
-  };
+  const catalog = JSON.parse(document.getElementById('project-catalog')?.textContent || '[]');
+  const projectDetails = Object.fromEntries(catalog.map(project => [project.id, project]));
 
   const projectDialog = document.getElementById('project-detail-dialog');
   const signalTrack = document.querySelector('.signal-track');
@@ -249,6 +176,9 @@
     if (previewIndex) previewIndex.textContent = row.dataset.projectIndex || '01';
     if (previewType) previewType.textContent = row.dataset.projectType || '';
     if (previewTitle && title) previewTitle.textContent = title;
+    previewImage.hidden = !source;
+    const placeholder = document.getElementById('preview-placeholder');
+    if (placeholder) { placeholder.hidden = Boolean(source); placeholder.textContent = title || ''; }
     if (!source || previewImage.getAttribute('src') === source) return;
 
     const nextImage = new Image();
@@ -281,6 +211,8 @@
       if (!row.hidden) visibleCount += 1;
     });
 
+    const empty = document.getElementById('project-empty');
+    if (empty) empty.hidden = visibleCount !== 0;
     if (projectCount) projectCount.textContent = `${visibleCount} ${visibleCount === 1 ? 'proyecto' : 'proyectos'}`;
     const current = projectRows.find((row) => row.classList.contains('is-active') && !row.hidden);
     const next = current || projectRows.find((row) => !row.hidden);
@@ -297,6 +229,9 @@
   }));
   projectSearch?.addEventListener('input', updateProjectList);
   updateProjectList();
+  const requested = new URLSearchParams(window.location.search).get('proyecto');
+  const requestedRow = projectRows.find(row => row.dataset.projectKey === requested);
+  if (requestedRow) { document.getElementById('work')?.scrollIntoView(); openProjectDetails(requestedRow); }
 
   document.addEventListener('keydown', (event) => {
     const target = event.target;
