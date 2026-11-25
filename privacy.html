@@ -1,117 +1,75 @@
-﻿<!DOCTYPE html>
-<html lang="es">
-
-<head>
+<!doctype html>
+<html lang="es-CO"><head>
   <meta charset="utf-8">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T8GTLPN6PJ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-T8GTLPN6PJ');
-  </script>
-  
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Política de Privacidad — Lantonium</title>
-  <meta name="description"
-    content="Política de privacidad de Lantonium. Cómo recopilamos, usamos y protegemos tus datos.">
+  <meta name="description" content="Tratamiento de datos personales en el sitio de Luis Gonzalez y sus aplicaciones: finalidades, derechos, acceso con Google, Firebase y seguridad.">
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
-  <meta name="author" content="Lantonium">
+  <meta name="author" content="Luis Gonzalez">
+  <meta name="theme-color" content="#050505">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta name="theme-color" content="#4169E1">
-  <meta name="format-detection" content="telephone=no">
-  <link rel="canonical" href="https://lantonium.com/privacy.html">
-  <link rel="alternate" hreflang="es" href="https://lantonium.com/privacy.html">
-  <link rel="alternate" hreflang="x-default" href="https://lantonium.com/privacy.html">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <meta property="og:type" content="article">
-  <meta property="og:title" content="Política de Privacidad — Lantonium">
-  <meta property="og:description" content="Conoce cómo Lantonium gestiona tus datos personales en web y apps Android.">
-  <meta property="og:url" content="https://lantonium.com/privacy.html">
-  <meta property="og:site_name" content="Lantonium">
+  <link rel="canonical" href="https://lantonium.com/privacy">
+  <title>Política de privacidad — Luis Gonzalez</title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Política de privacidad — Luis Gonzalez">
+  <meta property="og:description" content="Tratamiento de datos personales en el sitio de Luis Gonzalez y sus aplicaciones: finalidades, derechos, acceso con Google, Firebase y seguridad.">
+  <meta property="og:url" content="https://lantonium.com/privacy">
+  <meta property="og:site_name" content="Luis Gonzalez · Desarrollador de Software">
   <meta property="og:locale" content="es_CO">
-  <meta property="og:image" content="https://lantonium.com/assets/img/lantonium_logo_black.png">
-  <meta property="og:image:alt" content="Logo oficial de Lantonium">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Política de Privacidad — Lantonium">
-  <meta name="twitter:description" content="Transparencia sobre datos personales y seguridad.">
-  <meta name="twitter:image" content="https://lantonium.com/assets/img/lantonium_logo_black.png">
-  <meta name="twitter:image:alt" content="Logo oficial de Lantonium">
-  <link rel="stylesheet" href="/assets/css/styles.css?v=18">
-  <link rel="stylesheet" href="/assets/css/cursor.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Política de Privacidad",
-      "url": "https://lantonium.com/privacy.html",
-      "isPartOf": { "@type": "WebSite", "@id": "https://lantonium.com/#website" },
-      "about": { "@type": "Organization", "@id": "https://lantonium.com/#organization" }
+  <meta property="og:image" content="https://lantonium.com/assets/img/condor/condor.jpg">
+  <meta property="og:image:alt" content="Interfaz de Condor, herramienta local-first de ingeniería asistida por IA">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Política de privacidad — Luis Gonzalez">
+  <meta name="twitter:description" content="Tratamiento de datos personales en el sitio de Luis Gonzalez y sus aplicaciones: finalidades, derechos, acceso con Google, Firebase y seguridad.">
+  <meta name="twitter:image" content="https://lantonium.com/assets/img/condor/condor.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    try {
+      const storedTheme = localStorage.getItem('theme');
+      const defaultTheme = 'dark';
+      document.documentElement.dataset.theme = storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : defaultTheme;
+    } catch {
+      document.documentElement.dataset.theme = 'dark';
     }
-    </script>
-</head>
-
-<body class="policy-single">
-  <nav class="navbar navbar-expand-lg site-header">
-    <div class="container">
-      <a class="navbar-brand" href="/">
-        <img src="/assets/img/lantonium_logo_black.png" alt="lantonium" width="30" height="30"
-          class="d-inline-block align-text-top">
-        <span class="ps-2 fw-bold">lantonium</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+  </script>
+  <link rel="stylesheet" href="/assets/css/portfolio-ai.css?v=12">
+  <link rel="icon" href="/assets/img/luis.ico" sizes="any">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Política de privacidad","url":"https://lantonium.com/privacy","description":"Tratamiento de datos personales en el sitio de Luis Gonzalez y sus aplicaciones: finalidades, derechos, acceso con Google, Firebase y seguridad.","inLanguage":"es-CO","author":{"@type":"Person","name":"Luis Gonzalez"}}</script>
+</head><body class="ai-portfolio legal-page"><a class="skip-link" href="#main-content">Saltar al contenido</a><header class="portfolio-header" id="top">
+    <a class="wordmark" href="/#top" aria-label="Luis Gonzalez, inicio del portafolio">
+      <span class="wordmark-symbol" aria-hidden="true">LG</span>
+      <span class="wordmark-copy"><strong>LUIS GONZALEZ</strong><small>DESARROLLADOR DE SOFTWARE · BOGOTÁ</small></span>
+    </a>
+    <p class="header-edition">PORTAFOLIO PERSONAL <span>·</span> 2026</p>
+    <div class="header-actions">
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar entre modo claro y oscuro" aria-pressed="false" title="Cambiar tema">
+        <span id="theme-label">Oscuro</span><svg class="theme-symbol theme-symbol--light" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg>
+        <svg class="theme-symbol theme-symbol--dark" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5 8.5 8.5 0 1 0 20.5 15.5Z"></path></svg>
       </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/apps.html">Apps</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/about.html">Acerca de</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/privacy.html">Privacidad</a>
-          </li>
-        </ul>
-      </div>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="portfolio-menu">
+        <span>MENU</span><i aria-hidden="true">+</i>
+      </button>
     </div>
-  </nav>
-
-  <main class="section">
-    <div class="container">
-      <h1 data-key="privacy.title">Política de Privacidad</h1>
-      <p class="section-lead" data-key="privacy.lastUpdate">Última actualización: diciembre 2025</p>
-
-      <article class="card policy-full">
-        <div data-html="privacy.fullText"></div>
-      </article>
-    </div>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-content">
-
-      <div class="footer-copy">
-        <span>© 2021-<span id="year"></span> <span class="fw-bold">lantonium</span>. Todos los derechos reservados.</span>
-      </div>
-    </div>
-  </footer>
-
-  <script src="/assets/js/main.js?v=16" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-  <script src="/assets/js/content.js" defer></script>
-  <script src="/assets/js/card-selection.js?v=5" defer></script>
-  <script src="/assets/js/cursor.js?v=2" defer></script>
-</body>
-
-</html>
-
+  </header>
+  <nav class="menu-panel" id="portfolio-menu" aria-label="Navegación del portafolio" hidden>
+      <div class="menu-panel-top"><span>INDEX · 01—04</span><button class="menu-close" type="button" aria-label="Cerrar menú">CERRAR <span aria-hidden="true">×</span></button></div>
+      <a href="/#work"><span>01</span>Proyectos<span class="menu-arrow" aria-hidden="true">↗</span></a>
+      <a href="/#about"><span>02</span>Acerca de<span class="menu-arrow" aria-hidden="true">↗</span></a>
+      <a href="/#approach"><span>03</span>Enfoque<span class="menu-arrow" aria-hidden="true">↗</span></a>
+      <a href="/#contact"><span>04</span>Contacto<span class="menu-arrow" aria-hidden="true">↗</span></a>
+      <p>Desarrollo de software, datos, automatización e inteligencia artificial aplicada.</p>
+  </nav><main id="main-content" class="legal-content section-shell"><a class="legal-back" href="/">← Volver al portafolio</a><p class="eyebrow">LANTONIUM · SITIO PERSONAL</p><h1>Política de privacidad</h1><p class="legal-date">Última actualización: 25 de noviembre de 2026</p><p class="legal-intro">Esta política explica cómo se tratan los datos personales en mi sitio y en las aplicaciones que desarrollo, según las funciones de cada proyecto.</p><section><h2>1. Responsable y alcance</h2><p>Luis Gonzalez, desarrollador de software independiente en Colombia, es responsable del tratamiento de los datos que recopila directamente a través de sus proyectos personales bajo la identidad Lantonium. Contacto para privacidad: <a href="mailto:lantonium@gmail.com">lantonium@gmail.com</a>.</p><p>Esta política aplica a lantonium.com y sirve como marco general para mis aplicaciones web, móviles y de escritorio. Cada aplicación puede publicar información adicional sobre sus permisos, funciones y proveedores. Los sistemas desarrollados para otras organizaciones se rigen por la política de su responsable; aparecer en este portafolio no significa que yo administre sus datos.</p></section>
+<section><h2>2. Marco colombiano y autorización</h2><p>El tratamiento de datos personales se realiza en el marco de la <a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=49981" target="_blank" rel="noopener noreferrer">Ley 1581 de 2012</a>, el Decreto 1074 de 2015 y las demás normas colombianas aplicables, bajo los principios de finalidad, libertad, transparencia, acceso restringido, seguridad y confidencialidad.</p><p>Cuando se requiera autorización, esta se solicitará de forma previa e informada para finalidades determinadas. El acceso al portafolio no constituye una autorización general para tratar datos sensibles ni para finalidades ajenas al servicio solicitado.</p></section>
+<section><h2>3. Datos del sitio y comunicaciones</h2><p>El portafolio no exige crear una cuenta ni incorpora inicio de sesión. Si me contactas por correo o WhatsApp, recibiré la información que decidas compartir y la utilizaré para atender tu solicitud. El proveedor de alojamiento puede tratar datos técnicos, como la dirección IP y registros de solicitudes, para entregar el sitio y mantener su seguridad.</p><p>Este sitio no utiliza Google Analytics. Guarda localmente la preferencia de tema claro u oscuro. Las fuentes se solicitan a Google Fonts, cuyo proveedor puede recibir datos técnicos de conexión. Los enlaces a GitHub, LinkedIn, WhatsApp y otras aplicaciones conducen a servicios con políticas propias. Los videos de las fichas se sirven como archivos locales, sin reproductores incrustados de YouTube.</p></section>
+<section><h2>4. Datos y permisos de las aplicaciones</h2><p>Según sus funciones, una aplicación puede tratar datos de perfil, documentos, audio, imágenes, registros de clientes, pedidos, información de cobros o diagnósticos técnicos. Solo deben solicitarse los datos y permisos necesarios para la función que el usuario elija. El procesamiento puede realizarse en el dispositivo o en servicios en la nube; no todas las aplicaciones usan cuentas, Firebase o servicios de IA externos.</p><p>En funciones de documentos, audio o imágenes, el usuario debe contar con autorización para tratar los datos de otras personas. Los permisos de cámara, micrófono, archivos o notificaciones se explican y solicitan en la aplicación correspondiente. En VeriPago, las funciones de conciliación pueden tratar notificaciones de pago con permiso del usuario; no se deben introducir contraseñas bancarias en la aplicación.</p></section>
+<section><h2>5. Continuar con Google</h2><p>En las aplicaciones que ofrecen «Continuar con Google», Google autentica al usuario y puede proporcionar, según los permisos solicitados, un identificador, nombre, correo electrónico y foto de perfil. Firebase Authentication puede gestionar el identificador de la cuenta y los tokens de sesión. La aplicación no recibe tu contraseña de Google.</p><p>Estos datos se utilizan para identificarte, permitir el acceso, vincular tu información y gestionar los permisos de tu cuenta. El inicio de sesión no autoriza por sí solo el acceso a Drive, Sheets u otros servicios: cualquier permiso adicional debe informarse y solicitarse para la función correspondiente. Puedes gestionar los accesos de terceros en tu cuenta de Google; revocar un acceso no elimina automáticamente los datos ya guardados en la aplicación.</p><p>Consulta la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Política de Privacidad de Google</a>.</p></section>
+<section><h2>6. Firebase, nube y terceros</h2><p>Cuando un proyecto utiliza Firebase, puede emplear Authentication para cuentas, Cloud Firestore para datos, Cloud Storage para archivos, Hosting para entrega web o Cloud Functions para lógica de servidor. El uso concreto depende de la aplicación; no se afirma que todos estos servicios estén presentes en cada proyecto.</p><p>Los datos alojados por proveedores pueden procesarse fuera de Colombia, según la ubicación y condiciones del servicio. Cuando corresponda, deben aplicarse las condiciones de transmisión o transferencia internacional previstas por la normativa colombiana y los acuerdos pertinentes. No se promete alojamiento exclusivo en Colombia.</p><p>La infraestructura del proveedor no sustituye la configuración de acceso de cada aplicación. Consulta la documentación de <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">privacidad y protección de datos de Firebase</a> y su información de <a href="https://firebase.google.com/support/privacy/security" target="_blank" rel="noopener noreferrer">seguridad</a>. Otros proveedores, como servicios de IA o APIs, deben informarse donde se utilicen.</p></section>
+<section><h2>7. Finalidades y conservación</h2><p>Los datos se tratan para prestar la función solicitada, gestionar cuentas cuando existan, guardar y sincronizar información elegida por el usuario, atender consultas y mantener la seguridad del servicio. No se venden datos personales ni se autoriza su uso publicitario mediante esta política.</p><p>Se conservan durante el tiempo necesario para esas finalidades y para atender obligaciones legales aplicables. Los archivos y registros locales dependen de las opciones de borrado de la aplicación y del dispositivo. La eliminación de una cuenta en la nube puede requerir una solicitud o una función específica; las copias de respaldo y los registros sujetos a conservación legal pueden tener plazos adicionales. La aplicación correspondiente debe informar cualquier condición particular.</p></section>
+<section><h2>8. Seguridad y confidencialidad</h2><p>Los datos que se almacenan en mis aplicaciones deben resguardarse mediante medidas técnicas y organizativas razonables, acordes con su naturaleza, los riesgos y la normativa colombiana aplicable. Entre las medidas que pueden corresponder están las conexiones HTTPS, el control de acceso por usuario y el uso de almacenamiento privado del dispositivo.</p><p>Estas medidas requieren configuración y revisión en cada proyecto. La disponibilidad de funciones de seguridad en Google o Firebase no equivale a una auditoría o certificación de mis aplicaciones. Ningún sistema permite garantizar seguridad absoluta. Evita compartir datos sensibles innecesarios y comunica cualquier incidente al correo de privacidad.</p></section>
+<section><h2>9. Tus derechos y cómo ejercerlos</h2><p>Puedes conocer, acceder, actualizar y rectificar tus datos; solicitar prueba de autorización y conocer su uso; pedir supresión o revocar la autorización cuando proceda legalmente. También puedes presentar quejas ante la Superintendencia de Industria y Comercio una vez agotado el trámite que corresponda ante el responsable.</p><p>Escribe a <a href="mailto:lantonium@gmail.com">lantonium@gmail.com</a> indicando la aplicación, tu solicitud y un medio para responderte. Solo se solicitará la información necesaria para verificar tu identidad y atender el caso. Las consultas se atienden dentro de los términos de la Ley 1581: diez días hábiles, prorrogables por cinco más con aviso; los reclamos, quince días hábiles, prorrogables por ocho más con aviso, conforme a los requisitos legales. La supresión puede tener límites cuando exista un deber legal o contractual de conservación.</p></section>
+<section><h2>10. Menores y cambios</h2><p>No se solicita a menores que creen cuentas o entreguen datos personales en este portafolio. Cuando una aplicación pueda ser usada por menores, cualquier tratamiento debe respetar su interés superior y las condiciones legales de autorización y acompañamiento del representante legal. No deben enviarse datos de menores por canales de contacto sin necesidad.</p><p>Las actualizaciones de esta política se publicarán aquí con su fecha. Los cambios que impliquen nuevas finalidades o autorizaciones se comunicarán y gestionarán según corresponda.</p></section></main><footer class="portfolio-footer">
+        <a class="footer-name" href="/#top">LUIS GONZALEZ <span>DESARROLLADOR DE SOFTWARE</span></a>
+        <div class="footer-links"><a href="/privacy">Privacidad</a><a href="/license">Licencia</a><a href="mailto:lantonium@gmail.com">Correo ↗</a><a href="https://github.com/lgonzalh" target="_blank" rel="noopener noreferrer">Github ↗</a><a href="https://www.linkedin.com/in/lantonium/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div>
+        <span class="footer-year">© <span id="current-year">2026</span></span>
+      </footer><script src="/assets/js/portfolio-ai.js?v=12" defer></script></body></html>
