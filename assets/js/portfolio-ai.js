@@ -150,8 +150,12 @@
       });
     }
 
+    window.renderProjectMedia?.(detail);
     setActiveProject(row);
     projectDialog.showModal();
+    projectDialog.scrollTop = 0;
+    document.body.classList.add('project-open');
+    projectDialog.addEventListener('close', () => row.focus({ preventScroll: true }), { once: true });
   };
 
   dialogClose?.addEventListener('click', () => projectDialog?.close());
