@@ -26,7 +26,182 @@
       "scripts/**",
       "tests/**",
       "**/.*",
-      "**/node_modules/**"
+      "**/node_modules/**",
+      "package.json",
+      "package-lock.json",
+      "content/**"
+    ],
+    "redirects": [
+      {
+        "source": "/PortfolioLuisGonzalez",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/PortfolioLuisGonzalez.html",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/apps",
+        "destination": "/#work",
+        "type": 301
+      },
+      {
+        "source": "/apps.html",
+        "destination": "/#work",
+        "type": 301
+      },
+      {
+        "source": "/about",
+        "destination": "/#about",
+        "type": 301
+      },
+      {
+        "source": "/about.html",
+        "destination": "/#about",
+        "type": 301
+      },
+      {
+        "source": "/acerca",
+        "destination": "/#about",
+        "type": 301
+      },
+      {
+        "source": "/acerca.html",
+        "destination": "/#about",
+        "type": 301
+      },
+      {
+        "source": "/condor",
+        "destination": "/?proyecto=condor",
+        "type": 301
+      },
+      {
+        "source": "/condor.html",
+        "destination": "/?proyecto=condor",
+        "type": 301
+      },
+      {
+        "source": "/docusheetbot",
+        "destination": "/?proyecto=docusheetbot",
+        "type": 301
+      },
+      {
+        "source": "/docusheetbot.html",
+        "destination": "/?proyecto=docusheetbot",
+        "type": 301
+      },
+      {
+        "source": "/localtranscriptor",
+        "destination": "/?proyecto=localtranscriptor",
+        "type": 301
+      },
+      {
+        "source": "/localtranscriptor.html",
+        "destination": "/?proyecto=localtranscriptor",
+        "type": 301
+      },
+      {
+        "source": "/sevetco",
+        "destination": "/?proyecto=sevetco",
+        "type": 301
+      },
+      {
+        "source": "/sevetco.html",
+        "destination": "/?proyecto=sevetco",
+        "type": 301
+      },
+      {
+        "source": "/paytollapp",
+        "destination": "/?proyecto=paytollapp",
+        "type": 301
+      },
+      {
+        "source": "/paytollapp.html",
+        "destination": "/?proyecto=paytollapp",
+        "type": 301
+      },
+      {
+        "source": "/pixelados",
+        "destination": "/?proyecto=pixelados",
+        "type": 301
+      },
+      {
+        "source": "/pixelados.html",
+        "destination": "/?proyecto=pixelados",
+        "type": 301
+      },
+      {
+        "source": "/pdfmas",
+        "destination": "/?proyecto=pdfmas",
+        "type": 301
+      },
+      {
+        "source": "/pdfmas.html",
+        "destination": "/?proyecto=pdfmas",
+        "type": 301
+      },
+      {
+        "source": "/vtf",
+        "destination": "/?proyecto=vtf",
+        "type": 301
+      },
+      {
+        "source": "/vtf.html",
+        "destination": "/?proyecto=vtf",
+        "type": 301
+      },
+      {
+        "source": "/imbalances",
+        "destination": "/?proyecto=imbalances",
+        "type": 301
+      },
+      {
+        "source": "/imbalances.html",
+        "destination": "/?proyecto=imbalances",
+        "type": 301
+      },
+      {
+        "source": "/pdf-a-png-movil",
+        "destination": "/?proyecto=pdf-a-png-movil",
+        "type": 301
+      },
+      {
+        "source": "/pdf-a-png-movil.html",
+        "destination": "/?proyecto=pdf-a-png-movil",
+        "type": 301
+      },
+      {
+        "source": "/ofusercontrolapp",
+        "destination": "/?proyecto=ofusercontrolapp",
+        "type": 301
+      },
+      {
+        "source": "/ofusercontrolapp.html",
+        "destination": "/?proyecto=ofusercontrolapp",
+        "type": 301
+      },
+      {
+        "source": "/ytclipper",
+        "destination": "/?proyecto=ytclipper",
+        "type": 301
+      },
+      {
+        "source": "/ytclipper.html",
+        "destination": "/?proyecto=ytclipper",
+        "type": 301
+      },
+      {
+        "source": "/lntcnfg",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/lntcnfg.html",
+        "destination": "/",
+        "type": 301
+      }
     ]
   }
 }

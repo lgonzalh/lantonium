@@ -1,0 +1,272 @@
+{
+  "condor": {
+    "name": "Condor",
+    "type": "PRODUCT · .NET / AI",
+    "status": "In development",
+    "summary": "Local-first software engineering that preserves each project's context and knowledge.",
+    "description": "A local-first, AI-assisted software engineering tool that keeps project context, architecture, and decisions together.",
+    "review": "Condor is a local-first, AI-assisted software engineering platform that puts project knowledge before code generation. It preserves context, supports architectural consistency, and records decisions in living documentation with traceability and architecture-guided development. In Condor, conversations are temporary; documentation is the source of truth.",
+    "features": [
+      "Living documentation as the source of truth, so context carries across sessions.",
+      "Architecture-guided development: understand, plan, design, implement, verify, and document.",
+      "Technical decisions tracked in durable project documents.",
+      "Local AI models (LLMs) without relying on external model services.",
+      "Continuity across sessions, tools, and models without depending on previous conversations."
+    ],
+    "stack": ".NET · C# · Ollama for local models · Clean Architecture (CLI / Core / Infrastructure) · Markdown"
+  },
+  "veripago": {
+    "name": "VeriPago",
+    "type": "PLATFORM · QR PAYMENTS",
+    "status": "In development",
+    "summary": "Organizes QR payments, orders, and payment confirmation tracking.",
+    "description": "A web and Android project for organizing QR payments with Nequi, Daviplata, and Bre-B, with Google sign-in and tools tailored to each user's role.",
+    "review": "VeriPago brings payment links, orders, and status tracking together for merchants and customers. Money is transferred directly to the merchant. Notification reconciliation and end-to-end validation are still in development; VeriPago is not a banking payment gateway or an infallible verification service.",
+    "features": [
+      "Public payment links and orders.",
+      "Google sign-in and role-based user profiles.",
+      "Order and payment status tracking.",
+      "Android app with local storage and deferred synchronization."
+    ],
+    "stack": "Android: Kotlin · Jetpack Compose · Room. Web: Firebase Authentication · Cloud Firestore · Cloud Functions.",
+    "imageAlts": [
+      "VeriPago public promotional website; this is not an application dashboard screen.",
+      "VeriPago public website section explaining payment options; this is not a dashboard screen.",
+      "VeriPago Android: quick charge with wallet selection.",
+      "VeriPago Android: product and tax form."
+    ]
+  },
+  "sevetco": {
+    "name": "SEVETCO",
+    "type": "PLATFORM · WEB + ANDROID",
+    "status": "Completed",
+    "summary": "Operational management, services, and providers in a web and mobile platform.",
+    "description": "An operations management platform with a web console for administrators and providers, plus an Android app for mobile work. Undergraduate Software Development Engineering academic project at Politécnico Grancolombiano.",
+    "review": "SEVETCO combines a web console for administration and provider management with a mobile app that supports operational tasks across devices.",
+    "features": [
+      "Web console for administrators and providers.",
+      "Access from mobile devices.",
+      "Authentication and data management integrated with Firebase."
+    ],
+    "stack": "Web: HTML · CSS · JavaScript · Firebase Authentication · Cloud Firestore. Android: Kotlin · Jetpack Compose.",
+    "imageAlts": [
+      "SEVETCO web: administration dashboard.", "SEVETCO web: user management.",
+      "SEVETCO web: provider management.", "SEVETCO web: services.",
+      "SEVETCO web: appointments.", "SEVETCO web: activity tracking.",
+      "SEVETCO Android: sign-in screen.", "SEVETCO Android: home screen.",
+      "SEVETCO Android: pets list.", "SEVETCO Android: services.",
+      "SEVETCO Android: appointment scheduling, step 1.", "SEVETCO Android: appointments list."
+    ],
+    "videoTitles": ["SEVETCO · web version", "SEVETCO · Android version"]
+  },
+  "pixelados": {
+    "name": "Pixelados",
+    "type": "APP · PIXEL ART",
+    "status": "Completed",
+    "summary": "A touch-friendly pixel art canvas with drawing tools and PNG export.",
+    "description": "An Android app for creating pixel art with drawing tools, color palettes, and PNG image export.",
+    "review": "Pixelados turns a touch screen into a pixel canvas. Its controls support drawing with one finger and panning or zooming with two, along with saved drawings and tools for continued editing.",
+    "features": [
+      "Multiple canvas sizes with drawing, fill, erase, and selection tools.",
+      "Color palettes, symmetry, grid, and reference layer.",
+      "Stroke-level undo and saved drawings.",
+      "PNG export without smoothing, with transparency.",
+      "Appearance palettes and light and dark modes."
+    ],
+    "stack": "Android · Kotlin · Jetpack Compose · PNG export",
+    "videoTitles": ["Pixelados · app demo"]
+  },
+  "ofusercontrolapp": {
+    "name": "OFUserControlApp",
+    "type": "SOFTWARE · IDENTITY MANAGEMENT",
+    "status": "Completed",
+    "summary": "Audits and synchronizes identities between external systems and Active Directory.",
+    "description": "An application for comparing Excel user lists with Active Directory, reviewing discrepancies, and checking processing results.",
+    "review": "OFUserControlApp supports identity reviews across external systems and Active Directory. It imports spreadsheet data, compares records, and highlights differences for review. Its architecture separates business logic, persistence, and the interface; SignalR reports processing progress. It is an audit support tool, and results should be interpreted according to each organization's rules and source data.",
+    "features": [
+      "Compare user lists with Active Directory records.",
+      "Import, validate, and export spreadsheet data.",
+      "Review discrepancies and user activity status.",
+      "Track uploads and processing progress with SignalR."
+    ],
+    "stack": ".NET 10 · ASP.NET Core · C# · Clean Architecture · PostgreSQL · Supabase · SignalR"
+  },
+  "docusheetbot": {
+    "name": "DocuSheetBot",
+    "type": "APP · AUTOMATION",
+    "status": "Completed",
+    "year": "2025–2026",
+    "summary": "Automates documents and syncs AI-extracted data from Android.",
+    "description": "Automates document capture and reading on Android, validates extracted data, and syncs it with spreadsheets.",
+    "review": "DocuSheetBot streamlines document handling on Android. It processes images, extracts data, and organizes information for analysis and reporting.",
+    "features": [
+      "Document scanning and intelligent processing.",
+      "Spreadsheet synchronization.",
+      "Basic validation and change auditing.",
+      "Minimal, mobile-optimized interface."
+    ],
+    "stack": "Kotlin · Android SDK · On-device OCR and AI · Google Sheets API",
+    "repoNote": "Private repository; source code is not publicly available."
+  },
+  "localtranscriptor": {
+    "name": "LocalTranscriptor",
+    "type": "APP · ON-DEVICE TRANSCRIPTION",
+    "status": "Completed",
+    "summary": "Transcribes audio on-device and keeps processing local.",
+    "description": "An Android app for transcribing speech and audio files with on-device processing and local history.",
+    "review": "LocalTranscriptor turns speech and audio files into text on Android. Processing and history stay on the device so content can be handled locally. Transcription quality depends on the audio, the model, and the device resources; review the resulting text before reusing it.",
+    "features": [
+      "Speech transcription with pause and segment detection.",
+      "On-device processing of stored audio files.",
+      "Local transcription history for later review.",
+      "Background audio capture subject to Android permissions and restrictions."
+    ],
+    "stack": "Kotlin · Android SDK · Local AI models · SQLite",
+    "repoNote": "Private repository; source code is not publicly available.",
+    "videoTitles": ["LocalTranscriptor · app demo", "LocalTranscriptor · app demo"]
+  },
+  "paytollapp": {
+    "name": "PayTollApp",
+    "type": "PLATFORM · WEB / CLOUD",
+    "status": "Completed",
+    "year": "2023–2024",
+    "summary": "Automates toll payment and electronic top-up management.",
+    "description": "A web application for managing vehicles, toll tags, payments, top-ups, and statements. Capstone project for software development technology training at SENA.",
+    "review": "PayTollApp brings vehicle and toll-tag management together with payment and top-up records in a web application. The project combines a web interface, .NET services, and a PostgreSQL database. Built as a SENA software development technology capstone, it demonstrates a full flow across the interface, business logic, and persistence.",
+    "features": [
+      "Manage users, vehicles, and linked toll tags.",
+      "Record and review payments and balance top-ups.",
+      "Generate statements and view transaction history.",
+      "Backend services in .NET with PostgreSQL persistence.",
+      "Shortcut module for running and reviewing SQL queries."
+    ],
+    "stack": ".NET 8 · ASP.NET Core · Entity Framework Core · PostgreSQL on Supabase · HTML · CSS · Bootstrap 5 · JavaScript · Google Cloud Run",
+    "videoTitles": ["PayTollApp · app demo"]
+  },
+  "pdfmas": {
+    "name": "PDF+",
+    "type": "APP · DOCUMENTS",
+    "status": "Completed",
+    "year": "2025–2026",
+    "summary": "Desktop tools for editing, organizing, and converting PDF documents.",
+    "description": "A desktop application for editing, organizing, and converting PDF documents.",
+    "review": "PDF+ brings common PDF tasks into a desktop interface, including editing, page management, image insertion, and file conversion.",
+    "features": [
+      "Edit text and images on PDF pages.",
+      "Reorder and manage pages.",
+      "Merge documents and create PDFs from images.",
+      "Convert documents and use document viewing tools."
+    ],
+    "stack": ".NET 8 · Windows Forms · PDFiumViewer · PdfPig · PDFsharp",
+    "repoNote": "Private repository; source code is not publicly available.",
+    "videoTitles": ["PDF+ · app demo"]
+  },
+  "vtf": {
+    "name": "Video to Frames",
+    "type": "TOOL · VIDEO",
+    "status": "Completed",
+    "summary": "Extracts frames from MP4 videos and saves them as JPG images.",
+    "description": "A web tool that extracts frames from MP4 files and saves them as JPG images.",
+    "review": "Video to Frames (VTF) processes videos into individual images. The interface guides the user from selecting a file through to downloading the extracted frames.",
+    "features": [
+      "Upload MP4 videos.",
+      "Convert video frames to JPG images.",
+      "Preview processing steps.",
+      "Download generated results."
+    ],
+    "stack": "Next.js 15 · React 18 · TypeScript",
+    "repoNote": "Private repository; source code is not publicly available.",
+    "videoTitles": ["Video to Frames · app demo"]
+  },
+  "imbalances": {
+    "name": "Imbalances",
+    "type": "SOFTWARE · FINANCE",
+    "status": "Completed",
+    "summary": "Intercompany financial review and balance reconciliation from Excel.",
+    "description": "A desktop application for comparing company balances and supporting account reconciliation from Excel files.",
+    "review": "Imbalances supports intercompany balance reviews using Excel files. It scans work folders, compares accounts receivable and payable, and presents differences for analysis. Findings and review statuses are managed in the source templates without requiring an additional database. The tool organizes information for close review; accounting validation remains with the person performing the review.",
+    "features": [
+      "Read Excel workbooks organized in folders and subfolders.",
+      "Compare accounts receivable and payable across companies.",
+      "Identify reports available or still needed for close.",
+      "Record findings and review statuses in source templates.",
+      "Review a differences panel to support analysis and accounting corrections."
+    ],
+    "stack": "Desktop application · Excel · intercompany reconciliation and balance validation",
+    "repoNote": "Private repository; source code is not publicly available.",
+    "videoTitles": ["Imbalances · app demo"]
+  },
+  "pdf-a-png-movil": {
+    "name": "PDF to PNG Mobile",
+    "type": "APP · DOCUMENTS",
+    "status": "Completed",
+    "summary": "Converts PDF documents to PNG images directly on mobile.",
+    "description": "An Android app that converts PDF pages into PNG images using on-device processing.",
+    "review": "PDF to PNG Mobile converts PDF documents into images on an Android phone or tablet. Processing happens on the device, making it easier to reuse pages as images for sharing or archiving. Output file size depends on the document and conversion resolution; converting to PNG does not necessarily reduce file size.",
+    "features": [
+      "Convert PDF pages to PNG images.",
+      "Process documents locally, without an internet connection for conversion.",
+      "Use on compatible Android phones and tablets."
+    ],
+    "stack": "Android 12+ · Kotlin · Jetpack Compose · on-device PDF page conversion",
+    "videoTitles": ["PDF to PNG Mobile · app demo"]
+  },
+  "ytclipper": {
+    "name": "YT Downloader - Clipper",
+    "type": "TOOL · MULTIMEDIA",
+    "status": "Completed",
+    "summary": "Downloads videos and extracts precise audio and video segments.",
+    "description": "A desktop application for downloading video or audio and selecting segments of content owned by the user or otherwise authorized.",
+    "review": "YT Downloader - Clipper combines a Python desktop interface with yt-dlp and FFmpeg. It can inspect a link, show available formats, and download full content or a selected interval. It reports progress and lets the user choose an output folder. It is intended for content the user owns, is authorized to use, or may use under applicable law and the source service's terms.",
+    "features": [
+      "Choose start and end times to prepare clips.",
+      "Download video with audio, video only, or extract audio to MP3.",
+      "Choose quality from formats available at the source.",
+      "Track progress, speed, and estimated remaining time.",
+      "Paste links from the clipboard and choose an output folder."
+    ],
+    "stack": "Python 3 · Tkinter · yt-dlp · FFmpeg · Pillow · SQLite",
+    "repoNote": "Private repository; source code is not publicly available.",
+    "videoTitles": ["YT Downloader - Clipper · app demo"]
+  },
+  "yt2mp3": {
+    "name": "YT2MP3",
+    "type": "APP · AUDIO",
+    "status": "Completed",
+    "summary": "Converts audio from YouTube playlists to MP3 on Android.",
+    "description": "An Android app for downloading audio from YouTube playlists and converting it to 192 kbps MP3 for content the user owns or is authorized to use.",
+    "review": "YT2MP3 lets users review a playlist before downloading, check estimated size and available storage, and choose an output folder. Downloads run in the background with progress notifications. It requires Android 13 or later and a YouTube Data API key configured by the user.",
+    "features": [
+      "Validate YouTube playlist links.",
+      "Review tracks, estimated file size, and free storage.",
+      "Run downloads in the background with WorkManager.",
+      "Convert to MP3 and choose an output folder."
+    ],
+    "stack": "Kotlin · Jetpack Compose · Material 3 · WorkManager · Retrofit · Moshi · DataStore · YouTube Data API v3 · yt-dlp · FFmpeg",
+    "repoNote": "Private repository; source code is not publicly available.",
+    "imageAlts": ["YT2MP3: home screen and playlist selection."]
+  },
+  "appsistemaclientes": {
+    "name": "AppSistemaClientes",
+    "type": "ACADEMIC PROJECT · JAVA",
+    "year": "Academic project",
+    "status": "Academic project",
+    "summary": "A Java academic project focused on a customer management system.",
+    "description": "A desktop application for managing customer records, developed in Java during software development technology training at SENA.",
+    "review": "The application combines a JavaFX interface with Spring Boot services and MySQL persistence. It can list, save, update, and delete customer records through separate presentation, service, and repository layers.",
+    "features": [
+      "List and search customers by identifier.",
+      "Create and update customer records.",
+      "Delete customer records.",
+      "JavaFX interface with Spring Data JPA persistence."
+    ],
+    "stack": "Java 22 · JavaFX 22 · Spring Boot 3.2 · Spring Data JPA · MySQL · Maven",
+    "imageAlts": [
+      "AppSistemaClientes JavaFX: customer table with three local demo records.",
+      "AppSistemaClientes JavaFX: selected customer form and records table.",
+      "AppSistemaClientes: architecture diagram based on the source code.",
+      "AppSistemaClientes: CRUD workflow diagram based on the source code.",
+      "AppSistemaClientes: MySQL customer persistence diagram based on the source code."
+    ]
+  }
+}

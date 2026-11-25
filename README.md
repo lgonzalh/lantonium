@@ -1,150 +1,66 @@
-# Lantonium
-**English | Español Latinoamericano**
+# Lantonium · Luis Gonzalez
 
----
+Portafolio personal de un desarrollador de software: aplicaciones web, móviles y de escritorio, datos, automatización e inteligencia artificial aplicada. El sitio está en español latinoamericano y usa el diseño del portafolio original, con modo oscuro por defecto y selector de tema.
 
-## English
-### Executive Summary
-Lantonium is a modern, responsive portfolio and product showcase website focused on Android, AI, automation, and enterprise-grade software delivery. The site presents project pages, app detail pages, privacy information, and a branded landing experience with a consistent glassmorphism design system across cards and subcards.
+## Desarrollo y publicación
 
-The platform is built as a static web application with a decoupled content layer, enabling fast updates to key copy blocks and page sections without changing core layout code.
+La integración se trabaja y sincroniza con GitHub en la rama `developer`. La rama `main` permanece sin cambios. **No publicar en Firebase sin confirmación expresa del usuario.** La versión en inglés, su enlace y el selector con bandera del Reino Unido se crearán únicamente cuando el usuario confirme que el sitio puede publicarse. Por ahora, la bandera de Colombia identifica el español.
 
-### Technology Stack
-#### Frontend
-- HTML5
-- CSS3 (custom design system + responsive breakpoints)
-- Bootstrap 5
-- Vanilla JavaScript (UI behavior and dynamic interactions)
+Regla de trabajo: **una unidad funcional = un test + un commit**. Se debe ejecutar la prueba correspondiente antes de confirmar el cambio y sincronizarlo con GitHub.
 
-#### Content Layer
-- JSON-based content source (`content/site.json`, `content/privacy.json`)
-- Runtime binding via `data-key`, `data-html`, and `data-attr-key`
+## Preparar y verificar
 
-#### UX / UI
-- Global typography using `Ford Antenna Regular`
-- Unified card/subcard styling (glass effect, borders, hover/touch interactions)
-- Advanced Glassmorphism UI (translucent fixed navbar and footer)
-- 3D CSS Sway Animations on cards and profile sections
-- Dynamic slide-in text entrance animations
-- Pointer + touch behavior support for consistent desktop/mobile UX
+Requiere Node.js 22 o posterior, npm y Python 3 para la auditoría SEO.
 
-### Main Site Surface
-| Area | Route | Purpose |
-|---|---|---|
-| Landing | `/` | Brand presentation, core value proposition, strategic message |
-| Apps Catalog | `/apps.html` | Consolidated app portfolio overview |
-| About | `/about.html` | Professional profile and contact points |
-| Privacy | `/privacy.html` | Privacy policy and data transparency information |
-| App Details | `/paytollapp.html` | Product-specific overview and capabilities |
-| App Details | `/ofusercontrolapp.html` | Product-specific overview, videos and gallery |
-| App Details | `/imbalances.html` | Product-specific overview and capabilities |
-| App Details | `/localtranscriptor.html` | Product-specific overview, videos and gallery |
-| App Details | `/docusheetbot.html` | Product-specific overview and capabilities |
-| Error Page | `/404.html` | Custom not-found experience |
-
-### Project Structure
-| Path | Purpose |
-|---|---|
-| `assets/css/` | Global styles, visual system, responsive behavior |
-| `assets/js/` | Client-side interactions and content loading |
-| `assets/fonts/` | Brand typography assets |
-| `assets/img/` | Static image assets |
-| `assets/mp4/` | Video demo assets |
-| `content/` | Structured dynamic content in JSON |
-
-### Local Development
-1. Clone repository.
-2. Open project folder in your editor.
-3. Run a local static server (recommended) and open `http://localhost`.
-
-Example:
-```bash
-python -m http.server 8080
-```
-
-### Notes
-- This repository is focused on a static, production-ready portfolio website.
-- Content and visuals are designed for fast iteration while preserving consistent branding and UI behavior.
-
-### Continuous SEO
-- Operational guide: `docs/SEO_CONTINUO.md`
-- Local audit script:
-```bash
+```powershell
+npm ci --ignore-scripts
+npm run build
+npm test
+npm run test:browser
 python scripts/seo_audit.py
 ```
-- Recommendation: run the audit before every deploy and whenever a new page is added.
-- GitHub Actions workflow: `.github/workflows/seo-audit.yml` (runs automatically on every push/PR to `main`).
 
----
+Las pruebas de navegador usan Microsoft Edge instalado en Windows. En CI usan Chromium de Playwright; antes de ejecutarlas en ese entorno se instala con `npx playwright install --with-deps chromium`. La integración continua verifica el sitio y no publica en Firebase.
 
-## Español Latinoamericano
-### Resumen Ejecutivo
-Lantonium es un sitio web moderno y responsive de portafolio y vitrina de productos, enfocado en Android, IA, automatización y entrega de software de nivel empresarial. El sitio presenta páginas de proyectos, detalles de apps, información de privacidad y una portada de marca con un sistema visual consistente tipo glassmorphism en cards y subcards.
+Para revisar el sitio localmente, ejecuta `npm run preview` y abre `http://127.0.0.1:4173`. El servidor local aplica las redirecciones exactas configuradas para el sitio, sirve rutas limpias como `/privacy`, admite búsqueda de posición en videos y devuelve la página 404 para rutas desconocidas. Las pruebas de navegador utilizan este mismo servidor. No realiza publicaciones ni conexiones de despliegue a Firebase.
 
-La plataforma está construida como una aplicación web estática con una capa de contenido desacoplada, lo que permite actualizar textos y bloques clave sin modificar la estructura base de layout.
+## Contenido y estructura
 
-### Stack Tecnológico
-#### Frontend
-- HTML5
-- CSS3 (sistema de diseño propio + breakpoints responsive)
-- Bootstrap 5
-- JavaScript Vanilla (comportamiento UI e interacciones dinámicas)
+| Fuente | Uso |
+| --- | --- |
+| `content/projects.json` | Orden, textos, tecnologías, enlaces y medios de los quince proyectos |
+| `content/pages.json` | Textos de privacidad y licencia |
+| `scripts/build-portfolio.cjs` | Regenera tarjetas, cinta de proyectos y catálogo integrado en `index.html` |
+| `scripts/build-pages.cjs` | Regenera páginas legales, catálogo accesible, página 404 y documento de textos |
+| `assets/img/` y `assets/mp4/` | Capturas y demostraciones locales |
+| `firebase.json` | Configuración de alojamiento y redirecciones; no implica publicación |
+| `docs/contenidos-proyectos.md` | Copia de revisión de los textos de proyectos, generada desde el catálogo |
+| `docs/entrega-integracion.md` | Alcance y condiciones de entrega |
 
-#### Capa de Contenido
-- Fuente de contenido basada en JSON (`content/site.json`, `content/privacy.json`)
-- Enlace dinámico en runtime mediante `data-key`, `data-html` y `data-attr-key`
+Después de editar las fuentes de contenido, ejecuta `npm run build` y confirma también los archivos generados. `index.html` conserva la estructura de portada, perfil, navegación y contacto. Los modales se controlan con `assets/js/portfolio-ai.js` y las galerías con `assets/js/project-media.js`.
 
-#### UX / UI
-- Tipografía global con `Ford Antenna Regular`
-- Estilo unificado de cards/subcards (efecto cristal, bordes, interacciones hover/touch)
-- UI Glassmorphism avanzado (navbar y footer fijos y traslúcidos)
-- Animaciones CSS 3D de vaivén en cards y perfil
-- Animaciones dinámicas de entrada de texto (slide-in)
-- Soporte para puntero y táctil para UX consistente en desktop y móvil
+## Proyectos
 
-### Superficie Principal del Sitio
-| Área | Ruta | Propósito |
-|---|---|---|
-| Inicio | `/` | Presentación de marca, propuesta de valor y mensaje estratégico |
-| Catálogo Apps | `/apps.html` | Vista consolidada del portafolio de aplicaciones |
-| Acerca de | `/about.html` | Perfil profesional y puntos de contacto |
-| Privacidad | `/privacy.html` | Política de privacidad y transparencia de datos |
-| Detalle App | `/paytollapp.html` | Reseña y capacidades específicas del producto |
-| Detalle App | `/ofusercontrolapp.html` | Reseña y capacidades específicas del producto |
-| Detalle App | `/imbalances.html` | Reseña y capacidades específicas del producto |
-| Detalle App | `/localtranscriptor.html` | Reseña, videos y galería del producto |
-| Detalle App | `/docusheetbot.html` | Reseña y capacidades específicas del producto |
-| Error | `/404.html` | Experiencia personalizada de página no encontrada |
+1. Cóndor
+2. VeriPago
+3. SEVETCO
+4. Pixelados
+5. OFUserControlApp
+6. DocuSheetBot
+7. LocalTranscriptor
+8. PayTollApp
+9. PDF+
+10. Video to Frames
+11. Imbalances
+12. PDF a PNG Móvil
+13. YT Downloader - Clipper
+14. YT2MP3
+15. AppSistemaClientes
 
-### Estructura del Proyecto
-| Ruta | Propósito |
-|---|---|
-| `assets/css/` | Estilos globales, sistema visual y responsive |
-| `assets/js/` | Interacciones del cliente y carga dinámica de contenido |
-| `assets/fonts/` | Activos tipográficos de marca |
-| `assets/img/` | Activos de imagen |
-| `assets/mp4/` | Activos de video demo |
-| `content/` | Contenido dinámico estructurado en JSON |
+VeriPago y SEVETCO presentan sus versiones web y Android con galerías separadas. Las fichas muestran únicamente los medios disponibles en el catálogo; no se inventan demostraciones ni resultados. Las direcciones antiguas de proyectos apuntan a sus fichas del sitio unificado.
 
-### Desarrollo Local
-1. Clona el repositorio.
-2. Abre la carpeta del proyecto en tu editor.
-3. Levanta un servidor estático local (recomendado) y abre `http://localhost`.
+## Privacidad y derechos
 
-Ejemplo:
-```bash
-python -m http.server 8080
-```
+El contacto público es `lantonium@gmail.com`. El portafolio no exige cuentas ni utiliza Google Analytics. La política explica el tratamiento de datos según las funciones de cada aplicación, el acceso con Google, los servicios Firebase y los derechos previstos en el marco colombiano.
 
-### Notas
-- Este repositorio está orientado a un sitio web estático listo para producción.
-- El contenido y la capa visual están preparados para iteraciones rápidas manteniendo consistencia de marca y comportamiento UI.
-
-### SEO Continuo
-- Guía operativa: `docs/SEO_CONTINUO.md`
-- Script de auditoría local:
-```bash
-python scripts/seo_audit.py
-```
-- Recomendación: ejecutar la auditoría antes de cada despliegue y cada vez que se agregue una nueva página.
-- Workflow en GitHub Actions: `.github/workflows/seo-audit.yml` (se ejecuta automáticamente en cada push/PR a `main`).
+La reserva general de derechos respeta licencias particulares y materiales de terceros. Entre las excepciones documentadas están la licencia CC BY 4.0 publicada en PDF a PNG Móvil y las condiciones propias de Pixelados. Esta integración no modifica licencias en otros repositorios.

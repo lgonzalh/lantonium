@@ -1,0 +1,20 @@
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const root = path.resolve(__dirname, '..');
+const read = name => fs.readFileSync(path.join(root, name), 'utf8');
+test('the unified home presents the approved profile, catalog and dark default', () => {
+  const html = read('index.html');
+  const projects = JSON.parse(read('content/projects.json'));
+  assert.deepEqual([...html.matchAll(/data-project-key="([^"]+)"/g)].map(m=>m[1]), projects.map(p=>p.id));
+  assert.deepEqual(JSON.parse(html.match(/id="project-catalog" type="application\/json">([\s\S]*?)<\/script>/)[1]), projects);
+  assert.match(html, /const defaultTheme = 'dark'/);
+  assert.doesNotMatch(html, /prefers-color-scheme|lgonzalh@outlook|googletagmanager/);
+  assert.match(html, /estudiante de Ingeniería de Software/);
+  assert.match(html, /tecnólogo en Análisis y Desarrollo de Software del SENA/);
+  assert.match(html, /lantonium@gmail.com/);
+  assert.match(html, /id="theme-toggle"/);
+  assert.match(html, /id="cursor-orbit"/);
+  for(const p of projects) assert.ok(html.includes(`<span>${p.name.toLocaleUpperCase('es-CO')}</span>`));
+});
