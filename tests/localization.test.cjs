@@ -49,8 +49,8 @@ test('public interface keeps Colombian Spanish and provides the authorized Engli
   assert.match(license,/ALL RIGHTS RESERVED/);
   assert.match(license,/TODOS LOS DERECHOS RESERVADOS/);
   const readme=fs.readFileSync(path.join(root,'README.md'),'utf8');
-  assert.match(readme,/## Sitio en español/);
-  assert.match(readme,/## English version/);
+  assert.match(readme,/^# Español$/m);
+  assert.match(readme,/^# English$/m);
   assert.match(readme,/\[`LICENSE\.md`\]\(LICENSE\.md\)/);
   const english404=fs.readFileSync(path.join(root,'en/404.html'),'utf8');
   assert.match(english404,/This page cannot be found/);
