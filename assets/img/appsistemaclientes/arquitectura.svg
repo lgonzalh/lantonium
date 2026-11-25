@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000" role="img" aria-labelledby="diagram-title diagram-description">
+  <title id="diagram-title">Esquema de arquitectura · AppSistemaClientes</title>
+  <desc id="diagram-description">Diagrama basado en el código del proyecto; no es una captura de la aplicación. JavaFX y FXML se conectan con un servicio Spring, Spring Data JPA y MySQL. El servicio permite listar, buscar por identificador, guardar y eliminar clientes.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1 8 5 1 9" fill="none" stroke="#eeede8" stroke-width="1.7"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="1000" fill="#080808"/>
+  <g font-family="Consolas, 'Courier New', monospace" fill="#eeede8">
+    <text x="64" y="68" fill="#aaa8a1" font-size="17" letter-spacing="3">LANTONIUM / PROYECTO ACADÉMICO SENA</text>
+    <text x="64" y="140" font-size="42" letter-spacing="-1.7">Esquema de arquitectura · AppSistemaClientes</text>
+    <text x="64" y="185" fill="#aaa8a1" font-size="23">Aplicación de escritorio · Java 22 · JavaFX 22 · Spring Boot 3.2.5</text>
+    <path d="M64 224H1376" stroke="#44433e"/>
+    <text x="64" y="273" fill="#aaa8a1" font-size="17" letter-spacing="2">01 / CAPAS Y PERSISTENCIA</text>
+
+    <g stroke="#66645e" fill="#111110">
+      <rect x="64" y="315" width="300" height="184"/>
+      <rect x="400" y="315" width="300" height="184"/>
+      <rect x="736" y="315" width="300" height="184"/>
+      <rect x="1072" y="315" width="300" height="184"/>
+    </g>
+    <g font-size="25">
+      <text x="84" y="361">JavaFX / FXML</text>
+      <text x="420" y="361">Servicio Spring</text>
+      <text x="756" y="361">Spring Data JPA</text>
+      <text x="1092" y="361">MySQL</text>
+    </g>
+    <g fill="#aaa8a1" font-size="19">
+      <text x="84" y="408">SistemaClientesFx</text>
+      <text x="84" y="440">index.fxml</text>
+      <text x="84" y="472">FXMLLoader</text>
+      <text x="420" y="408">ClienteServicio</text>
+      <text x="420" y="440">IClienteServicio</text>
+      <text x="756" y="408">ClienteRepositorio</text>
+      <text x="756" y="440">Modelo: Cliente</text>
+      <text x="1092" y="408">Persistencia</text>
+      <text x="1092" y="440">de clientes</text>
+    </g>
+    <g fill="none" stroke="#eeede8" stroke-width="1.7" marker-end="url(#arrow)">
+      <path d="M368 407H394"/>
+      <path d="M704 407H730"/>
+      <path d="M1040 407H1066"/>
+    </g>
+    <text x="64" y="544" fill="#aaa8a1" font-size="19">FXMLLoader obtiene los controladores desde el contexto de Spring.</text>
+
+    <text x="64" y="608" fill="#aaa8a1" font-size="17" letter-spacing="2">02 / OPERACIONES DEL SERVICIO</text>
+    <g fill="#111110" stroke="#44433e">
+      <rect x="64" y="638" width="636" height="99"/>
+      <rect x="736" y="638" width="636" height="99"/>
+      <rect x="64" y="757" width="636" height="99"/>
+      <rect x="736" y="757" width="636" height="99"/>
+    </g>
+    <g font-size="23">
+      <text x="88" y="675">Listar clientes</text>
+      <text x="760" y="675">Buscar por identificador</text>
+      <text x="88" y="794">Guardar cliente</text>
+      <text x="760" y="794">Eliminar cliente</text>
+    </g>
+    <g fill="#aaa8a1" font-size="20">
+      <text x="88" y="708">ClienteRepositorio.findAll()</text>
+      <text x="760" y="708">ClienteRepositorio.findById(id)</text>
+      <text x="88" y="827">ClienteRepositorio.save(cliente)</text>
+      <text x="760" y="827">ClienteRepositorio.delete(cliente)</text>
+    </g>
+
+    <path d="M64 893H1376" stroke="#44433e"/>
+    <text x="64" y="931" fill="#cbc9c3" font-size="20">Diagrama basado en el código del proyecto; no es una captura de la aplicación.</text>
+    <text x="64" y="965" fill="#aaa8a1" font-size="17">Fuentes: pom.xml · SistemaClientesFx.java · ClienteServicio.java</text>
+  </g>
+</svg>

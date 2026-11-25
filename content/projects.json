@@ -919,7 +919,13 @@
     ],
     "stack": "Java 22 · JavaFX 22 · Spring Boot 3.2 · Spring Data JPA · MySQL · Maven",
     "github": "https://github.com/lgonzalh/AppSistemaClientes",
-    "images": [],
-    "videos": []
+    "images": [
+      {
+        "src": "/assets/img/appsistemaclientes/arquitectura.svg",
+        "alt": "AppSistemaClientes: diagrama de arquitectura basado en el código; no es una captura de la aplicación"
+      }
+    ],
+    "videos": [],
+    "image": "/assets/img/appsistemaclientes/arquitectura.svg"
   }
 ]
