@@ -12,7 +12,7 @@ test('one public site retains legacy routes and resolves every public local reso
   }
   assert.ok(config.redirects.some(r=>r.source==='/PortfolioLuisGonzalez' && r.destination==='/'));
   for(const name of ['apps.html','about.html','PortfolioLuisGonzalez.html']) assert.ok(!fs.existsSync(path.join(root,name)));
-  for(const page of ['index.html','proyectos.html','privacy.html','license.html','404.html']) {
+  for(const page of ['index.html','proyectos.html','privacy.html','license/index.html','404.html']) {
     const html=read(page);
     assert.doesNotMatch(html, /googletagmanager|gtag\(|lgonzalh@outlook|(?:src|href)="[^"]*bootstrap/i);
     assert.match(html, /portfolio-ai\.css/);
