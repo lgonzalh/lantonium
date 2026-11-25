@@ -5,7 +5,7 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 test('legal pages identify the author, explain privacy and preserve project-specific grants', () => {
   const privacy = fs.readFileSync(path.join(root, 'privacy.html'), 'utf8');
-  const license = fs.readFileSync(path.join(root, 'license.html'), 'utf8');
+  const license = fs.readFileSync(path.join(root, 'license', 'index.html'), 'utf8');
   for (const html of [privacy, license]) {
     assert.match(html, /lantonium@gmail.com/);
     assert.doesNotMatch(html, /lgonzalh@outlook|googletagmanager|sitio web corporativo/);
