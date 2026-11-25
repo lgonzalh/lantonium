@@ -14,6 +14,13 @@ test('public interface keeps Colombian Spanish and provides the authorized Engli
     const html=fs.readFileSync(path.join(root,'en',page),'utf8');
     assert.match(html, /<html lang="en">/);
     assert.match(html, /Switch to Spanish/);
-    assert.match(html, /href="\/" hreflang="es-CO"/);
+    const expectedSpanishPath = page === 'privacy.html' ? '/privacy' : page === 'license.html' ? '/license' : page === 'projects.html' ? '/proyectos' : '/';
+    assert.ok(html.includes(`href="${expectedSpanishPath}" hreflang="es-CO"`));
+  }
+  const englishHome=fs.readFileSync(path.join(root,'en/index.html'),'utf8');
+  const englishProjects=require('../content/projects.en.json');
+  for(const project of Object.values(englishProjects)) {
+    assert.ok(englishHome.includes(`>${project.name}</h3>`), `English project title: ${project.name}`);
+    assert.ok(englishHome.includes(project.summary), `English project summary: ${project.name}`);
   }
 });

@@ -12,7 +12,8 @@ function renderPage(slug, title, description, content) {
   head = head.replace(/(<meta (?:property="og:title"|name="twitter:title") content=")[^"]*/g, `$1${escape(title)} — Luis Gonzalez`);
   head = head.replace('property="og:type" content="profile"','property="og:type" content="website"');
   head = head.replaceAll('href="https://lantonium.com/"',`href="https://lantonium.com/${slug}"`).replace('property="og:url" content="https://lantonium.com/"',`property="og:url" content="https://lantonium.com/${slug}"`);
-  const nav = home.match(/<header[\s\S]*?<\/nav>/)[0].replaceAll('href="#', 'href="/#');
+  const spanishTarget = slug === 'proyectos' ? '/en/projects' : slug === '404' ? '/en/' : `/en/${slug}`;
+  const nav = home.match(/<header[\s\S]*?<\/nav>/)[0].replaceAll('href="#', 'href="/#').replace('href="/en/"', `href="${spanishTarget}"`);
   const footer = home.match(/<footer[\s\S]*?<\/footer>/)[0].replaceAll('href="#', 'href="/#');
   return `<!doctype html>\n<html lang="es-CO"><head>${head}</head><body class="ai-portfolio legal-page"><a class="skip-link" href="#main-content">Saltar al contenido</a>${nav}<main id="main-content" class="legal-content section-shell">${content}</main>${footer}<script src="/assets/js/portfolio-ai.js?v=12" defer></script></body></html>\n`;
 }
