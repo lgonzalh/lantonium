@@ -33,7 +33,7 @@ function page(html, route, title) {
   ['CORREO ·','EMAIL ·'],['PERFIL GLOBAL','PROFILE'],['DESARROLLADOR DE SOFTWARE','SOFTWARE DEVELOPER'],['Privacidad','Privacy'],['Licencia','License'],
   ['AÑO DE DESARROLLO','YEAR'],['ESTADO','STATUS'],['TECNOLOGÍAS','TECHNOLOGIES'],['Cerrar','Close'],
   ['Activa JavaScript para abrir las fichas interactivas. Puedes consultar las descripciones completas de los proyectos','Enable JavaScript to open interactive project details. You can read the full project descriptions'],
-  [' · Bogotá · Colombia',' · Bogotá · Colombia'],['CALIDAD','QUALITY'],['PRIVACIDAD','PRIVACY'],['IA DOCUMENTAL','DOCUMENT AI'],['VOZ','VOICE'],['CÓNDOR','CONDOR'],['PDF A PNG MÓVIL','PDF TO PNG MOBILE'],['Activa JavaScript para abrir las fichas interactivas.','Enable JavaScript to open interactive project details.'],['descripciones completas de los proyectos','full project descriptions'],
+  [' · Bogotá · Colombia',' · Bogotá · Colombia'],['CALIDAD','QUALITY'],['PRIVACIDAD','PRIVACY'],['IA DOCUMENTAL','DOCUMENT AI'],['VOZ','VOICE'],['CÓNDOR','CONDOR'],['PDF A PNG MÓVIL','PDF TO PNG MOBILE'],['Activa JavaScript para abrir las fichas interactivas.','Enable JavaScript to open interactive project details.'],['descripciones completas de los proyectos','full project descriptions'],['Áreas de trabajo','Areas of work'],['Navegación del portafolio','Portfolio navigation'],['Vista de Condor, un sistema local-first asistido por modelos de lenguaje','View of Condor, a local-first system assisted by language models'],['Pantalla de Condor con un flujo de ingeniería asistida por IA','Condor screen showing an AI-assisted engineering workflow'],
   ['Hola%20Luis%2C%20quiero%20hablar%20sobre%20un%20proyecto.','Hi%20Luis%2C%20I%27d%20like%20to%20discuss%20a%20project.'],['IA / 01','AI / 01'],['Puedes consultar las','You can read the'],['Let’s talk..','Let’s talk']
  ]);
  out = out.replace(/<html lang="es-CO">/, '<html lang="en">');
@@ -51,6 +51,9 @@ function page(html, route, title) {
  out = out.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, `<script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@type':'Person',name:'Luis Gonzalez',jobTitle:'Software Developer',url:'https://lantonium.com/en/',email:'lantonium@gmail.com',address:{'@type':'PostalAddress',addressLocality:'Bogotá',addressCountry:'CO'},sameAs:['https://www.linkedin.com/in/lantonium/','https://github.com/lgonzalh']})}</script>`);
  return out;
 }
+function mediaLabel(text, projectName) {
+ return String(text).replace(/^Demostración de\s*/i, '').replace(/captura\s+(\d+)/gi, 'screenshot $1').replace(/página promocional web/gi, 'promotional website page').replace(/sección promocional web/gi, 'promotional website section').replace(/sobre las formas de cobro/gi, 'about payment methods').replace(/no es el panel de la aplicación/gi, 'not an application dashboard').replace(/no es una pantalla del panel/gi, 'not a dashboard screen').replace(/Android/gi, 'Android').replace(/cobro rápido con selección de billetera/gi, 'quick charge with wallet selection').replace(/formulario de productos e impuestos/gi, 'product and tax form').replace(/tabla con tres registros de demostración/gi, 'table with three demo records').replace(/formulario de cliente seleccionado y tabla de registros/gi, 'selected customer form and records table').replace(/diagrama de arquitectura basado en el código; no es una captura de la aplicación/gi, 'architecture diagram based on source code; not an application screenshot').replace(/diagrama del flujo CRUD, basado en el código y no una captura/gi, 'CRUD flow diagram based on source code, not a screenshot').replace(/esquema de persistencia de Cliente en MySQL, basado en el código y no una captura/gi, 'MySQL customer persistence schema based on source code, not a screenshot').replace(/Demostración/gi, 'Demo').replace(/versión web/gi, 'web version').replace(/versión Android/gi, 'Android version').replace(/pantalla inicial y selección de lista/gi, 'home screen and playlist selection').replace(/Móvil/gi, 'Mobile').replace(/Aplicación/gi, 'App').replace(/captura/gi, 'screenshot').replace(/\s+/g, ' ').trim();
+}
 let enHome = page(home, '/en/', 'Luis Gonzalez — Software Developer');
 for (const project of projectsEs) {
  const id = project.id;
@@ -62,9 +65,9 @@ for (const project of projectsEs) {
   .replace(/(<span class="row-meta"><span>)[^<]*/, `$1${t.type}`));
 }
 // Localize project content data embedded in the page; media paths and galleries remain shared.
-const marker = /<script type="application\/json" id="project-catalog">[\s\S]*?<\/script>/;
-const catalog = projectsEs.map(p => ({...p, ...(translations[p.id] || {}), images:p.images.map((image, i) => ({...image, alt:translations[p.id]?.imageAlts?.[i] || image.alt})), videos:p.videos.map((video,i)=>({...video,title:translations[p.id]?.videoTitles?.[i] || video.title}))}));
-enHome = enHome.replace(marker, `<script type="application/json" id="project-catalog">${JSON.stringify(catalog)}</script>`);
+const marker = /<script id="project-catalog" type="application\/json">[\s\S]*?<\/script>/;
+const catalog = projectsEs.map(p => ({...p, ...(translations[p.id] || {}), images:p.images.map((image, i) => ({...image, alt:translations[p.id]?.imageAlts?.[i] || mediaLabel(image.alt,p.name)})), videos:p.videos.map((video,i)=>({...video,title:translations[p.id]?.videoTitles?.[i] || `${mediaLabel(video.title,p.name)} demo`}))}));
+enHome = enHome.replace(marker, `<script id="project-catalog" type="application/json">${JSON.stringify(catalog)}</script>`);
 fs.mkdirSync(path.join(root,'en'), {recursive:true});
 fs.writeFileSync(path.join(root,'en/index.html'), enHome);
 const legal = {
@@ -96,5 +99,5 @@ for(const [slug,data] of Object.entries(legal)) fs.writeFileSync(path.join(root,
 let projectPage = page(fs.readFileSync(path.join(root,'proyectos.html'),'utf8'),'/en/projects','Projects | Lantonium');
 projectPage = projectPage.replace(/<html lang="es-CO">/,'<html lang="en">');
 projectPage = replaceText(projectPage,pairs);
-for(const [id,t] of Object.entries(translations)) { const es=projectsEs.find(p=>p.id===id); if(es) projectPage=projectPage.replaceAll(es.name,t.name).replaceAll(es.description,t.description).replaceAll(es.review,t.review).replaceAll(es.type,t.type).replaceAll(es.status,t.status).replaceAll(es.stack,t.stack); }
+for(const [id,t] of Object.entries(translations)) { const es=projectsEs.find(p=>p.id===id); if(es) { projectPage=projectPage.replaceAll(es.name,t.name).replaceAll(es.description,t.description).replaceAll(es.review,t.review).replaceAll(es.type,t.type).replaceAll(es.status,t.status).replaceAll(es.stack,t.stack); es.images.forEach((image,i)=>{projectPage=projectPage.replaceAll(`alt="${image.alt}"`,`alt="${t.imageAlts?.[i] || mediaLabel(image.alt,es.name)}"`)}); es.videos.forEach((video,i)=>{projectPage=projectPage.replaceAll(video.title,t.videoTitles?.[i] || `${mediaLabel(video.title,es.name)} demo`)}) } }
 fs.writeFileSync(path.join(root,'en/projects.html'),projectPage);

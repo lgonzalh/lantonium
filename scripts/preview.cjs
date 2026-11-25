@@ -19,6 +19,7 @@ function createPreviewServer() {
     let file = path.resolve(root, '.' + route);
     if (file === root) file = path.join(root, 'index.html');
     if (!file.startsWith(root + path.sep)) return send(403, 'Acceso denegado');
+    if (fs.existsSync(file) && fs.statSync(file).isDirectory()) file = path.join(file, 'index.html');
     if (!fs.existsSync(file) && !path.extname(file)) file += '.html';
     let status = 200;
     if (!fs.existsSync(file) || !fs.statSync(file).isFile()) { file = path.join(root, '404.html'); status = 404; }
