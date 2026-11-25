@@ -439,7 +439,7 @@ body.ai-portfolio .theme-symbol--dark { display: none; }
 .project-dialog-close:hover { transform: rotate(90deg); border-color: var(--ai-line-hard) !important; }
 .project-dialog-close:focus-visible, .project-dialog-link:focus-visible { outline: 2px solid var(--ai-steel); outline-offset: 4px; }
 .project-dialog-kicker { margin: 27px 0 8px; color: var(--ai-faint); font-size: 0.53rem; letter-spacing: 0.12em; }
-.project-dialog h2 { margin: 0; color: var(--ai-ink); font-size: clamp(1.8rem, 5vw, 3.1rem); font-weight: 400; letter-spacing: -0.07em; line-height: 1.1; }
+.project-dialog h2 { margin: 0; color: var(--ai-ink); font-size: clamp(1.8rem, 5vw, 3.1rem); font-weight: 400; letter-spacing: -0.07em; line-height: 1.1; overflow-wrap: anywhere; }
 .project-dialog-description { max-width: 570px; margin: 16px 0 25px; color: var(--ai-dim); font-size: 0.78rem; line-height: 1.9; }
 .project-dialog-meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .project-dialog-meta > div { display: grid; gap: 7px; min-height: 76px; align-content: center; padding: 12px 14px; border: 1px solid var(--ai-line); background: rgba(255, 255, 255, 0.025); }
