@@ -53,12 +53,12 @@
     "images": [
       {
         "src": "/assets/img/veripago/web/01-inicio.webp",
-        "alt": "VeriPago web: página de inicio y acceso con Google",
+      "alt": "VeriPago: página promocional web del proyecto, no es el panel de la aplicación",
         "platform": "web"
       },
       {
         "src": "/assets/img/veripago/web/02-formas-de-cobro.webp",
-        "alt": "VeriPago web: cobros en persona y por enlace",
+      "alt": "VeriPago: sección promocional web sobre las formas de cobro, no es una pantalla del panel",
         "platform": "web"
       },
       {
@@ -923,6 +923,14 @@
       {
         "src": "/assets/img/appsistemaclientes/arquitectura.svg",
         "alt": "AppSistemaClientes: diagrama de arquitectura basado en el código; no es una captura de la aplicación"
+      },
+      {
+        "src": "/assets/img/appsistemaclientes/flujo-crud.svg",
+        "alt": "AppSistemaClientes: diagrama del flujo CRUD, basado en el código y no una captura"
+      },
+      {
+        "src": "/assets/img/appsistemaclientes/modelo-cliente.svg",
+        "alt": "AppSistemaClientes: esquema de persistencia de Cliente en MySQL, basado en el código y no una captura"
       }
     ],
     "videos": [],

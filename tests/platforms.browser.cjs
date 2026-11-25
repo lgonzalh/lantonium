@@ -13,6 +13,10 @@ test('VeriPago and SEVETCO have separate real web and Android galleries', async 
         await group.locator('img').first().evaluate(img => img.decode());
         assert.ok(await group.locator('img').first().evaluate(img => img.naturalWidth > 0));
       }
+      if (id === 'veripago') {
+        const copy = require('../content/projects.json').find(project => project.id === id).images.filter(image => image.platform === 'web');
+        assert.ok(copy.every(image => /promocional|no es una pantalla/i.test(image.alt)), 'web gallery distinguishes landing images from app captures');
+      }
       assert.equal(await page.locator('#project-detail-dialog').evaluate(el => el.open), true);
     }
   } finally { await site.close(); }
