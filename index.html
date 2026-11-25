@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-CO">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -71,12 +71,12 @@
       </button>
       <span class="language-indicator" role="img" aria-label="Idioma: español de Colombia" title="Español (Colombia)"><svg width="24" height="16" viewBox="0 0 24 16" aria-hidden="true"><path fill="#fcd116" d="M0 0h24v8H0z"/><path fill="#003893" d="M0 8h24v4H0z"/><path fill="#ce1126" d="M0 12h24v4H0z"/></svg></span>
       <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="portfolio-menu">
-        <span>MENU</span><i aria-hidden="true">+</i>
+        <span>MENÚ</span><i aria-hidden="true">+</i>
       </button>
     </div>
   </header>
   <nav class="menu-panel" id="portfolio-menu" aria-label="Navegación del portafolio" hidden>
-      <div class="menu-panel-top"><span>INDEX · 01—04</span><button class="menu-close" type="button" aria-label="Cerrar menú">CERRAR <span aria-hidden="true">×</span></button></div>
+      <div class="menu-panel-top"><span>ÍNDICE · 01—04</span><button class="menu-close" type="button" aria-label="Cerrar menú">CERRAR <span aria-hidden="true">×</span></button></div>
       <a href="#work"><span>01</span>Proyectos<span class="menu-arrow" aria-hidden="true">↗</span></a>
       <a href="#about"><span>02</span>Acerca de<span class="menu-arrow" aria-hidden="true">↗</span></a>
       <a href="#approach"><span>03</span>Enfoque<span class="menu-arrow" aria-hidden="true">↗</span></a>
@@ -98,7 +98,7 @@
       </div>
 
       <figure class="hero-art reveal-item" aria-label="Vista de Condor, un sistema local-first asistido por modelos de lenguaje">
-        <div class="art-toolbar"><span class="toolbar-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>SYSTEM STUDY · 001</span><span class="art-live"><i aria-hidden="true"></i> LOCAL-FIRST</span></div>
+        <div class="art-toolbar"><span class="toolbar-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>PROYECTO · 001</span><span class="art-live"><i aria-hidden="true"></i> LOCAL-FIRST</span></div>
         <div class="art-image-wrap">
           <img src="/assets/img/condor/condor.jpg" alt="Pantalla de Condor con un flujo de ingeniería asistida por IA" width="1480" height="760" fetchpriority="high">
           <svg class="art-orbit" viewBox="0 0 360 360" aria-hidden="true">
@@ -110,9 +110,9 @@
             <circle class="orbit-node orbit-node-three" cx="88" cy="88" r="4"></circle>
             <circle class="orbit-center" cx="180" cy="180" r="9"></circle>
           </svg>
-          <div class="art-index"><span>AI / 01</span><b>CONTEXT</b></div>
+          <div class="art-index"><span>IA / 01</span><b>CONTEXTO</b></div>
         </div>
-        <figcaption><span>CONDOR</span><span>LOCAL LLM WORKFLOW <b aria-hidden="true">↗</b></span></figcaption>
+        <figcaption><span>CONDOR</span><span>FLUJO CON MODELOS LOCALES <b aria-hidden="true">↗</b></span></figcaption>
       </figure>
       <a class="hero-scroll" href="#work"><span>EXPLORA LOS PROYECTOS</span><i aria-hidden="true"></i><span>15 PROYECTOS</span></a>
     </section>
@@ -134,9 +134,9 @@
       <div class="work-layout">
         <aside class="work-preview" aria-label="Vista previa del proyecto seleccionado">
           <div class="preview-window">
-            <div class="preview-toolbar"><span>PROJECT / <b id="preview-index">01</b></span><span class="preview-lights" aria-hidden="true"><i></i><i></i><i></i></span></div>
+            <div class="preview-toolbar"><span>PROYECTO / <b id="preview-index">01</b></span><span class="preview-lights" aria-hidden="true"><i></i><i></i><i></i></span></div>
             <div class="preview-screen"><img id="project-preview-image" src="/assets/img/condor/condor.jpg" alt="Interfaz de Cóndor" width="1480" height="760" loading="lazy"><span id="preview-placeholder" class="preview-placeholder" hidden></span></div>
-            <div class="preview-caption"><div><span id="preview-type">LOCAL-FIRST AI</span><strong id="preview-title">Condor</strong></div><span class="preview-arrow" aria-hidden="true">↗</span></div>
+            <div class="preview-caption"><div><span id="preview-type">IA LOCAL</span><strong id="preview-title">Condor</strong></div><span class="preview-arrow" aria-hidden="true">↗</span></div>
           </div>
           <p class="preview-note"><span>FIG. 01</span> Sistemas construidos alrededor del contexto y los datos.</p>
         </aside>
@@ -192,7 +192,7 @@
     <dialog class="project-dialog" id="project-detail-dialog" aria-labelledby="project-detail-title">
       <div class="project-dialog-panel">
         <div class="project-dialog-top">
-          <span>PROJECT / <span id="project-detail-index">01</span></span>
+          <span>PROYECTO / <span id="project-detail-index">01</span></span>
           <button class="project-dialog-close" type="button" data-project-dialog-close aria-label="Cerrar ficha del proyecto">×</button>
         </div>
         <p class="project-dialog-kicker" id="project-detail-type"></p>
@@ -204,7 +204,7 @@
         </div>
         <div id="project-detail-media"></div>
         <section class="project-dialog-stack" aria-labelledby="project-detail-stack-title">
-          <h3 id="project-detail-stack-title">STACK · TECNOLOGÍA Y FRAMEWORKS</h3>
+          <h3 id="project-detail-stack-title">TECNOLOGÍAS</h3>
           <p id="project-detail-stack"></p>
         </section>
         <p class="project-dialog-repo-note" id="project-detail-repo-note" hidden></p>
@@ -248,8 +248,8 @@
       </div>
       <div class="approach-grid">
         <article class="approach-item reveal-item"><span>01</span><h3>Contexto persistente</h3><p>Documentación y trazabilidad para conservar decisiones y estructura en herramientas asistidas por LLM.</p><b>CONDOR / LOCAL LLM</b></article>
-        <article class="approach-item reveal-item"><span>02</span><h3>Datos estructurados</h3><p>Captura documentos, extrae campos y organiza la información para que pueda analizarse y sincronizarse.</p><b>DOCUSHEETBOT / DOCUMENT AI</b></article>
-        <article class="approach-item reveal-item"><span>03</span><h3>Procesamiento privado</h3><p>Experiencias de transcripción que mantienen el procesamiento de audio en el dispositivo Android.</p><b>LOCALTRANSCRIPTOR / SPEECH</b></article>
+        <article class="approach-item reveal-item"><span>02</span><h3>Datos estructurados</h3><p>Captura documentos, extrae campos y organiza la información para que pueda analizarse y sincronizarse.</p><b>DOCUSHEETBOT / IA DOCUMENTAL</b></article>
+        <article class="approach-item reveal-item"><span>03</span><h3>Procesamiento privado</h3><p>Experiencias de transcripción que mantienen el procesamiento de audio en el dispositivo Android.</p><b>LOCALTRANSCRIPTOR / VOZ</b></article>
       </div>
     </section>
 
