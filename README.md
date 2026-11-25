@@ -48,6 +48,8 @@ La política explica el uso de datos según cada proyecto, incluido el inicio de
 
 La licencia general reserva los derechos de autor. Una licencia explícita de un proyecto y las licencias de materiales de terceros prevalecen en su ámbito; por ejemplo, se respeta la licencia CC BY 4.0 de PDF a PNG Móvil. Esta página no cambia licencias en otros repositorios.
 
+El archivo [`LICENSE.md`](LICENSE.md) del repositorio contiene el aviso de reserva de derechos en español e inglés.
+
 ## English version
 
 ### Pages
@@ -65,6 +67,8 @@ The English catalog follows the same order: Condor, VeriPago, SEVETCO, Pixelados
 Project details include the available descriptions, reviews, features, technology stacks, links, videos, and image galleries. VeriPago and SEVETCO keep separate web and Android galleries. AppSistemaClientes includes application screenshots and architecture diagrams; its screenshots use demonstration records.
 
 The privacy policy covers project-specific data handling, Google sign-in, Firebase services, safeguards, and applicable Colombian privacy rights. The general copyright notice is All Rights Reserved, subject to explicit project licenses and third-party terms. It does not alter licenses in other repositories.
+
+The repository-level [`LICENSE.md`](LICENSE.md) presents this notice in both English and Spanish.
 
 ## Desarrollo y verificación / Development and checks
 
@@ -102,6 +106,7 @@ The Git branches `main` and `developer` are synchronized after merging the portf
 | `content/projects.json` | Spanish project order, copy, technologies, links, and media |
 | `content/projects.en.json` | English project names, copy, features, and localized media labels |
 | `content/pages.json` | Spanish privacy and license copy |
+| `LICENSE.md` | Bilingual repository copyright notice |
 | `scripts/build-portfolio.cjs` | Generates the Spanish project cards and embedded catalog |
 | `scripts/build-pages.cjs` | Generates Spanish legal pages, `/proyectos`, 404, and review copy |
 | `scripts/build-english.cjs` | Generates English pages and the localized project catalog |

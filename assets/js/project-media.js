@@ -65,7 +65,7 @@
         video.playsInline = true;
         video.src = media.src;
         video.setAttribute('aria-label', `${media.title} ${index + 1}`);
-        video.append(element('p', 'Tu navegador no permite reproducir este video.'));
+        video.append(element('p', isEnglish ? 'Your browser cannot play this video.' : 'Tu navegador no permite reproducir este video.'));
         const download = element('a', isEnglish ? 'Open video ↗' : 'Abrir video ↗');
         download.href = media.src;
         download.target = '_blank';
@@ -90,7 +90,7 @@
         const gallery = galleries.get(platform);
         const button = element('button', '', 'project-thumbnail');
         button.type = 'button';
-        button.setAttribute('aria-label', `Ampliar ${media.alt}`);
+        button.setAttribute('aria-label', `${isEnglish ? 'Enlarge' : 'Ampliar'} ${media.alt}`);
         const image = element('img');
         image.src = media.src; image.alt = media.alt; image.loading = 'lazy';
         button.append(image);
