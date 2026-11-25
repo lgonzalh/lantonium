@@ -75,16 +75,16 @@ Contacto: lantonium@gmail.com
 
 **Descripción breve:** Auditoría y sincronización de identidades entre sistemas externos y Directorio Activo.
 
-**Descripción:** Audita identidades mediante archivos Excel, contrasta usuarios con Active Directory y sincroniza los resultados.
+**Descripción:** Aplicación para contrastar listados de usuarios en Excel con Active Directory, consultar discrepancias y revisar los resultados del procesamiento.
 
-**Reseña:** OFUserControlApp es una solución de ingeniería de software desarrollada en ASP.NET Core 10.0 diseñada para la gestión crítica de identidades mediante el procesamiento automatizado de archivos Excel de alta volumetría. La aplicación implementa Clean Architecture para garantizar una separación estricta de intereses, utilizando PostgreSQL sobre Supabase como motor de persistencia cloud-native. El sistema optimiza el flujo de validación de usuarios contra el Directorio Activo, permitiendo detectar discrepancias de acceso y estados de actividad de forma ágil, asegurando el cumplimiento de las políticas de seguridad y gobernanza de datos en entornos empresariales complejos. (2025)
+**Reseña:** OFUserControlApp apoya la revisión de identidades entre sistemas externos y Active Directory. Importa información de hojas de cálculo, compara registros y presenta diferencias que requieren revisión. Su estructura separa la lógica de negocio, la persistencia y la interfaz; SignalR comunica el avance del procesamiento. Es una herramienta de apoyo a la auditoría, cuyos resultados deben interpretarse según las reglas y fuentes de cada organización.
 
 **Funcionalidades:**
 
-- Validación Cruzada Automatizada: Ejecución de algoritmos de coincidencia entre listados externos y el Directorio Activo mediante el cruce de datos en capas de base de datos optimizadas.
-- Arquitectura N-Layer Escalable: Implementación estructurada (Domain, Application, Infrastructure) que permite la extensibilidad del sistema y el desacoplamiento de la lógica de negocio.
-- Monitoreo Transaccional en Tiempo Real: Interfaz dinámica potenciada por SignalR que proporciona retroalimentación instantánea sobre el progreso de la carga y el procesamiento de registros.
-- Procesamiento de Datos: Motor de integración de hojas de cálculo de alto rendimiento para la extracción, validación y exportación de reportes técnicos detallados.
+- Comparación de listados de usuarios con información de Active Directory.
+- Importación, validación y exportación de información desde hojas de cálculo.
+- Consulta de discrepancias y estados de actividad de usuarios.
+- Seguimiento del avance de carga y procesamiento mediante SignalR.
 
 **Tecnologías:** .NET 10 · ASP.NET Core · C# · Clean Architecture · PostgreSQL · Supabase · SignalR
 
@@ -109,16 +109,16 @@ Contacto: lantonium@gmail.com
 
 **Descripción breve:** Transcribe audio a texto en el dispositivo y mantiene el procesamiento local.
 
-**Descripción:** Transcribe voz en tiempo real y archivos de audio desde Android, manteniendo el procesamiento y el historial en el dispositivo.
+**Descripción:** Aplicación Android para transcribir voz y archivos de audio, con procesamiento local e historial en el dispositivo.
 
-**Reseña:** LocalTranscriptor es una solución especializada en la conversión de señales acústicas a texto legible mediante procesamiento local estrictamente privado. El sistema permite transformar tanto flujos de voz en tiempo real como archivos multimedia preexistentes en registros textuales, eliminando la necesidad de conexión a internet para asegurar una latencia mínima de respuesta.
+**Reseña:** LocalTranscriptor convierte voz y archivos de audio en texto desde Android. Mantiene el procesamiento y el historial en el dispositivo para trabajar con el contenido localmente. La calidad de la transcripción depende del audio, el modelo utilizado y los recursos del equipo; el texto resultante puede revisarse antes de reutilizarlo.
 
 **Funcionalidades:**
 
-- Transcripción instantánea con reconocimiento de pausas y segmentos de voz.
-- Procesamiento de archivos locales en formatos comprimidos y de alta fidelidad.
-- Almacenamiento persistente en base de datos para consulta diferida del historial.
-- Ejecución robusta en segundo plano para permitir la captura sin interrupciones.
+- Transcripción de voz con identificación de pausas y segmentos.
+- Procesamiento de archivos de audio almacenados en el dispositivo.
+- Historial local de transcripciones para consulta posterior.
+- Captura de audio en segundo plano según los permisos y restricciones de Android.
 
 **Tecnologías:** Kotlin · Android SDK · modelos locales de IA · SQLite
 
@@ -126,18 +126,17 @@ Contacto: lantonium@gmail.com
 
 **Descripción breve:** Gestión automatizada de pagos de peaje y recargas electrónicas.
 
-**Descripción:** Plataforma cloud para administrar vehículos, tarjetas de peaje, pagos, recargas y extractos. Proyecto de grado: Tecnólogo en Desarrollo de Software, SENA.
+**Descripción:** Aplicación web para administrar vehículos, tarjetas de peaje, pagos, recargas y extractos. Proyecto de grado de la formación tecnológica en desarrollo de software del SENA.
 
-**Reseña:** PayTollApp es una solución web full-stack diseñada para centralizar y agilizar las operaciones de peaje electrónico. El sistema integra un backend robusto y escalable desarrollado en .NET 8 con una interfaz de usuario limpia e intuitiva. Mediante una arquitectura serverless desplegada en Google Cloud Run, garantiza alta disponibilidad, seguridad en las transacciones y una experiencia fluida para la administración de vehículos, tarjetas y pagos, eliminando fricciones operativas.
+**Reseña:** PayTollApp reúne en una aplicación web la administración de vehículos y tarjetas de peaje, junto con el registro y la consulta de pagos y recargas. El proyecto integra una interfaz web, servicios en .NET y una base de datos PostgreSQL. Fue desarrollado como proyecto de grado de la formación tecnológica en el SENA y permite mostrar el flujo completo entre interfaz, lógica de negocio y persistencia.
 
 **Funcionalidades:**
 
-- Gestión integral de usuarios, vehículos y tarjetas de peaje vinculadas.
-- Procesamiento de pagos y recargas de saldo en tiempo real.
-- Generación automática de extractos y consultas de historial de movimientos.
-- Arquitectura serverless escalable alojada en Google Cloud Run.
-- Módulo interactivo "Shortcut" para la ejecución y diagnóstico de consultas SQL.
-- Persistencia de datos segura mediante PostgreSQL en Supabase.
+- Gestión de usuarios, vehículos y tarjetas de peaje vinculadas.
+- Registro y consulta de pagos y recargas de saldo.
+- Generación de extractos e historial de movimientos.
+- Servicios backend en .NET y persistencia en PostgreSQL.
+- Módulo Shortcut para ejecutar y revisar consultas SQL.
 
 **Tecnologías:** .NET 8 · ASP.NET Core · Entity Framework Core · PostgreSQL en Supabase · HTML · CSS · Bootstrap 5 · JavaScript · Google Cloud Run
 
@@ -179,17 +178,17 @@ Contacto: lantonium@gmail.com
 
 **Descripción breve:** Auditoría financiera intercompany y conciliación de balances desde Excel.
 
-**Descripción:** Aplicación de escritorio para analizar balances y apoyar la conciliación financiera intercompany desde Excel.
+**Descripción:** Aplicación de escritorio para comparar balances entre compañías y apoyar la conciliación de cuentas a partir de archivos Excel.
 
-**Reseña:** Imbalances es una solución de ingeniería financiera desarrollada en C# que optimiza la auditoría de holdings mediante el procesamiento acelerado de volúmenes diversos de archivos Excel. La arquitectura permite una integración recursiva con OneDrive, validando de forma ágil la reciprocidad entre Cuentas por Cobrar (CxC) y Cuentas por Pagar (CxP). Al operar directamente sobre los archivos fuente, el sistema garantiza una trazabilidad inmediata sin necesidad de infraestructura de base de datos adicional.
+**Reseña:** Imbalances apoya la revisión de saldos entre compañías mediante archivos Excel. Recorre carpetas de trabajo, contrasta cuentas por cobrar y por pagar, y presenta diferencias para su análisis. Los hallazgos y estados de revisión se gestionan sobre las plantillas de origen, sin requerir una base de datos adicional. La herramienta organiza la información de apoyo al cierre; la validación contable corresponde a quien realiza la revisión.
 
 **Funcionalidades:**
 
-- Procesamiento Masivo y Ágil: Ejecución de algoritmos de lectura rápida sobre múltiples libros de Excel distribuidos en diversas subcarpetas para un análisis simultáneo de datos.
-- Auditoría de Reciprocidad: Identificación precisa de desequilibrios financieros entre entidades del holding mediante el cruce de cuentas relacionadas.
-- Validación de Disponibilidad Documental: Monitoreo automatizado de la presencia o ausencia de reportes críticos para el cierre mensual.
-- Persistencia Directa en Origen: Gestión de hallazgos y estados de verificación realizada íntegramente sobre las plantillas originales, asegurando la portabilidad de la información.
-- Panel de Disconformidades en Tiempo Real: Visualización técnica de hallazgos para agilizar la toma de decisiones y correcciones contables.
+- Lectura de libros de Excel organizados en carpetas y subcarpetas.
+- Comparación de cuentas por cobrar y por pagar entre compañías.
+- Identificación de reportes disponibles y pendientes para el cierre.
+- Registro de hallazgos y estados de revisión en las plantillas de origen.
+- Panel de diferencias para apoyar el análisis y las correcciones contables.
 
 **Tecnologías:** Aplicación de escritorio · Excel · conciliación intercompany y validación de balances
 
@@ -197,17 +196,15 @@ Contacto: lantonium@gmail.com
 
 **Descripción breve:** Convierte documentos PDF a imágenes PNG directamente desde el móvil.
 
-**Descripción:** Convierte páginas de documentos PDF a imágenes PNG directamente en un dispositivo Android.
+**Descripción:** Aplicación Android para convertir páginas de documentos PDF a imágenes PNG mediante procesamiento local.
 
-**Reseña:** PDF a PNG Móvil es una herramienta de conversión optimizada para transformar documentos PDF en formato de imagen PNG, diseñada específicamente para funcionar eficientemente en dispositivos móviles. La aplicación permite procesar archivos PDF directamente desde el teléfono o tablet, manteniendo la calidad de la imagen y reduciendo el tamaño del archivo resultante para facilitar el compartir y almacenar conversiones de documentos.
+**Reseña:** PDF a PNG Móvil permite convertir documentos PDF en imágenes desde un teléfono o una tableta Android. El procesamiento se realiza en el dispositivo y facilita reutilizar páginas como imágenes para compartirlas o archivarlas. El tamaño de los archivos resultantes depende del documento y de la resolución de conversión; convertir a PNG no implica reducir su tamaño.
 
 **Funcionalidades:**
 
-- Conversión de PDF a PNG con alta fidelidad visual.
-- Optimización automática para dispositivos móviles.
-- Procesamiento local sin necesidad de conexión a internet.
-- Compatibilidad con múltiples resoluciones de pantalla.
-- Interfaz intuitiva y fácil de usar.
+- Conversión de páginas PDF a imágenes PNG.
+- Procesamiento local de los documentos, sin conexión a internet para la conversión.
+- Uso desde teléfonos y tabletas Android compatibles.
 
 **Tecnologías:** Android 12+ · Kotlin · Jetpack Compose · conversión local de páginas PDF a PNG
 
@@ -215,16 +212,17 @@ Contacto: lantonium@gmail.com
 
 **Descripción breve:** Descarga videos y extrae segmentos precisos de audio y video.
 
-**Descripción:** Herramienta de escritorio para descargar videos y extraer segmentos específicos de audio y video.
+**Descripción:** Aplicación de escritorio para descargar videos o audio y seleccionar segmentos de contenido propio o autorizado.
 
-**Reseña:** YT Downloader - Clipper es una aplicación de escritorio desarrollada en Python que proporciona una interfaz gráfica intuitiva y directa para la gestión de descargas multimedia. El sistema integra el potente motor de procesamiento de yt-dlp y FFMPEG, permitiendo no solo la descarga de videos completos y audios en alta definición, sino la capacidad avanzada de extraer segmentos de tiempo específicos ("clipping"). Esto reduce significativamente los tiempos de transferencia, el uso de ancho de banda y el almacenamiento, descargando únicamente el fragmento de interés. Su diseño legacy standalone y portabilidad lo convierten en una utilidad altamente eficiente y robusta para preparar el material audiovisual desde esa fuente de manera local.
+**Reseña:** YT Downloader - Clipper combina una interfaz de escritorio en Python con yt-dlp y FFmpeg. Permite analizar un enlace, elegir los formatos disponibles y descargar el contenido completo o un intervalo seleccionado. Presenta el progreso de la operación y permite definir la carpeta de salida. Está orientado al uso con contenido propio, autorizado o cuyo aprovechamiento esté permitido, respetando las condiciones del servicio de origen.
 
 **Funcionalidades:**
 
-- Extracción Precisa de Segmentos: Controles integrados para establecer tiempos de inicio y finalización exactos, permitiendo descargar clips específicos directamente desde el origen sin necesidad de post-procesamiento.
-- Selección Multi-Formato y Calidad: Permite configurar la descarga en modo Video + Audio, Solo Video o Solo Audio, con selector dinámico de resoluciones hasta 1080p y superiores según disponibilidad.
-- Monitoreo de Telemetría de Red: Barra de progreso en tiempo real que expone métricas críticas como porcentaje completado, velocidad de transferencia (MiB/s), tiempo estimado de finalización (ETA) y tamaño del archivo.
-- Interfaz Gráfica Funcional (GUI): Panel de control minimalista que incluye integración directa con el portapapeles del sistema para agilizar el flujo de entrada de URLs y definición de directorios de destino.
+- Selección de tiempos de inicio y finalización para preparar clips.
+- Modos de video con audio, solo video o extracción de audio a MP3.
+- Selección de calidad según los formatos disponibles en el origen.
+- Seguimiento de progreso, velocidad y tiempo estimado de descarga.
+- Entrada de enlaces desde el portapapeles y selección de carpeta de destino.
 
 **Tecnologías:** Python 3 · Tkinter · yt-dlp · FFmpeg · Pillow · SQLite
 
