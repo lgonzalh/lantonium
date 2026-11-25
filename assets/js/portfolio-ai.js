@@ -172,8 +172,10 @@
   const projectSearch = document.getElementById('portfolio-project-search');
   const projectCount = document.getElementById('portfolio-project-count');
 
+  let previewRequest = 0;
   const setActiveProject = (row) => {
     if (!row || !previewImage) return;
+    const request = ++previewRequest;
     projectRows.forEach((item) => item.classList.toggle('is-active', item === row));
     const source = row.dataset.previewSrc;
     const title = row.querySelector('h3')?.textContent.trim();
@@ -183,16 +185,24 @@
     previewImage.hidden = !source;
     const placeholder = document.getElementById('preview-placeholder');
     if (placeholder) { placeholder.hidden = Boolean(source); placeholder.textContent = title || ''; }
-    if (!source || previewImage.getAttribute('src') === source) return;
+    if (!source || previewImage.getAttribute('src') === source) {
+      previewImage.classList.remove('is-changing');
+      return;
+    }
 
     const nextImage = new Image();
     previewImage.classList.add('is-changing');
     nextImage.onload = () => {
+      if (request !== previewRequest) return;
       previewImage.src = source;
       previewImage.alt = row.dataset.previewAlt || title || 'Vista previa del proyecto';
-      requestAnimationFrame(() => previewImage.classList.remove('is-changing'));
+      requestAnimationFrame(() => {
+        if (request === previewRequest) previewImage.classList.remove('is-changing');
+      });
     };
-    nextImage.onerror = () => previewImage.classList.remove('is-changing');
+    nextImage.onerror = () => {
+      if (request === previewRequest) previewImage.classList.remove('is-changing');
+    };
     nextImage.src = source;
   };
 
