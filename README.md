@@ -22,7 +22,7 @@ python scripts/seo_audit.py
 
 Las pruebas de navegador usan Microsoft Edge instalado en Windows. En CI usan Chromium de Playwright; antes de ejecutarlas en ese entorno se instala con `npx playwright install --with-deps chromium`. La integración continua verifica el sitio y no publica en Firebase.
 
-Para revisar el sitio localmente, ejecuta `npx serve .` y abre la dirección que indique. Es un servidor estático con soporte de rutas limpias, por ejemplo `/privacy`. Esta vista previa no aplica las redirecciones de Firebase. Las pruebas de navegador usan un servidor local que comprueba las redirecciones exactas configuradas para el sitio.
+Para revisar el sitio localmente, ejecuta `npm run preview` y abre `http://127.0.0.1:4173`. El servidor local aplica las redirecciones exactas configuradas para el sitio, sirve rutas limpias como `/privacy`, admite búsqueda de posición en videos y devuelve la página 404 para rutas desconocidas. Las pruebas de navegador utilizan este mismo servidor. No realiza publicaciones ni conexiones de despliegue a Firebase.
 
 ## Contenido y estructura
 
