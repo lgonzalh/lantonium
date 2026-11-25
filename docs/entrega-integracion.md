@@ -1,27 +1,40 @@
-# Entrega de la integración del portafolio
+# Entrega de la integración / Portfolio integration delivery
 
-## Alcance
+## Español
 
-El sitio reúne la portada personal, el perfil profesional y quince proyectos en el orden definido en `content/projects.json`. Mantiene la paleta, la tipografía, los temas y las animaciones del portafolio; incorpora las reseñas y los medios disponibles del sitio anterior en fichas interactivas.
+### Alcance y estado
 
-Las fichas incluyen descripción, reseña, funcionalidades, tecnologías y enlaces según la información de cada proyecto. VeriPago y SEVETCO distinguen web y Android, con galerías separadas. La página `/proyectos` ofrece las descripciones y recursos sin depender de los modales. Las páginas `/privacy` y `/license` contienen los textos legales globales; las rutas antiguas se conservan mediante redirecciones configuradas.
+El sitio personal de Luis Gonzalez integra la portada, el perfil profesional y los quince proyectos en el orden de `content/projects.json`. Conserva la paleta, tipografía, animaciones y tema oscuro predeterminado del portafolio. Las fichas integran textos, galerías y videos disponibles en el catálogo.
 
-La presentación profesional identifica a Luis Gonzalez como desarrollador de software, tecnólogo del SENA y estudiante de Ingeniería de Software. LinkedIn se utiliza como contexto, sin trasladar una cronología laboral extensa al sitio. El contacto es `lantonium@gmail.com`.
+El sitio ofrece idioma español latinoamericano e inglés, con cambio mediante banderas de Colombia y del Reino Unido. La versión inglesa traduce las páginas, fichas de proyectos, textos alternativos de medios, videos y páginas legales. Ambas versiones incluyen rutas equivalentes para proyectos, privacidad y licencia.
 
-## Condiciones de entrega
+VeriPago y SEVETCO tienen galerías separadas para web y Android. AppSistemaClientes incluye capturas reales de la interfaz con registros de demostración, además de diagramas que están identificados como tales. La política de privacidad cubre el tratamiento de datos por proyecto, Google Authentication, Firebase y el marco colombiano de protección de datos. La licencia global reserva los derechos y respeta licencias explícitas de proyectos y materiales de terceros.
 
-- El trabajo se sincroniza con GitHub en `developer`; `main` permanece sin cambios.
-- No publicar en Firebase sin confirmación expresa del usuario. Tener redirecciones y configuración de alojamiento no autoriza un despliegue.
-- Crear la versión en inglés, su enlace y la opción con bandera del Reino Unido solo después de la confirmación de publicación. Por ahora se identifica el español con la bandera de Colombia.
-- Una unidad funcional = un test + un commit. Las comprobaciones y los commits deben poder relacionarse con el cambio realizado.
-- Las licencias particulares y los derechos de terceros prevalecen en sus respectivos ámbitos. No se modifican licencias de otros repositorios.
+El sitio está publicado en <https://lantonium.com/>. La versión inglesa está en <https://lantonium.com/en/>. Los cambios se integraron a `main` y las ramas `main` y `developer` quedaron sincronizadas.
 
-## Comprobaciones disponibles
+### Fuentes y mantenimiento
 
-Los comandos de verificación están en el README: instalación reproducible, generación de páginas, pruebas de contenido y recursos, pruebas de navegador y auditoría SEO. Las pruebas de navegador cubren fichas, medios, galerías por plataforma, temas, búsqueda, menú y rutas antiguas en los escenarios implementados.
+- `content/projects.json`: catálogo español, orden, textos, enlaces y medios.
+- `content/projects.en.json`: traducción inglesa por proyecto y etiquetas de medios.
+- `content/pages.json`: política de privacidad y licencia en español.
+- `scripts/build-portfolio.cjs`, `scripts/build-pages.cjs` y `scripts/build-english.cjs`: generación del sitio y páginas estáticas.
+- `assets/js/portfolio-ai.js` y `assets/js/project-media.js`: fichas, navegación y galerías.
+- `docs/contenidos-proyectos.md`: copia generada para revisar los textos españoles.
 
-Este documento describe el alcance y los mecanismos de revisión; no certifica por sí mismo que una prueba haya pasado, que se haya auditado la seguridad de las aplicaciones o que el sitio esté publicado. Los resultados deben comprobarse en las salidas de ejecución y en el historial de la rama.
+Para revisar los textos, edita las fuentes y ejecuta `npm run build`. Las páginas generadas no son fuentes de contenido. El README documenta comandos de pruebas y vista previa. Los detalles de infraestructura y publicación se mantienen fuera de la documentación pública.
 
-## Revisar los textos
+## English
 
-`docs/contenidos-proyectos.md` contiene una copia generada de los textos de cada proyecto. Los cambios se realizan en `content/projects.json` y después se ejecuta `npm run build`; no se edita esa copia manualmente. Los textos de privacidad y licencia se mantienen en `content/pages.json`.
+### Scope and current status
+
+Luis Gonzalez’s personal website brings together the home page, professional profile, and fifteen projects in the order defined in `content/projects.json`. It retains the portfolio palette, typography, animations, and dark default theme. Project details include the copy, galleries, and videos available in the catalog.
+
+The site supports Latin American Spanish and English, with Colombian and United Kingdom flag controls. The English version localizes the pages, project details, media alternative text, videos, and legal pages. Both languages provide corresponding project, privacy, and license routes.
+
+VeriPago and SEVETCO have separate web and Android galleries. AppSistemaClientes includes real interface screenshots populated with demonstration records, plus diagrams labeled as diagrams. The privacy policy covers project data handling, Google Authentication, Firebase, and Colombia’s data protection framework. The general copyright notice reserves rights while respecting explicit project licenses and third-party materials.
+
+The website is live at <https://lantonium.com/>. The English version is at <https://lantonium.com/en/>. The changes have been merged into `main`; `main` and `developer` are synchronized.
+
+### Sources and maintenance
+
+Edit the content sources and run `npm run build` to regenerate the site. Generated HTML and the Spanish project-copy document are review outputs, not content sources. The README describes the test and preview commands. Infrastructure and release details are intentionally omitted from public documentation.
