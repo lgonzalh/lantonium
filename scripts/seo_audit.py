@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SITEMAP = ROOT / "sitemap.xml"
 OFFICIAL_ORIGIN = "https://lantonium.com"
 
-NOINDEX_ALLOWED = {"404.html", "lntcnfg.html", "acerca.html"}
+NOINDEX_ALLOWED = {"404.html"}
 
 REQUIRED_COMMON = [
     r"<title>.*?</title>",
@@ -117,7 +117,7 @@ def main() -> int:
 
         # Verifica presencia en sitemap para paginas indexables.
         if name not in NOINDEX_ALLOWED:
-            sitemap_key = "" if name == "index.html" else name
+            sitemap_key = "" if name == "index.html" else file_path.stem
             if sitemap_key not in sitemap_set:
                 file_warnings.append("No aparece en sitemap.xml.")
 
