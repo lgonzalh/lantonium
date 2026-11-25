@@ -50,8 +50,30 @@
     ],
     "stack": "Kotlin · Jetpack Compose · Room · Firebase Authentication · Cloud Firestore · Cloud Functions · aplicación web",
     "github": "https://github.com/lgonzalh/veripago",
-    "images": [],
-    "videos": []
+    "images": [
+      {
+        "src": "/assets/img/veripago/web/01-inicio.webp",
+        "alt": "VeriPago web: página de inicio y acceso con Google",
+        "platform": "web"
+      },
+      {
+        "src": "/assets/img/veripago/web/02-formas-de-cobro.webp",
+        "alt": "VeriPago web: cobros en persona y por enlace",
+        "platform": "web"
+      },
+      {
+        "src": "/assets/img/veripago/mobile/01-cobrar.webp",
+        "alt": "VeriPago Android: cobro rápido con selección de billetera",
+        "platform": "mobile"
+      },
+      {
+        "src": "/assets/img/veripago/mobile/02-productos.webp",
+        "alt": "VeriPago Android: formulario de productos e impuestos",
+        "platform": "mobile"
+      }
+    ],
+    "videos": [],
+    "image": "/assets/img/veripago/web/01-inicio.webp"
   },
   {
     "id": "sevetco",
@@ -78,61 +100,75 @@
     "images": [
       {
         "src": "/assets/img/sevetco/web/02-panel.png",
-        "alt": "SEVETCO: captura 1"
+        "alt": "SEVETCO web: panel",
+        "platform": "web"
       },
       {
         "src": "/assets/img/sevetco/web/03-usuarios.png",
-        "alt": "SEVETCO: captura 2"
+        "alt": "SEVETCO web: usuarios",
+        "platform": "web"
       },
       {
         "src": "/assets/img/sevetco/web/04-proveedores.png",
-        "alt": "SEVETCO: captura 3"
+        "alt": "SEVETCO web: proveedores",
+        "platform": "web"
       },
       {
         "src": "/assets/img/sevetco/web/06-servicios.png",
-        "alt": "SEVETCO: captura 4"
+        "alt": "SEVETCO web: servicios",
+        "platform": "web"
       },
       {
         "src": "/assets/img/sevetco/web/10-citas.png",
-        "alt": "SEVETCO: captura 5"
+        "alt": "SEVETCO web: citas",
+        "platform": "web"
       },
       {
         "src": "/assets/img/sevetco/web/12-trazabilidad.png",
-        "alt": "SEVETCO: captura 6"
+        "alt": "SEVETCO web: trazabilidad",
+        "platform": "web"
       },
       {
         "src": "/assets/img/sevetco/mobile/02-login.png",
-        "alt": "SEVETCO: captura 7"
+        "alt": "SEVETCO Android: login",
+        "platform": "mobile"
       },
       {
         "src": "/assets/img/sevetco/mobile/04-inicio.png",
-        "alt": "SEVETCO: captura 8"
+        "alt": "SEVETCO Android: inicio",
+        "platform": "mobile"
       },
       {
         "src": "/assets/img/sevetco/mobile/05-mis-mascotas.png",
-        "alt": "SEVETCO: captura 9"
+        "alt": "SEVETCO Android: mis mascotas",
+        "platform": "mobile"
       },
       {
         "src": "/assets/img/sevetco/mobile/08-servicios.png",
-        "alt": "SEVETCO: captura 10"
+        "alt": "SEVETCO Android: servicios",
+        "platform": "mobile"
       },
       {
         "src": "/assets/img/sevetco/mobile/12-agendar-paso-1.png",
-        "alt": "SEVETCO: captura 11"
+        "alt": "SEVETCO Android: agendar paso 1",
+        "platform": "mobile"
       },
       {
         "src": "/assets/img/sevetco/mobile/15-mis-citas.png",
-        "alt": "SEVETCO: captura 12"
+        "alt": "SEVETCO Android: mis citas",
+        "platform": "mobile"
       }
     ],
     "videos": [
       {
         "src": "/assets/mp4/svw.mp4",
-        "title": "Demostración de SEVETCO"
+        "title": "SEVETCO · versión web",
+        "platform": "web"
       },
       {
         "src": "/assets/mp4/svm.mp4",
-        "title": "Demostración de SEVETCO"
+        "title": "SEVETCO · versión Android",
+        "platform": "mobile"
       }
     ]
   },

@@ -74,9 +74,16 @@
       });
     }
     if (images.length) {
-      const gallery = element('div', '', 'project-gallery');
-      section('Galería de imágenes').append(gallery);
+      const galleries = new Map();
       images.forEach((media, index) => {
+        const platform = media.platform || 'general';
+        if (!galleries.has(platform)) {
+          const gallery = element('div', '', 'project-gallery');
+          gallery.dataset.galleryPlatform = platform;
+          section(platform === 'web' ? 'Galería · versión web' : platform === 'mobile' ? 'Galería · aplicación Android' : 'Galería de imágenes').append(gallery);
+          galleries.set(platform, gallery);
+        }
+        const gallery = galleries.get(platform);
         const button = element('button', '', 'project-thumbnail');
         button.type = 'button';
         button.setAttribute('aria-label', `Ampliar ${media.alt}`);
