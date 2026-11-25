@@ -1,6 +1,7 @@
 (() => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const root = document.documentElement;
+  const isEnglish = root.lang.startsWith('en');
   if (!reduceMotion) {
     root.classList.add('has-ai-motion');
     requestAnimationFrame(() => window.setTimeout(() => root.classList.add('is-ready'), 80));
@@ -13,7 +14,9 @@
     const label = document.getElementById('theme-label');
     if (label) label.textContent = isLight ? 'Claro' : 'Oscuro';
     themeToggle?.setAttribute('aria-pressed', String(isLight));
-    themeToggle?.setAttribute('title', `Cambiar a modo ${isLight ? 'oscuro' : 'claro'}`);
+    themeToggle?.setAttribute('title', isEnglish
+      ? `Switch to ${isLight ? 'dark' : 'light'} mode`
+      : `Cambiar a modo ${isLight ? 'oscuro' : 'claro'}`);
     themeColor?.setAttribute('content', isLight ? '#f2f1ed' : '#050505');
   };
   updateThemeControl();
@@ -122,7 +125,7 @@
     const value = (field, content) => { if (field) field.textContent = content; };
     value(detailFields.index, row.dataset.projectIndex || '');
     value(detailFields.type, row.dataset.projectType || '');
-    value(detailFields.title, row.querySelector('h3')?.textContent.trim() || 'Proyecto');
+    value(detailFields.title, row.querySelector('h3')?.textContent.trim() || (isEnglish ? 'Project' : 'Proyecto'));
     value(detailFields.description, detail.description);
     value(detailFields.year, detail.year);
     value(detailFields.status, detail.status);
@@ -135,9 +138,9 @@
     if (detailFields.links) {
       detailFields.links.replaceChildren();
       const links = [
-        detail.liveUrl && { href: detail.liveUrl, label: 'Abrir aplicación ↗', primary: true },
-        detail.github && { href: detail.github, label: 'Código fuente en GitHub ↗' },
-        detail.downloadUrl && { href: detail.downloadUrl, label: 'Descargar aplicación ↗' },
+        detail.liveUrl && { href: detail.liveUrl, label: isEnglish ? 'Open application ↗' : 'Abrir aplicación ↗', primary: true },
+        detail.github && { href: detail.github, label: isEnglish ? 'Source code on GitHub ↗' : 'Código fuente en GitHub ↗' },
+        detail.downloadUrl && { href: detail.downloadUrl, label: isEnglish ? 'Download application ↗' : 'Descargar aplicación ↗' },
       ].filter(Boolean);
       links.forEach(({ href, label, primary }) => {
         const link = document.createElement('a');
@@ -195,7 +198,7 @@
     nextImage.onload = () => {
       if (request !== previewRequest) return;
       previewImage.src = source;
-      previewImage.alt = row.dataset.previewAlt || title || 'Vista previa del proyecto';
+      previewImage.alt = row.dataset.previewAlt || title || (isEnglish ? 'Project preview' : 'Vista previa del proyecto');
       requestAnimationFrame(() => {
         if (request === previewRequest) previewImage.classList.remove('is-changing');
       });
@@ -227,7 +230,9 @@
 
     const empty = document.getElementById('project-empty');
     if (empty) empty.hidden = visibleCount !== 0;
-    if (projectCount) projectCount.textContent = `${visibleCount} ${visibleCount === 1 ? 'proyecto' : 'proyectos'}`;
+    if (projectCount) projectCount.textContent = isEnglish
+      ? `${visibleCount} ${visibleCount === 1 ? 'project' : 'projects'}`
+      : `${visibleCount} ${visibleCount === 1 ? 'proyecto' : 'proyectos'}`;
     const current = projectRows.find((row) => row.classList.contains('is-active') && !row.hidden);
     const next = current || projectRows.find((row) => !row.hidden);
     if (next) setActiveProject(next);

@@ -921,6 +921,16 @@
     "github": "https://github.com/lgonzalh/AppSistemaClientes",
     "images": [
       {
+        "src": "/assets/img/appsistemaclientes/01-listado-clientes.png",
+        "alt": "AppSistemaClientes JavaFX: tabla con tres registros de demostración",
+        "platform": "desktop"
+      },
+      {
+        "src": "/assets/img/appsistemaclientes/02-cliente-seleccionado.png",
+        "alt": "AppSistemaClientes JavaFX: formulario de cliente seleccionado y tabla de registros",
+        "platform": "desktop"
+      },
+      {
         "src": "/assets/img/appsistemaclientes/arquitectura.svg",
         "alt": "AppSistemaClientes: diagrama de arquitectura basado en el código; no es una captura de la aplicación"
       },
@@ -934,6 +944,6 @@
       }
     ],
     "videos": [],
-    "image": "/assets/img/appsistemaclientes/arquitectura.svg"
+    "image": "/assets/img/appsistemaclientes/01-listado-clientes.png"
   }
 ]

@@ -6,6 +6,7 @@
   const container = document.getElementById('project-detail-media');
   const enlarged = document.getElementById('viewer-image');
   const caption = document.getElementById('viewer-caption');
+  const isEnglish = document.documentElement.lang.startsWith('en');
   let images = [];
   let current = 0;
   let opener;
@@ -48,14 +49,14 @@
     stop();
     container.replaceChildren();
     images = project.images || [];
-    section('Reseña').append(element('p', project.review));
+    section(isEnglish ? 'Overview' : 'Reseña').append(element('p', project.review));
     if (project.features?.length) {
       const list = element('ul');
       project.features.forEach(feature => list.append(element('li', feature)));
-      section('Funcionalidades').append(list);
+      section(isEnglish ? 'Features' : 'Funcionalidades').append(list);
     }
     if (project.videos?.length) {
-      const videos = section('Demostraciones en video');
+      const videos = section(isEnglish ? 'Video demonstrations' : 'Demostraciones en video');
       project.videos.forEach((media, index) => {
         const figure = element('figure', '', 'project-video');
         const video = element('video');
@@ -65,7 +66,7 @@
         video.src = media.src;
         video.setAttribute('aria-label', `${media.title} ${index + 1}`);
         video.append(element('p', 'Tu navegador no permite reproducir este video.'));
-        const download = element('a', 'Abrir video ↗');
+        const download = element('a', isEnglish ? 'Open video ↗' : 'Abrir video ↗');
         download.href = media.src;
         download.target = '_blank';
         download.rel = 'noopener noreferrer';
@@ -80,7 +81,10 @@
         if (!galleries.has(platform)) {
           const gallery = element('div', '', 'project-gallery');
           gallery.dataset.galleryPlatform = platform;
-          section(platform === 'web' ? 'Galería · versión web' : platform === 'mobile' ? 'Galería · aplicación Android' : 'Galería de imágenes').append(gallery);
+          const headings = isEnglish
+            ? { web: 'Gallery · web version', mobile: 'Gallery · Android app', desktop: 'Gallery · desktop app', general: 'Image gallery' }
+            : { web: 'Galería · versión web', mobile: 'Galería · aplicación Android', desktop: 'Galería · aplicación de escritorio', general: 'Galería de imágenes' };
+          section(headings[platform] || headings.general).append(gallery);
           galleries.set(platform, gallery);
         }
         const gallery = galleries.get(platform);
